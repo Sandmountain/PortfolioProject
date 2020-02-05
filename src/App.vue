@@ -2,21 +2,21 @@
   <v-app>
     <div>
       <AppBar />
-      <Home></Home>
+      <Layout />
     </div>
   </v-app>
 </template>
 
 <script>
 import AppBar from "./components/AppBar/AppBar";
-import Home from "./components/Home/Home";
+import Layout from "./components/Layout.vue";
 
 export default {
   name: "App",
 
   components: {
     AppBar,
-    Home
+    Layout
   },
 
   data: () => ({
@@ -25,6 +25,9 @@ export default {
 };
 </script>
 <style>
+body {
+  margin: 5px;
+}
 body::-webkit-scrollbar {
   display: none;
 }
