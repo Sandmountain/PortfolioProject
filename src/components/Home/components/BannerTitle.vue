@@ -4,8 +4,8 @@
       <v-col xs="6">
         <v-img
           class="ma-auto"
-          height="300px"
-          width="300px"
+          height="270px"
+          width="270px"
           src="../../../assets/profilepicture/profile2.png"
         />
       </v-col>
