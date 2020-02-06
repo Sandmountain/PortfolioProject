@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <div>
-      <AppBar />
-      <Layout />
-    </div>
+    <AppBar />
+    <Layout />
+    <BottomNavBar />
   </v-app>
 </template>
 
 <script>
 import AppBar from "./components/AppBar/AppBar";
+import BottomNavBar from "./components/AppBar/BottomNavBar";
 import Layout from "./components/Layout.vue";
 
 export default {
@@ -16,7 +16,8 @@ export default {
 
   components: {
     AppBar,
-    Layout
+    Layout,
+    BottomNavBar
   },
 
   data: () => ({
@@ -25,7 +26,15 @@ export default {
 };
 </script>
 <style>
+html {
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
 body {
+  overflow-x: hidden;
+  width: 100%;
   margin: 5px;
 }
 body::-webkit-scrollbar {

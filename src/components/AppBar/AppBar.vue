@@ -1,12 +1,11 @@
 <template>
-  <v-app-bar elevate-on-scroll dense app dark color="transparent">
-    <v-row>
-      <v-col cols="12">
-        <v-row align="right" justify="space-between">
+  <v-row align="center" justify="center" no-gutters>
+    <v-col md="12">
+      <v-app-bar hide-on-scroll dense app color="transparent" flat>
+        <v-row align="center" justify="space-between">
           <v-spacer></v-spacer>
-
           <div>
-            <v-tabs v-model="model" slider-color="red" background-color="transparent">
+            <v-tabs v-model="model" slider-color="primary" background-color="transparent">
               <v-tab :href="`#tab-${1}`">Home</v-tab>
               <v-tab :href="`#tab-${2}`">Portfolio</v-tab>
               <v-tab :href="`#tab-${3}`">Resume</v-tab>
@@ -15,9 +14,9 @@
           </div>
           <v-spacer></v-spacer>
         </v-row>
-      </v-col>
-    </v-row>
-  </v-app-bar>
+      </v-app-bar>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

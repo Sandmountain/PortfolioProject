@@ -1,0 +1,3 @@
+/* eslint-disable no-console */
+    console.log()
+/* eslint-enable no-console */

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-parallax dark src="../assets/photos/banner_mid_large.png">
-      <Welcome />
+      <BannerTitle />
     </v-parallax>
     <div class="positioned-mountain-1">
       <img style="min-width:102%;" src="../assets/svg/mountaintestCropped.svg" />
@@ -9,11 +9,11 @@
       <NavPanel />
     </div>
     <div class="positioned-triangle-down">
-      <img src="../assets/svg/triangle_down.svg" />
+      <img src="../assets/svg/triangle_down.svg" class="svg-shadow" />
     </div>
     <!--<div style="z-index: 1" class="fadedBackground"></div>-->
     <v-parallax src="../assets/photos/bild5_test.png">
-      <TitlePanel />
+      <TitlePanel title="Portfolio" text="Showcase of my work" />
     </v-parallax>
     <div class="positioned-triangle-up-inverted">
       <img style=" " src="../assets/svg/triangle_inverted.svg" />
@@ -23,7 +23,7 @@
       <img src="../assets/svg/triangle_down.svg" />
     </div>
     <v-parallax src="../assets/photos/viktor_banner_test2.png">
-      <TitlePanel />
+      <TitlePanel title="Portfolio" text="Showcase of my work" />
     </v-parallax>
     <div class="positioned-triangle-up-inverted">
       <img style=" " src="../assets/svg/triangle_inverted.svg" />
@@ -36,14 +36,14 @@
 import TitlePanel from "./TitlePanel/TitlePanel.vue";
 import Portfolio from "./Portfolio/Portfolio.vue";
 import Home from "./Home/Home";
-import Welcome from "./Home/components/Welcome";
+import BannerTitle from "./Home/components/BannerTitle";
 
 export default {
   components: {
     TitlePanel,
     Portfolio,
     Home,
-    Welcome
+    BannerTitle
   }
 };
 </script>
@@ -72,6 +72,7 @@ export default {
 }
 .positioned-triangle-up-inverted {
   z-index: 10;
+  /*margin-top: -5.65%;*/
   margin-top: -5.65%;
 }
 .positioned-triangle-up-inverted img {
@@ -104,5 +105,11 @@ export default {
 }
 .cropping .mountainPosition {
   max-width: initial;
+}
+
+.svg-shadow {
+  -webkit-filter: drop-shadow(5px 2px 10px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 12px 7px rgba(0, 0, 0, 0.2));
+  /* Similar syntax to box-shadow */
 }
 </style>
