@@ -11,60 +11,61 @@
         <p
           class="caption font-weight-light"
           style="padding: 0px 10px 0px 10px; margin:0; "
-        >Down below, I've collected the projects that I'm most proud off. You can press on any card to get an overview of the project with images, code and an explanation of the project.</p>
+        >
+          Down below, I've collected the projects that I'm most proud off. You
+          can press on any card to get an overview of the project with images,
+          code and an explanation of the project.
+        </p>
       </v-col>
     </v-row>
-
-    <v-carousel height="23vw" hide-delimiters show-arrows-on-hover>
-      <v-carousel-item style="padding: 0 13vw 13vw">
-        <v-row align="center" justify="center" no-gutters>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-        </v-row>
-        <v-row v-row align="center" justify="center" no-gutters>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item style="padding: 0 13vw 13vw">
-        <v-row align="center" justify="center" no-gutters>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-        </v-row>
-        <v-row v-row align="center" justify="center" no-gutters>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-          <v-col class="ma-4">
-            <v-card class="thumbnail-paper">1 paper</v-card>
-          </v-col>
-        </v-row>
-      </v-carousel-item>
-    </v-carousel>
+    <v-container fluid>
+      <v-row align="center" justify="center" no-gutters>
+        <v-col cols="8">
+          <VueSlickCarousel
+            v-bind="settings"
+            @init="onInitCarousel"
+            ref="carousel"
+            class="center-text-carousel"
+          >
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <div class="carousel-box">
+              <p>Hej</p>
+            </div>
+            <!-- Custom arrows-->
+            <template #prevArrow>
+              <div class="custom-arrow" style="top: 15px; left: -30">
+                <v-icon class="carousel-arrow">mdi-chevron-left-circle</v-icon>
+              </div>
+            </template>
+            <template #nextArrow>
+              <div class="custom-arrow" style="top: 15px; right: -30px">
+                <v-icon class="carousel-arrow">mdi-chevron-right-circle</v-icon>
+              </div>
+            </template>
+          </VueSlickCarousel>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-row justify="center">
       <v-col md="8">
         <h2 class="title-h2 text-right">
@@ -80,13 +81,51 @@
 </template>
 
 <script>
-export default {};
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import "vue-slick-carousel/src/slick-theme.css";
+
+export default {
+  name: "Portfolio",
+  components: { VueSlickCarousel },
+  data() {
+    return {
+      settings: {
+        dots: true,
+        focusOnSelect: true,
+        centerPadding: "50px",
+        centerMode: true,
+        slidesToShow: 4,
+        touchThreshold: 5
+      }
+    };
+  },
+  methods: {
+    showNext() {
+      this.$refs.carousel.next();
+    },
+    onInitCarousel() {
+      console.log("our carousel is ready");
+    }
+  }
+};
 </script>
 
 <style scoped>
+.center-text-carousel {
+  text-align: center;
+  align-items: center;
+}
+.carousel-box {
+  background-color: #474747;
+  height: 75px !important;
+  width: 80% !important;
+}
+
 .thumbnail-paper {
-  min-height: 10vw;
-  min-width: 10vw;
+  height: 50px;
+  width: 120px;
 }
 
 .title-h2 {
@@ -114,4 +153,30 @@ export default {};
   border-top: 1px solid black;
   z-index: -1;
 }
+
+.carousel-arrow:hover {
+  color: #acacac;
+}
 </style>
+
+<!--
+
+<v-carousel height="100px" hide-delimiter-background color="primary" show-arrows-on-hover>
+      <v-carousel-item style="padding: 0 13vw 13vw">
+        <v-row justify="center">
+          <v-col cols="12" xs="6" md="2" v-for="i in 5 " :key="i">
+            <v-card class="thumbnail-paper">{{i + " side"}}</v-card>
+          </v-col>
+        </v-row>
+      </v-carousel-item>
+      <v-carousel-item style="padding: 0 13vw 13vw">
+        <v-row justify="center">
+          <v-col cols="12" xs="6" md="2" v-for="i in 5 " :key="i">
+            <v-card class="thumbnail-paper">{{i + " paper"}}</v-card>
+          </v-col>
+        </v-row>
+      </v-carousel-item>
+    </v-carousel>
+
+
+-->

@@ -4,7 +4,10 @@
       <BannerTitle />
     </v-parallax>
     <div class="positioned-mountain-1">
-      <img style="min-width:102%;" src="../assets/svg/mountaintestCropped.svg" />
+      <img
+        style="min-width:102%;"
+        src="../assets/svg/mountaintestCropped.svg"
+      />
       <Home />
       <NavPanel />
     </div>
@@ -23,12 +26,12 @@
       <img src="../assets/svg/triangle_down.svg" />
     </div>
     <v-parallax src="../assets/photos/viktor_banner_test2.png">
-      <TitlePanel title="Portfolio" text="Showcase of my work" />
+      <TitlePanel title="Resume" text="A summary of my cv" />
     </v-parallax>
     <div class="positioned-triangle-up-inverted">
       <img style=" " src="../assets/svg/triangle_inverted.svg" />
     </div>
-    <Portfolio />
+    <Home />
   </div>
 </template>
 
