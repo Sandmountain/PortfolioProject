@@ -5,7 +5,7 @@
         <v-row align="center" justify="space-between">
           <v-spacer></v-spacer>
           <div>
-            <v-tabs v-model="model" slider-color="primary" background-color="transparent">
+            <v-tabs slider-color="primary" background-color="transparent">
               <v-tab :href="`#tab-${1}`">Home</v-tab>
               <v-tab :href="`#tab-${2}`">Portfolio</v-tab>
               <v-tab :href="`#tab-${3}`">Resume</v-tab>

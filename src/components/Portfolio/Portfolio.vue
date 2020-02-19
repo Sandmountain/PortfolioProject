@@ -8,11 +8,8 @@
             PROJECTS
           </span>
         </h2>
-        <p
-          class="caption font-weight-light"
-          style="padding: 0px 10px 0px 10px; margin:0; "
-        >
-          Down below, I've collected the projects that I'm most proud off. You
+        <p class="caption font-weight-light" style="padding: 0px 10px 0px 10px; margin:0; ">
+          Down below, I've collected the projects that I'm most proud of. You
           can press on any card to get an overview of the project with images,
           code and an explanation of the project.
         </p>
@@ -24,33 +21,14 @@
           <VueSlickCarousel
             v-bind="settings"
             @init="onInitCarousel"
+            @beforeChange="onNewSlide"
             ref="carousel"
             class="center-text-carousel"
           >
-            <div class="carousel-box">
-              <p>Hej</p>
+            <div class="carousel-box" v-for="(thumbnail, i) in thumbnails" :key="i">
+              <img :src="getImage(thumbnail)" :key="thumbnail" />
             </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
-            <div class="carousel-box">
-              <p>Hej</p>
-            </div>
+            <!-- ../../assets/project/Dotabase/thumbnail.jpg -->
             <!-- Custom arrows-->
             <template #prevArrow>
               <div class="custom-arrow" style="top: 15px; left: -30">
@@ -63,6 +41,15 @@
               </div>
             </template>
           </VueSlickCarousel>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container>
+      <v-row align="center" justify="center" no-gutters>
+        <v-col cols="8">
+          <div class="project-box">
+            <p>{{this.$data.carouselIndex}}</p>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -86,11 +73,16 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import "vue-slick-carousel/src/slick-theme.css";
 
+const projectData = require("../../assets/project/projects.json");
+const relativePath = "../../assets/project/";
+
 export default {
   name: "Portfolio",
   components: { VueSlickCarousel },
   data() {
     return {
+      carouselIndex: 0,
+      thumbnails: [],
       settings: {
         dots: true,
         focusOnSelect: true,
@@ -101,13 +93,32 @@ export default {
       }
     };
   },
+  created() {
+    console.log(projectData);
+    this.parseThumbnails();
+  },
   methods: {
+    getImage(src) {
+      console.log(relativePath + `${src}`);
+      return relativePath + `${src}`;
+    },
+    parseThumbnails() {
+      this.thumbnails = projectData.map(project => {
+        return project.thumbnail;
+      });
+      console.log(this.thumbnails);
+    },
+    logFromDom(str) {
+      console.log(str);
+    },
     showNext() {
       this.$refs.carousel.next();
     },
-    onInitCarousel() {
-      console.log("our carousel is ready");
-    }
+    onNewSlide(slideIndex) {
+      console.log(slideIndex);
+      this.$data.carouselIndex = slideIndex;
+    },
+    onInitCarousel() {}
   }
 };
 </script>
@@ -121,6 +132,21 @@ export default {
   background-color: #474747;
   height: 75px !important;
   width: 80% !important;
+}
+
+.project-box {
+  margin-top: 10px;
+  background-color: #474747;
+  height: 500px;
+}
+.project-box p {
+  text-align: center;
+  color: white;
+}
+
+.carousel-box:hover {
+  background-color: #404040;
+  cursor: pointer;
 }
 
 .thumbnail-paper {

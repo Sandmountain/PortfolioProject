@@ -1,12 +1,5 @@
 <template>
-  <v-bottom-navigation
-    v-model="bottomNav"
-    :input-value="showNav"
-    style="z-index: 200"
-    light
-    flat
-    fixed
-  >
+  <v-bottom-navigation :input-value="showNav" style="z-index: 200" light flat fixed>
     <v-btn large>
       <span>Home</span>
       <v-icon>mdi-home</v-icon>

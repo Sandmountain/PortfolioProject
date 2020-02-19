@@ -1,0 +1,502 @@
+[
+  {
+    "title": "Dotabase",
+    "finished": "29-11-2016",
+    "description": "This project was made in the course “Communication and User Interfaces” in the second year. The purpose of the project was to create a user friendly website with focus on its user interface and interaction design. This course covered many fundamental concepts about user experience and how to communicate with the user in an intuitive way. The project’s goal was to use these concepts to create a web application with these concepts and have user evaluation to see if the application was as intuitive as predicted.",
+    "development": "The application created was a web application using Angular.js. The goal of the application was to create a simple encyclopedia for the game Dota 2, where most relevant information of the game could easily be found. This was achieved by having a image carousel with each playable character in the game, that covered most of the interaction of the application. There was also a search function to find specific heroes. When a character was selected, information of  was shown displaying relevant stats and abilities.",
+    "keywords": [
+      "Angular.js",
+      "Data management",
+      "Responsive design",
+      "Bootstrap",
+      "RSS feed",
+      "Image carousel",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "JSON",
+      "Git"
+    ],
+    "thumbnail": "Dotabase/thumbnail.jpg",
+    "images": {
+      "src": [
+        "Dotabase/thumbnail.jpg",
+        "Dotabase/items.jpg",
+        "Dotabase/modal.jpg"
+      ],
+      "legend": [
+        "Overview of the landing page",
+        "All the items in game (At that time)",
+        "A second view of all the heroes and display"
+      ]
+    },
+    "report": "Dotabase/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm040/ht-2018",
+    "githubUrl": "https://github.com/Sandmountain/TNM040-Projekt"
+  },
+  {
+    "title": "Mandeln - The Great Escape",
+    "finished": "06-01-2017",
+    "description": "This project was made in the course “3D-computer graphics” in the second year. The main topics of the course was basic concepts within 3D computer graphics such as global illumination, ray casting and creating scenes graphs. Also programming in OpenGL, WebGL and 3D-modelling and animation.",
+    "development": "The purpose of the project was to create a project relevant to the course and the topic that was chosen was to create a game in WebGL from scratch. Creating the game from scratch meant creating 3D-models and animations, but also the physics engine. The physics engine was outside of the scope of the course, but was created to get an in depth knowledge of how the physics in a game works. <br/> The application that was created was a game in WebGL and the API Three.js. The goal of the application was to create a complete game, meaning that it would have a beginning and an end, but also all assets a game should have, such as sound, music and UI. ",
+    "keywords": [
+      "WebGL",
+      "Three.js",
+      "Physics Engine",
+      "Collisions",
+      "3D-modelling",
+      "Animation",
+      "Blender",
+      "Parallax effect",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "JSON",
+      "Git"
+    ],
+    "thumbnail": "GreatEscape/thumbnail.png",
+    "images": {
+      "src": [
+        "GreatEscape/mandeln.jpg",
+        "GreatEscape/menu.jph",
+        "GreatEscape/options.jpg",
+        "GreatEscape/mandeln.gif"
+      ],
+      "legend": [
+        "An overview of some of the game",
+        "The starting menu of the game",
+        "Option menu in game",
+        "The idle animation of Mandeln"
+      ]
+    },
+    "report": "GreatEscape/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm094/",
+    "githubUrl": "https://github.com/Sandmountain/TNM061-Project"
+  },
+  {
+    "title": "Roller Coaster Simulation",
+    "finished": "03-09-2018",
+    "description": "This project was made in the course “Modelling Project” as a follow up for the course “Modelling and Simulation”. Modelling and simulation was a course to give a deeper understanding of how physical system work and operate in the real world, and using tools like Matlab to estimate and approximate if the system is stable or unstable. The project course was a way to try out these knowledges in a physical based system of your own choosing with the help of programming.",
+    "development": "This project consisted of creating a simulation for a roller coaster running on an arbitrary path. The approach was to first write a model (a differential equation) for the system, then approximate it using Matlab, and finish it up by doing a more graphical pleasing representation of the system, using Unity. The differential equation was written by analyzing all the forces that the roller coaster cart is being affected by. This was then implemented in matlab, and using Euler step method, it was possible to evaluate if the model was correct. The final part of this project was to implement the system in Unity, where it was possible to change constants such as drag, air resistance and chain force.",
+    "keywords": [
+      "Matlab",
+      "simulation",
+      "Model Evaluation",
+      "Differential Equation",
+      "Euler Approximation",
+      "Physics",
+      "Unity",
+      "C#",
+      "Roller Coaster"
+    ],
+    "thumbnail": "RollerCoasterSim/thumbnail.png",
+    "images": {
+      "src": [
+        "RollerCoasterSim/graf-matlab-sim.jpg",
+        "RollerCoasterSim/model.png",
+        "RollerCoasterSim/gif.gif"
+      ],
+      "legend": [
+        "A first prototype made in Matlab, simulating the cart's speed",
+        "The first schetch of the project, as well as the model",
+        "A gif of the simulation in Unity"
+      ]
+    },
+    "report": "RollerCoasterSim/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm085/",
+    "githubUrl": "https://github.com/Sandmountain/TNM085-RollerCoasterSimulation"
+  },
+  {
+    "title": "United States Economy Visualization",
+    "finished": "03-19-2018",
+    "description": "This project was made in the course Information visualization. The course was focused around how to visualize multivariate data in a simple way, how to interact with the data to improve understanding and not to mention how to use data mining to find clusters and outliers.",
+    "development": "",
+    "keywords": [
+      "Economic",
+      "Real estate USA",
+      "Information visualization",
+      "Data management",
+      "Interaction design",
+      "User experience",
+      "HTML5",
+      "CSS",
+      "JavaScript",
+      "D3.js",
+      "GeoJSON",
+      "Bootstrap",
+      "Data mining",
+      "Multivariate data"
+    ],
+    "thumbnail": "USARealEstate/thumbnail.png",
+    "images": {
+      "src": ["USARealEstate/mapView.png", "USARealEstate/US-economics.png"],
+      "legend": [
+        "An overview of the total household income of all states",
+        "A zoom in on Texas, showing relations between having a high school degree vs household income"
+      ]
+    },
+    "report": "USARealEstate/report.pdf",
+    "screencast": null,
+    "demoUrl": "https://sandmountain.github.io/TNM048-United-States-Economy-Visualization/",
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM048/",
+    "githubUrl": "https://github.com/Sandmountain/TNM048-United-States-Economy-Visualization"
+  },
+  {
+    "title": "Bachelor thesis: Animal Approach",
+    "finished": "05-28-2018",
+    "description": "The bachelor thesis in Media Technology and Engineering was a project with focus on agile development. The students of the course were divided into groups based on what projects ideas they were interested in. The project that I was assigned to was to create a multiplayer game in AR. The focus of the project was to create a game that felt inclusive and mimicked the feeling of a board game. The fundamental concepts of the project was network, tracking and game development. ",
+    "development": "The game that was created was a capture the flag game played in teams. The player could choose between different characters(heroes) to play that all had different strengths and weaknesses. These strengths and weaknesses are shown through their unique abilities i.e strength, speed, intellect. The games playing field was generated in AR with procedurally generated game assets. The players used their mobile devices as windows to the playing field and the players all see the same playing field, with the help of server/client connection between all included devices. In order to succeed with this markers was used with the AR tracking. As the game was rendered on mobile devices the polygon count had to be taken into consideration. This issue was handled through modeling the games assets in low-poly graphics. The game was developed entirely in Unity coding in C#. All of the game assets were modeled by the project team in Blender.",
+    "keywords": [
+      "Unity",
+      "Scrum",
+      "Agile development",
+      "Augmented Reality",
+      "Vuforia",
+      "3D-modeling",
+      "3D-animation",
+      "Multiplayer",
+      "Network",
+      "Mobile game",
+      "Android",
+      "Gameplay",
+      "Abilities",
+      "Procedural map generation",
+      "C#",
+      "Git"
+    ],
+    "thumbnail": "AnimalApproach/thumbnail.png",
+    "images": {
+      "src": [
+        "AnimalApproach/blender.png",
+        "AnimalApproach/hook-unity.png",
+        "AnimalApproach/multiplayer.png"
+      ],
+      "legend": [
+        "Modelling and animating in blender",
+        "Game mechanic development, a hook ability",
+        "An early stage of multiplayer testing"
+      ]
+    },
+    "report": "AnimalApproach/report.pdf",
+    "screencast": "https://drive.google.com/open?id=1t-ONlJAENUFvBt1-GnODrcHmAa-oSpS0",
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm094/",
+    "githubUrl": null
+  },
+  {
+    "title": "WikiCrawler",
+    "finished": "06-25-2018",
+    "description": " One of the first programming projects I made outside school was a game called “WikiCrawler”, based on the Wiki Game. WikiCrawler is a game that is developed around the Wikipedia API to retrieve all the articles that can be found on the domain. The players objective is to start on random article, then by clicking on words in that article, a query is done on the API to search for articles with that word in its’ titles. The goal is then to find an article that was decided in the games setup phase. ",
+    "development": "The development of this application was done mostly in native HTML, JavaScript and CSS. Some JQuery libraries was also used to simply the development process as well as creating a more smooth user experience, using page transitions and modals. <br/> Another important part of the game is high score system that was implemented. In order for the game to be more intriguing, all actions that the user does affects the final score. The game also uses RegEX to search through all the text in the articles to see if the user has missed the goal article. When the user has found the goal article, a flow chart is displayed for the user to see how much time was spend on each article, as well as if the user has missed the goal at a earlier stage.",
+    "keywords": [
+      "HTML",
+      "JavaScript",
+      "JQuery",
+      "Css",
+      "UX",
+      "Highscore",
+      "RegEX",
+      "API",
+      "Wikipedia"
+    ],
+    "thumbnail": "MovieRecomender/WikiCrawler.png",
+    "images": {
+      "src": ["WikiCrawler/setup.png", "WikiCrawler/mainGame.png"],
+      "legend": [
+        "A setup view when choosing from random articles.",
+        "The view of the main game showing different article"
+      ]
+    },
+    "report": null,
+    "screencast": null,
+    "demoUrl": "https://sandmountain.github.io/WikiCrawler/",
+    "courseUrl": null,
+    "githubUrl": "https://github.com/Sandmountain/WikiCrawler"
+  },
+  {
+    "title": "SunnyRun",
+    "finished": "10-22-2018",
+    "description": "This was a project done in the course Design and Programming of Computer Games. The fundamentals of this course was to learn how to build and design computer games developed using a game engine. Also how to make the games intuitive and easy to learn without the use of large amount of tutorial texts.",
+    "development": "TThe project that I created in this course was called “SunnyRun”, which is an endless running game. The development of the game covered a lot of new challenges and I learned a lot of new things when developing this game. It was one of the first master courses that I took and was also the first project-only course that I participated in. The development was done in Unity with programming in C#. The biggest challenge to get right in this project was to get the procedurally generated map to work correctly. It was coded in such a way that the longer the player lives, the more difficult and faster the game gets. The art was taken from online, but the music was created by myself. Overall, this was one of the most enjoyable course at the University. ",
+    "keywords": [
+      "Unity",
+      "2D-game",
+      "C#",
+      "Game Design",
+      "Game Development",
+      "Interaction design",
+      "Cubase",
+      "Composing"
+    ],
+    "thumbnail": "SunnyRun/thumbnail.png",
+    "images": {
+      "src": [
+        "SunnyRun/thumbnail.png",
+        "SunnyRun/menu.png",
+        "SunnyRun/missions.png",
+        "SunnyRun/game.png",
+        "SunnyRun/game-over.png"
+      ],
+      "legend": [
+        "The logo for the game",
+        "The main menu of the game",
+        "Showing mission to beat while playing the game",
+        "A screenshot from playing the game",
+        "Game over Screen"
+      ]
+    },
+    "report": "SunnyRun/report.pdf",
+    "screencast": "https://www.youtube.com/watch?v=b1tt_8CErPY",
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tddd23",
+    "githubUrl": "https://github.com/Sandmountain/TNM108-MovieRecommender"
+  },
+  {
+    "title": "FoodAlyze",
+    "finished": "12-20-2018",
+    "description": "This was a project created in the course Software Entrepreneurship, which was a course that gave understanding on how to go from an idea to a financial secure product. The course touched on subject such as product pitching, business modelling, market analysis and other important topics that are needed to create an economic sustainable product. ",
+    "development": "The project’s main focus was not necessarily to implement the most sophisticated product, but rather to have a well-thought out idea and a plan for how the business for the product should be. The idea for this project was to create an application to compare food prices from different supermarkets. The idea was pitched, market analyzed and prototyped. Then, finally implemented an MVP using Android Studio.",
+    "keywords": [
+      "Market analysis",
+      "Business modeling",
+      "Verbal communication",
+      "software development",
+      "Android Studios",
+      "Java",
+      "Adobe XD",
+      "Entrepreneurship",
+      "NABC",
+      "Financing",
+      "Innovation"
+    ],
+    "thumbnail": "FoodAlyze/thumbnail.png",
+    "images": {
+      "src": [
+        "FoodAlyze/prototype.png",
+        "FoodAlyze/mvp.png",
+        "FoodAlyze/thumbnail.png"
+      ],
+      "legend": [
+        "The Adobe XD prototype",
+        "The MVP developed in Android studio",
+        "The Foodalyze logo"
+      ]
+    },
+    "report": "FoodAlyze/report.pdf",
+    "screencast": "https://drive.google.com/open?id=15rzavnclR1vVmaP3CS0TFoe9o9Xzsxh_",
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/tdde02/",
+    "githubUrl": null
+  },
+  {
+    "title": "Mosaic Image reproduction",
+    "finished": "03-06-2019",
+    "description": "This project was made in the course Image Reproduction and Image Quality. The course fundamentals was image reproduction in conventional medias and also image quality as a part of this. Color management and color prediction was also topics important for the course.",
+    "development": "The project that was produced was an application that reproduced images by using other images. An image database was created with from screenshots from movies. The database was evaluated by its dynamic range. To be able to reproduce an image you had to exchange regions of the original image with images from the database. This was done through a multitude of different methods such as taking comparing mean values, most prominent colors or taking the SSIM of the region just to name a few. ",
+    "keywords": [
+      "image processing",
+      "Matlab",
+      "Quality measurements",
+      "image analysis",
+      "SSIM",
+      "image database",
+      "Image Quality",
+      "Edge detection"
+    ],
+    "thumbnail": "ImageReproduction/thumbnail.png",
+    "images": {
+      "src": [
+        "ImageReproduction/databas.jpg",
+        "ImageReproduction/obama.jpg",
+        "ImageReproduction/obama8.jpg",
+        "ImageReproduction/obama4.jpg",
+        "ImageReproduction/obama8ML.jpg",
+        "ImageReproduction/ocean.jpg",
+        "ImageReproduction/landscape.jpg"
+      ],
+      "legend": [
+        "The Lab-color distrubution in the database used to reproduce the images",
+        "The first image to reproduce was this image of Barack Obama",
+        "Here, an eigth of the size of the original.",
+        "Here, a quarter of the size of the original.",
+        "Here, an eigth of the size, using edge detections to find structures in the images",
+        "Another image with very vibrant colors",
+        "An eight of the original size, reproduces the colors quite nice."
+      ]
+    },
+    "report": "ImageReproduction/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM097/",
+    "githubUrl": "https://github.com/Sandmountain/-TNM097-ImageReproductionFromDatabase"
+  },
+  {
+    "title": "Self-driving car",
+    "finished": "11-19-2019",
+    "description": "This project was done in the course Artificial Intelligence for Interactive Media. This course was a project follow up course for a basic AI course that covered the fundamentals of subject. What was important in this course was to learn when and why a different AI technique was used in a different scenario, also how the AI agent behaves when being interacted with.",
+    "development": "In this project I chose to do a project with Machine Learning, mainly because the thought teaching a computer to learn something seemed really appealing. A Reinforcement Learning algorithm called Q-learning was used to produce a game where a car can learn to drive a race track by itself. The project was very educative in that way that a deep understanding about Reinforcement Learning was derived, but not because the finished product was prefect. Rather, from a lot of trial and error along the way was done, a finished product where a car that was able to learn a large variety of tracks as well as interaction with the agent to race against the it to reach the goal the quickest.",
+    "keywords": [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Reinforcement Learning",
+      "Q-learning",
+      "PyGame",
+      "Python",
+      "Tiled"
+    ],
+    "thumbnail": "SelfDrivingCar/thumbnail.png",
+    "images": {
+      "src": [
+        "SelfDrivingCar/map1.png",
+        "SelfDrivingCar/4movement.gif",
+        "SelfDrivingCar/8movement.gif",
+        "SelfDrivingCar/final.gif",
+        "SelfDrivingCar/graph1.png",
+        "SelfDrivingCar/graph2.png"
+      ],
+      "legend": [
+        "The most basic implementation of the game, a small 20x20 grid",
+        "Progress, showing with a 4x movement",
+        "Progress, showing with a 8x movement",
+        "Final implementation with graphics and movement",
+        "Graph 1 of 2: 1 milion episodes in the q-learning algorithm",
+        "Graph 2 of 2: 1 milion episodes in the q-learning algorithm"
+      ]
+    },
+    "report": "SelfDrivingCar/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM95/",
+    "githubUrl": "https://github.com/Sandmountain/TNM095-Selfdriving_Car_Qlearning"
+  },
+  {
+    "title": "Movie recommendation system",
+    "finished": "12-18-2019",
+    "description": "Machine Learning for Social Media was a course with focus machine learning and its applications within social media. The fundamentals of course was text classification, natural language processing, sentiment analysis and recommender systems. The goal of the course was to learn these different aspects of machine learning and then create a project based on one of them.",
+    "development": "The project that was made in this course was a movie recommender system. This recommender system was a content based system and the system used data from The Movies Dataset. The movies were compared with the help of cosine similarity to get a score of how similar they were based on the chosen features to compare. In order to make the application more than just a console application a website was created in React.js. A backend REST-api was also created to be able to make the recommendation calculations. The backend was created in Flask because both Flask and the recommendation system is written in Python. To create a web application for the recommendation system was outside the scope of the course, but it gave valuable insights on how this kind of system would work in practise.",
+    "keywords": [
+      "Python",
+      "Machine Learning",
+      "Pandas",
+      "Scikit learn",
+      "Flask",
+      "Recommender system",
+      "Content-based filtering",
+      "React.js",
+      "Data Cleaning",
+      "The movies dataset",
+      "Cosine similarity"
+    ],
+    "thumbnail": "MovieRecomender/thumbnail.png",
+    "images": {
+      "src": [
+        "MovieRecomender/application.png",
+        "MovieRecomender/similarToGalaxy.png"
+      ],
+      "legend": [
+        "A simple React frontend with recomended movies displayed",
+        "The result of getting recomended movies to Guardian of the Galaxy"
+      ]
+    },
+    "report": "MovieRecomender/report.pdf",
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM108/",
+    "githubUrl": "https://github.com/Sandmountain/TNM108-MovieRecommender"
+  },
+  {
+    "title": "WikiCrawler Native",
+    "finished": "Ongoing",
+    "description": "WikiCrawler Native is a port from my first project “WikiCrawler”. The base concept is the same, i.e players start on the same randomly selected article, and must navigate to another pre-selected target article, solely by clicking on words within each article. One of the biggest difference in this project, was that I wanted it to include authentication so that each user could save their prior high scores and compare to their friends as well as having a profile etc.  This game was developed for smartphones using React Native. ",
+    "development": "One of the most important parts of this project was to get the interaction intuitive with how to search for new articles. In the original game, it’s easy because you have a mouse as a tool to use for navigation and marking words. On phone however, the only interaction you can use is touch. (Fill out for portfolio)",
+    "keywords": [
+      "React Native",
+      "React Navigation",
+      "Redux",
+      "API",
+      "Firebase",
+      "Authentication",
+      "Material Design",
+      "High score",
+      "Wikipedia",
+      "API",
+      "Material Design",
+      "UX"
+    ],
+    "thumbnail": "WikiCrawlerNative/thumbnail.png",
+    "images": {
+      "src": [
+        "WikiCrawlerNative/login.png",
+        "WikiCrawlerNative/setup.png",
+        "WikiCrawlerNative/articles.png"
+      ],
+      "legend": [
+        "Local log in or using Facebook",
+        "Setup for the game using random article",
+        "The main game, showing interaction of how to search for a new article"
+      ]
+    },
+    "report": null,
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": null,
+    "githubUrl": "https://github.com/Sandmountain/WikiCrawler-Native"
+  },
+  {
+    "title": "Portfolio Page",
+    "finished": "Ongoing",
+    "description": "This homepage that you are visiting right now, is a page I created to be able to show people what I've done and created on my spare time as well as on my time at the university. A portfolio is a great way for me projects, as well as a great opprtuniy to start another project",
+    "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challange myself to create a page with great aesthetics and a responsive UI for all (except IE etc 😠) browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements",
+    "keywords": [
+      "Vue.js",
+      "JavaScript",
+      "Vuetify",
+      "Projects",
+      "Portfolio",
+      "Css",
+      "Responsive",
+      "Material Design",
+      "Adobe Illustrator",
+      "Adobe Photoshop"
+    ],
+    "thumbnail": "Portfolio/thumbnail.png",
+    "images": {
+      "src": ["MovieRecomender/thumbnail.png"],
+      "legend": ["The many different layouts that was chosen from"]
+    },
+    "report": null,
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": null,
+    "githubUrl": "https://github.com/Sandmountain/PortfolioProject"
+  },
+  {
+    "title": "",
+    "finished": "Ongoing",
+    "description": "",
+    "development": "",
+    "keywords": [],
+    "date": null,
+    "thumbnail": null,
+    "imgs": null,
+    "report": null,
+    "screencast": null,
+    "demoUrl": null,
+    "courseUrl": null,
+    "githubUrl": null
+  },
+  {
+    "title": "",
+    "description": "",
+    "development": "",
+    "keywords": [],
+    "img": null,
+    "url": null
+  }
+]
