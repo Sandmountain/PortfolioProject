@@ -26,6 +26,9 @@ export default {
 };
 </script>
 <style>
+.v-dialog__content--active {
+  overflow-y: hidden !important;
+}
 html {
   overflow-x: hidden;
   flex: 1 1 auto;

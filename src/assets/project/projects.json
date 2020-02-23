@@ -1,6 +1,7 @@
 [
   {
     "title": "Dotabase",
+    "id": "1",
     "finished": "29-11-2016",
     "description": "This project was made in the course “Communication and User Interfaces” in the second year. The purpose of the project was to create a user friendly website with focus on its user interface and interaction design. This course covered many fundamental concepts about user experience and how to communicate with the user in an intuitive way. The project’s goal was to use these concepts to create a web application with these concepts and have user evaluation to see if the application was as intuitive as predicted.",
     "development": "The application created was a web application using Angular.js. The goal of the application was to create a simple encyclopedia for the game Dota 2, where most relevant information of the game could easily be found. This was achieved by having a image carousel with each playable character in the game, that covered most of the interaction of the application. There was also a search function to find specific heroes. When a character was selected, information of  was shown displaying relevant stats and abilities.",
@@ -38,6 +39,7 @@
   },
   {
     "title": "Mandeln - The Great Escape",
+    "id": "2",
     "finished": "06-01-2017",
     "description": "This project was made in the course “3D-computer graphics” in the second year. The main topics of the course was basic concepts within 3D computer graphics such as global illumination, ray casting and creating scenes graphs. Also programming in OpenGL, WebGL and 3D-modelling and animation.",
     "development": "The purpose of the project was to create a project relevant to the course and the topic that was chosen was to create a game in WebGL from scratch. Creating the game from scratch meant creating 3D-models and animations, but also the physics engine. The physics engine was outside of the scope of the course, but was created to get an in depth knowledge of how the physics in a game works. <br/> The application that was created was a game in WebGL and the API Three.js. The goal of the application was to create a complete game, meaning that it would have a beginning and an end, but also all assets a game should have, such as sound, music and UI. ",
@@ -79,6 +81,7 @@
   },
   {
     "title": "Roller Coaster Simulation",
+    "id": "3",
     "finished": "03-09-2018",
     "description": "This project was made in the course “Modelling Project” as a follow up for the course “Modelling and Simulation”. Modelling and simulation was a course to give a deeper understanding of how physical system work and operate in the real world, and using tools like Matlab to estimate and approximate if the system is stable or unstable. The project course was a way to try out these knowledges in a physical based system of your own choosing with the help of programming.",
     "development": "This project consisted of creating a simulation for a roller coaster running on an arbitrary path. The approach was to first write a model (a differential equation) for the system, then approximate it using Matlab, and finish it up by doing a more graphical pleasing representation of the system, using Unity. The differential equation was written by analyzing all the forces that the roller coaster cart is being affected by. This was then implemented in matlab, and using Euler step method, it was possible to evaluate if the model was correct. The final part of this project was to implement the system in Unity, where it was possible to change constants such as drag, air resistance and chain force.",
@@ -114,9 +117,10 @@
   },
   {
     "title": "United States Economy Visualization",
+    "id": "4",
     "finished": "03-19-2018",
     "description": "This project was made in the course Information visualization. The course was focused around how to visualize multivariate data in a simple way, how to interact with the data to improve understanding and not to mention how to use data mining to find clusters and outliers.",
-    "development": "",
+    "development": "The purpose of this project was to create a visualization tool that gives the user an easy and intuitive way of learning about the economy in the United States. The main purpose of the application was to analyze the average yearly income of the people in the country, and try to draw a conclusion why people in different areas do have a lower income. The tools used for this application was GeoJSON to create an interactive map, and draw data points were drawn with the help of D3.js.",
     "keywords": [
       "Economic",
       "Real estate USA",
@@ -149,6 +153,7 @@
   },
   {
     "title": "Bachelor thesis: Animal Approach",
+    "id": "5",
     "finished": "05-28-2018",
     "description": "The bachelor thesis in Media Technology and Engineering was a project with focus on agile development. The students of the course were divided into groups based on what projects ideas they were interested in. The project that I was assigned to was to create a multiplayer game in AR. The focus of the project was to create a game that felt inclusive and mimicked the feeling of a board game. The fundamental concepts of the project was network, tracking and game development. ",
     "development": "The game that was created was a capture the flag game played in teams. The player could choose between different characters(heroes) to play that all had different strengths and weaknesses. These strengths and weaknesses are shown through their unique abilities i.e strength, speed, intellect. The games playing field was generated in AR with procedurally generated game assets. The players used their mobile devices as windows to the playing field and the players all see the same playing field, with the help of server/client connection between all included devices. In order to succeed with this markers was used with the AR tracking. As the game was rendered on mobile devices the polygon count had to be taken into consideration. This issue was handled through modeling the games assets in low-poly graphics. The game was developed entirely in Unity coding in C#. All of the game assets were modeled by the project team in Blender.",
@@ -191,6 +196,7 @@
   },
   {
     "title": "WikiCrawler",
+    "id": "6",
     "finished": "06-25-2018",
     "description": " One of the first programming projects I made outside school was a game called “WikiCrawler”, based on the Wiki Game. WikiCrawler is a game that is developed around the Wikipedia API to retrieve all the articles that can be found on the domain. The players objective is to start on random article, then by clicking on words in that article, a query is done on the API to search for articles with that word in its’ titles. The goal is then to find an article that was decided in the games setup phase. ",
     "development": "The development of this application was done mostly in native HTML, JavaScript and CSS. Some JQuery libraries was also used to simply the development process as well as creating a more smooth user experience, using page transitions and modals. <br/> Another important part of the game is high score system that was implemented. In order for the game to be more intriguing, all actions that the user does affects the final score. The game also uses RegEX to search through all the text in the articles to see if the user has missed the goal article. When the user has found the goal article, a flow chart is displayed for the user to see how much time was spend on each article, as well as if the user has missed the goal at a earlier stage.",
@@ -205,7 +211,7 @@
       "API",
       "Wikipedia"
     ],
-    "thumbnail": "MovieRecomender/WikiCrawler.png",
+    "thumbnail": "WikiCrawler/thumbnail.png",
     "images": {
       "src": ["WikiCrawler/setup.png", "WikiCrawler/mainGame.png"],
       "legend": [
@@ -221,6 +227,7 @@
   },
   {
     "title": "SunnyRun",
+    "id": "7",
     "finished": "10-22-2018",
     "description": "This was a project done in the course Design and Programming of Computer Games. The fundamentals of this course was to learn how to build and design computer games developed using a game engine. Also how to make the games intuitive and easy to learn without the use of large amount of tutorial texts.",
     "development": "TThe project that I created in this course was called “SunnyRun”, which is an endless running game. The development of the game covered a lot of new challenges and I learned a lot of new things when developing this game. It was one of the first master courses that I took and was also the first project-only course that I participated in. The development was done in Unity with programming in C#. The biggest challenge to get right in this project was to get the procedurally generated map to work correctly. It was coded in such a way that the longer the player lives, the more difficult and faster the game gets. The art was taken from online, but the music was created by myself. Overall, this was one of the most enjoyable course at the University. ",
@@ -259,6 +266,7 @@
   },
   {
     "title": "FoodAlyze",
+    "id": "8",
     "finished": "12-20-2018",
     "description": "This was a project created in the course Software Entrepreneurship, which was a course that gave understanding on how to go from an idea to a financial secure product. The course touched on subject such as product pitching, business modelling, market analysis and other important topics that are needed to create an economic sustainable product. ",
     "development": "The project’s main focus was not necessarily to implement the most sophisticated product, but rather to have a well-thought out idea and a plan for how the business for the product should be. The idea for this project was to create an application to compare food prices from different supermarkets. The idea was pitched, market analyzed and prototyped. Then, finally implemented an MVP using Android Studio.",
@@ -296,6 +304,7 @@
   },
   {
     "title": "Mosaic Image reproduction",
+    "id": "9",
     "finished": "03-06-2019",
     "description": "This project was made in the course Image Reproduction and Image Quality. The course fundamentals was image reproduction in conventional medias and also image quality as a part of this. Color management and color prediction was also topics important for the course.",
     "development": "The project that was produced was an application that reproduced images by using other images. An image database was created with from screenshots from movies. The database was evaluated by its dynamic range. To be able to reproduce an image you had to exchange regions of the original image with images from the database. This was done through a multitude of different methods such as taking comparing mean values, most prominent colors or taking the SSIM of the region just to name a few. ",
@@ -309,7 +318,7 @@
       "Image Quality",
       "Edge detection"
     ],
-    "thumbnail": "ImageReproduction/thumbnail.png",
+    "thumbnail": "ImageReproduction/thumbnail.jpg",
     "images": {
       "src": [
         "ImageReproduction/databas.jpg",
@@ -338,6 +347,7 @@
   },
   {
     "title": "Self-driving car",
+    "id": "10",
     "finished": "11-19-2019",
     "description": "This project was done in the course Artificial Intelligence for Interactive Media. This course was a project follow up course for a basic AI course that covered the fundamentals of subject. What was important in this course was to learn when and why a different AI technique was used in a different scenario, also how the AI agent behaves when being interacted with.",
     "development": "In this project I chose to do a project with Machine Learning, mainly because the thought teaching a computer to learn something seemed really appealing. A Reinforcement Learning algorithm called Q-learning was used to produce a game where a car can learn to drive a race track by itself. The project was very educative in that way that a deep understanding about Reinforcement Learning was derived, but not because the finished product was prefect. Rather, from a lot of trial and error along the way was done, a finished product where a car that was able to learn a large variety of tracks as well as interaction with the agent to race against the it to reach the goal the quickest.",
@@ -377,6 +387,7 @@
   },
   {
     "title": "Movie recommendation system",
+    "id": "11",
     "finished": "12-18-2019",
     "description": "Machine Learning for Social Media was a course with focus machine learning and its applications within social media. The fundamentals of course was text classification, natural language processing, sentiment analysis and recommender systems. The goal of the course was to learn these different aspects of machine learning and then create a project based on one of them.",
     "development": "The project that was made in this course was a movie recommender system. This recommender system was a content based system and the system used data from The Movies Dataset. The movies were compared with the help of cosine similarity to get a score of how similar they were based on the chosen features to compare. In order to make the application more than just a console application a website was created in React.js. A backend REST-api was also created to be able to make the recommendation calculations. The backend was created in Flask because both Flask and the recommendation system is written in Python. To create a web application for the recommendation system was outside the scope of the course, but it gave valuable insights on how this kind of system would work in practise.",
@@ -412,6 +423,7 @@
   },
   {
     "title": "WikiCrawler Native",
+    "id": "12",
     "finished": "Ongoing",
     "description": "WikiCrawler Native is a port from my first project “WikiCrawler”. The base concept is the same, i.e players start on the same randomly selected article, and must navigate to another pre-selected target article, solely by clicking on words within each article. One of the biggest difference in this project, was that I wanted it to include authentication so that each user could save their prior high scores and compare to their friends as well as having a profile etc.  This game was developed for smartphones using React Native. ",
     "development": "One of the most important parts of this project was to get the interaction intuitive with how to search for new articles. In the original game, it’s easy because you have a mouse as a tool to use for navigation and marking words. On phone however, the only interaction you can use is touch. (Fill out for portfolio)",
@@ -450,6 +462,7 @@
   },
   {
     "title": "Portfolio Page",
+    "id": "13",
     "finished": "Ongoing",
     "description": "This homepage that you are visiting right now, is a page I created to be able to show people what I've done and created on my spare time as well as on my time at the university. A portfolio is a great way for me projects, as well as a great opprtuniy to start another project",
     "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challange myself to create a page with great aesthetics and a responsive UI for all (except IE etc 😠) browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements",
@@ -475,28 +488,5 @@
     "demoUrl": null,
     "courseUrl": null,
     "githubUrl": "https://github.com/Sandmountain/PortfolioProject"
-  },
-  {
-    "title": "",
-    "finished": "Ongoing",
-    "description": "",
-    "development": "",
-    "keywords": [],
-    "date": null,
-    "thumbnail": null,
-    "imgs": null,
-    "report": null,
-    "screencast": null,
-    "demoUrl": null,
-    "courseUrl": null,
-    "githubUrl": null
-  },
-  {
-    "title": "",
-    "description": "",
-    "development": "",
-    "keywords": [],
-    "img": null,
-    "url": null
   }
 ]

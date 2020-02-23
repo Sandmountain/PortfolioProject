@@ -2,10 +2,39 @@
   <v-container>
     <v-row justify="center">
       <v-col md="8">
-        <h2 class="title-h2">
+        <h2 class="title-h2" style="margin-right:  54px">
           <span class="font-weight-black right">
             <span class="font-weight-thin">MY RECENT</span>
             PROJECTS
+            <v-menu
+              v-model="menu"
+              :close-on-content-click="false"
+              :nudge-width="400"
+              :nudge-top="60"
+              :nudge-left="400"
+            >
+              <template v-slot:activator="{ on }">
+                <v-btn icon style=" float:right;right: -51px" v-on="on">
+                  <span v-if="!menu">
+                    <v-icon style>mdi-magnify</v-icon>
+                  </span>
+                  <span v-else>
+                    <v-icon small>mdi-window-close</v-icon>
+                  </span>
+                </v-btn>
+              </template>
+              <div>
+                <v-text-field
+                  style="overflow-y: hidden;"
+                  filled
+                  label="Search for projects, libraries or techniques"
+                  append-icon="mdi-magnify"
+                  hide-details="auto"
+                  single-line
+                  @input="queryProjects"
+                ></v-text-field>
+              </div>
+            </v-menu>
           </span>
         </h2>
         <p class="caption font-weight-light" style="padding: 0px 10px 0px 10px; margin:0; ">
@@ -21,22 +50,32 @@
           <VueSlickCarousel
             v-bind="settings"
             @init="onInitCarousel"
-            @beforeChange="onNewSlide"
+            @afterChange="onNewSlide"
             ref="carousel"
             class="center-text-carousel"
           >
-            <div class="carousel-box" v-for="(thumbnail, i) in thumbnails" :key="i">
-              <img :src="getImage(thumbnail)" :key="thumbnail" />
+            <div class="carousel-box" v-for="(project, i) in thumbnails" :key="i">
+              <div>
+                <v-img
+                  aspect-ratio="1.5"
+                  :eager="true"
+                  :src="require('../../assets/project/' + project.thumbnail)"
+                  :key="project.id"
+                  @click="logFromDom('hello')"
+                />
+              </div>
+              <!--<v-img :src="`../../assets/projects/${thumbnails[0]}`" :key="thumbnail" />-->
             </div>
+
             <!-- ../../assets/project/Dotabase/thumbnail.jpg -->
             <!-- Custom arrows-->
             <template #prevArrow>
-              <div class="custom-arrow" style="top: 15px; left: -30">
+              <div class="custom-arrow" style="top: 40%; left: -30">
                 <v-icon class="carousel-arrow">mdi-chevron-left-circle</v-icon>
               </div>
             </template>
             <template #nextArrow>
-              <div class="custom-arrow" style="top: 15px; right: -30px">
+              <div class="custom-arrow" style="top: 40%; right: -30px">
                 <v-icon class="carousel-arrow">mdi-chevron-right-circle</v-icon>
               </div>
             </template>
@@ -44,11 +83,34 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container>
+    <v-container style=" padding: 0">
       <v-row align="center" justify="center" no-gutters>
         <v-col cols="8">
           <div class="project-box">
-            <p>{{this.$data.carouselIndex}}</p>
+            <div class="pa-5" style="text-align: left !important">
+              <v-img
+                style="cursor: pointer;"
+                @click.stop="dialog = true"
+                aspect-ratio="4.3"
+                :src="require('../../assets/project/' + this.projectData[this.$data.carouselIndex].thumbnail)"
+              />
+
+              <v-dialog v-model="dialog" max-width="90%" :scrollable="true">
+                <v-img
+                  :src="require('../../assets/project/' + this.projectData[this.$data.carouselIndex].thumbnail)"
+                />
+              </v-dialog>
+              <h2 class="project-title-h2" style="padding-top: 10px">
+                <span
+                  class="font-weight-black right"
+                >{{this.projectData[this.$data.carouselIndex].title.toUpperCase()}}</span>
+              </h2>
+
+              <p
+                style="text-align: left; padding-top: 10px"
+              >{{this.projectData[this.$data.carouselIndex].description}}</p>
+              <v-btn tile color="primary">Read more</v-btn>
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -82,14 +144,64 @@ export default {
   data() {
     return {
       carouselIndex: 0,
+      projectIndex: 0,
       thumbnails: [],
+      projectData,
+      menu: false,
+      dialog: false,
       settings: {
-        dots: true,
         focusOnSelect: true,
-        centerPadding: "50px",
+        centerPadding: "210px",
         centerMode: true,
-        slidesToShow: 4,
-        touchThreshold: 5
+        touchThreshold: 1,
+        slidesToShow: 3,
+        dots: false,
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              centerMode: true,
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 800,
+            settings: {
+              centerMode: false,
+              slidesToShow: 3,
+              slidesToScroll: 2,
+              initialSlide: 0,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              centerMode: false,
+              slidesToShow: 3,
+              slidesToScroll: 2,
+              initialSlide: 0,
+              infinite: true,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              centerMode: false,
+              slidesToShow: 1,
+              initialSlide: 0,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: false
+            }
+          }
+        ]
       }
     };
   },
@@ -98,27 +210,39 @@ export default {
     this.parseThumbnails();
   },
   methods: {
-    getImage(src) {
-      console.log(relativePath + `${src}`);
-      return relativePath + `${src}`;
+    queryProjects(eh) {
+      console.log(eh);
+
+      this.thumbnails = this.thumbnails.slice(3);
+      console.log(this.$data.thumbnails);
+      //projectData.title;
     },
     parseThumbnails() {
-      this.thumbnails = projectData.map(project => {
+      /*this.thumbnails = projectData.map(project => {
         return project.thumbnail;
+      });
+      */
+      this.thumbnails = projectData.map(project => {
+        return {
+          thumbnail: project.thumbnail,
+          id: project.id
+        };
       });
       console.log(this.thumbnails);
     },
     logFromDom(str) {
-      console.log(str);
+      //this.$data.carouselIndex = str;
     },
     showNext() {
       this.$refs.carousel.next();
     },
     onNewSlide(slideIndex) {
-      console.log(slideIndex);
       this.$data.carouselIndex = slideIndex;
     },
-    onInitCarousel() {}
+    onInitCarousel() {
+      this.projectIndex = 1;
+    },
+    getProject(id) {}
   }
 };
 </script>
@@ -130,14 +254,16 @@ export default {
 }
 .carousel-box {
   background-color: #474747;
-  height: 75px !important;
+
   width: 80% !important;
+  border-style: solid;
+  border-color: #00000030;
+  border-width: 2px;
 }
 
 .project-box {
   margin-top: 10px;
   background-color: #474747;
-  height: 500px;
 }
 .project-box p {
   text-align: center;
@@ -177,6 +303,33 @@ export default {
   right: 0;
   height: 0.5em;
   border-top: 1px solid black;
+  z-index: -1;
+}
+
+.project-title-h2 {
+  color: white;
+  z-index: 5 !important;
+  position: relative;
+}
+.project-title-h2 .right {
+  z-index: 5 !important;
+  background-color: #474747;
+  padding-right: 10px;
+}
+.project-title-h2 .left {
+  background-color: #474747;
+  padding-left: 10px;
+}
+
+.project-title-h2:after {
+  background-color: #474747;
+  content: "";
+  position: absolute;
+  bottom: 0.25em;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #7e7e7e;
   z-index: -1;
 }
 
