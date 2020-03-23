@@ -26,6 +26,9 @@ export default {
 };
 </script>
 <style>
+.v-autocomplete__content {
+  z-index: 11 !important;
+}
 .v-dialog__content--active {
   overflow-y: hidden !important;
 }

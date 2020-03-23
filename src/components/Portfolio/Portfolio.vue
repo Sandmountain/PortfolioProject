@@ -10,7 +10,7 @@
               v-model="menu"
               :close-on-content-click="false"
               :nudge-width="400"
-              :nudge-top="60"
+              :nudge-top="75"
               :nudge-left="400"
             >
               <template v-slot:activator="{ on }">
@@ -24,15 +24,23 @@
                 </v-btn>
               </template>
               <div>
-                <v-text-field
-                  style="overflow-y: hidden;"
-                  filled
-                  label="Search for projects, libraries or techniques"
-                  append-icon="mdi-magnify"
-                  hide-details="auto"
-                  single-line
-                  @input="queryProjects"
-                ></v-text-field>
+                <v-card-text s>
+                  <v-autocomplete
+                    :items="thumbnails.thumbnail"
+                    outlined
+                    dense
+                    chips
+                    small-chips
+                    multiple
+                    filled
+                    label="Search for projects, libraries or techniques"
+                    :clearable="true"
+                    hide-details="auto"
+                    single-line
+                    :item-avatar="thumbnails.thumbnail"
+                    @input="queryProjects"
+                  ></v-autocomplete>
+                </v-card-text>
               </div>
             </v-menu>
           </span>
@@ -61,7 +69,7 @@
                   :eager="true"
                   :src="require('../../assets/project/' + project.thumbnail)"
                   :key="project.id"
-                  @click="logFromDom('hello')"
+                  @click="slidePressed(project.id)"
                 />
               </div>
               <!--<v-img :src="`../../assets/projects/${thumbnails[0]}`" :key="thumbnail" />-->
@@ -92,23 +100,17 @@
                 style="cursor: pointer;"
                 @click.stop="dialog = true"
                 aspect-ratio="4.3"
-                :src="require('../../assets/project/' + this.projectData[this.$data.carouselIndex].thumbnail)"
+                :src="require('../../assets/project/' + currentProject.thumbnail)"
               />
 
               <v-dialog v-model="dialog" max-width="90%" :scrollable="true">
-                <v-img
-                  :src="require('../../assets/project/' + this.projectData[this.$data.carouselIndex].thumbnail)"
-                />
+                <v-img :src="require('../../assets/project/' + currentProject.thumbnail)" />
               </v-dialog>
               <h2 class="project-title-h2" style="padding-top: 10px">
-                <span
-                  class="font-weight-black right"
-                >{{this.projectData[this.$data.carouselIndex].title.toUpperCase()}}</span>
+                <span class="font-weight-black right">{{currentProject.title.toUpperCase()}}</span>
               </h2>
 
-              <p
-                style="text-align: left; padding-top: 10px"
-              >{{this.projectData[this.$data.carouselIndex].description}}</p>
+              <p style="text-align: left; padding-top: 10px">{{currentProject.description}}</p>
               <v-btn tile color="primary">Read more</v-btn>
             </div>
           </div>
@@ -144,11 +146,13 @@ export default {
   data() {
     return {
       carouselIndex: 0,
-      projectIndex: 0,
+      currentProject: "",
       thumbnails: [],
+      initialThumbnails: [],
       projectData,
       menu: false,
       dialog: false,
+      showCarousel: true,
       settings: {
         focusOnSelect: true,
         centerPadding: "210px",
@@ -207,15 +211,60 @@ export default {
   },
   created() {
     console.log(projectData);
+    this.currentProject = projectData[0];
     this.parseThumbnails();
+    console.log(initialThumbnails);
+    this.initialThumbnails = this.thumbnails;
+  },
+  updated() {
+    this.settings.rows = 1;
   },
   methods: {
-    queryProjects(eh) {
-      console.log(eh);
+    queryProjects(query) {
+      this.settings.slidesToShow = 4;
+      this.showCarousel = false;
 
-      this.thumbnails = this.thumbnails.slice(3);
-      console.log(this.$data.thumbnails);
+      if (query.length > 0) {
+        let arr = [];
+        let filtered = this.projectData.forEach((project, i) => {
+          if (project.title.toLowerCase().includes(query.toLowerCase())) {
+            arr[i] = project.id;
+            return;
+          }
+          project.keywords.forEach(keyword => {
+            if (keyword.toLowerCase().includes(query.toLowerCase())) {
+              arr[i] = project.id;
+              return;
+            }
+          });
+        });
+
+        let temp = [];
+        arr.map(slot => {
+          if (slot !== null) {
+            this.projectData.forEach(project => {
+              if (project.id === slot) {
+                temp.push({
+                  thumbnail: project.thumbnail,
+                  id: project.id
+                });
+              }
+            });
+          }
+        });
+        if (temp.length !== 0) {
+          this.thumbnails = temp;
+          this.settings.rows = 1;
+
+          this.slidePressed(temp[0].id);
+        }
+      } else {
+        this.thumbnails = this.initialThumbnails;
+        this.settings.rows = 1;
+      }
+
       //projectData.title;
+      console.log(this.thumbnails);
     },
     parseThumbnails() {
       /*this.thumbnails = projectData.map(project => {
@@ -228,21 +277,27 @@ export default {
           id: project.id
         };
       });
-      console.log(this.thumbnails);
     },
     logFromDom(str) {
+      //console.log(str);
       //this.$data.carouselIndex = str;
+    },
+    slidePressed(id) {
+      this.currentProject = projectData.find(project => project.id === id);
+    },
+    carouselPressed(slideIndex) {
+      this.currentProject = projectData.find(
+        project => project.id === this.thumbnails[slideIndex].id
+      );
     },
     showNext() {
       this.$refs.carousel.next();
     },
     onNewSlide(slideIndex) {
+      this.carouselPressed(slideIndex);
       this.$data.carouselIndex = slideIndex;
     },
-    onInitCarousel() {
-      this.projectIndex = 1;
-    },
-    getProject(id) {}
+    onInitCarousel() {}
   }
 };
 </script>
@@ -281,11 +336,11 @@ export default {
 }
 
 .title-h2 {
-  z-index: 5 !important;
+  z-index: 1 !important;
   position: relative;
 }
 .title-h2 .right {
-  z-index: 5 !important;
+  z-index: 1 !important;
   background-color: white;
   padding-right: 10px;
 }
@@ -308,11 +363,11 @@ export default {
 
 .project-title-h2 {
   color: white;
-  z-index: 5 !important;
+  z-index: 1 !important;
   position: relative;
 }
 .project-title-h2 .right {
-  z-index: 5 !important;
+  z-index: 1 !important;
   background-color: #474747;
   padding-right: 10px;
 }
