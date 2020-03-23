@@ -13,7 +13,9 @@
     "vue-material-design-icons": "^4.4.0",
     "vue-parallaxy": "^1.1.1",
     "vue-slick-carousel": "^1.0.1",
-    "vuetify": "^2.1.0"
+    "vuetify": "^2.1.0",
+    "minimist": ">=1.2.2",
+    "acorn": ">=6.4.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
