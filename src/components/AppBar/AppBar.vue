@@ -1,26 +1,15 @@
 <template>
-  <v-row align="center" justify="center" no-gutters>
-    <v-col md="12">
-      <v-app-bar hide-on-scroll dense app color="transparent" flat>
-        <v-row align="center" justify="space-between">
-          <v-spacer></v-spacer>
-          <div>
-            <v-tabs slider-color="primary" background-color="transparent">
-              <v-tab :href="`#tab-${1}`">Home</v-tab>
-              <v-tab :href="`#tab-${2}`">Portfolio</v-tab>
-              <v-tab :href="`#tab-${3}`">Resume</v-tab>
-              <v-tab :href="`#tab-${4}`">Contact Me</v-tab>
-            </v-tabs>
-          </div>
-          <v-spacer></v-spacer>
-        </v-row>
-      </v-app-bar>
-    </v-col>
-  </v-row>
+  <v-app-bar collapse-on-scroll fixed light>
+    <v-app-bar-nav-icon class="primary--text"></v-app-bar-nav-icon>
+
+    <v-toolbar-title>
+      <span class="font-weight-regular primary--text">VIKTOR</span>
+      <span class="font-weight-black right primary--text">SANDBERG.COM</span>
+    </v-toolbar-title>
+
+    <v-spacer></v-spacer>
+    <v-btn icon class="primary--text">
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+  </v-app-bar>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style></style>
