@@ -3,7 +3,7 @@
     <v-col cols="12">
       <v-row align="center">
         <v-col cols="12" xl="3" md="4">
-          <v-card class="profile-card rounded-corners">
+          <v-card class="profile-card rounded-corners" style="overflow: hidden">
             <ProfileCard />
           </v-card>
         </v-col>
@@ -48,13 +48,14 @@ export default {
 }
 @media screen and (max-width: 959px) {
   .profile-card {
-    height: 450px;
+    height: auto;
   }
   .nav-menu {
     display: none;
   }
   .main-content {
     margin-top: 0;
+    height: 100%;
   }
 }
 </style>

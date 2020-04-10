@@ -2,13 +2,9 @@
   <div>
     <!-- position: absolute; -->
 
-    <!-- style="clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)" -->
-    <v-img
-      src="../../assets/photos/banner.jpg"
-      :aspect-ratio="1.8"
-      style=" clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)"
-      class="cover-photo"
-    ></v-img>
+    <!-- style="clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)" 
+    style=" clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)"-->
+    <v-img src="../../assets/photos/banner.jpg" :aspect-ratio="1.8" class="cover-photo"></v-img>
 
     <v-img src="../../assets/profilepicture/profile4.png" aspect-ratio="1" class="profile-picture"></v-img>
 
@@ -26,7 +22,6 @@
             <v-btn icon small color="gray">
               <v-icon medium>mdi-linkedin</v-icon>
             </v-btn>
-
             <v-btn icon small color="gray">
               <v-icon medium>mdi-github</v-icon>
             </v-btn>
@@ -34,8 +29,8 @@
         </div>
       </v-col>
       <v-row style=" bottom: 0; position: absolute; width: 100%;" justify="center" align="center">
-        <v-btn tile text style="width:50%">View resume</v-btn>
-        <v-btn tile text style="width:50%">Contact me</v-btn>
+        <v-btn color="primary" tile text style="width:50%; height: 48px">View resume</v-btn>
+        <v-btn color="primary" tile text style="width:50%; height: 48px">Contact me</v-btn>
       </v-row>
     </v-container>
   </div>
@@ -67,6 +62,10 @@ export default {
   top: -150px;
   margin: 0 auto;
   width: 60%;
+}
+.cover-photo {
+  clip-path: circle(73% at 50% 0);
+  border-radius: 15px 15px 0 0;
 }
 
 .title-box {
@@ -102,6 +101,8 @@ export default {
   }
   .cover-photo {
     height: 200px;
+
+    clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0);
   }
 }
 @media screen and (max-width: 600px) {
@@ -117,6 +118,7 @@ export default {
   }
   .cover-photo {
     height: 190px;
+    clip-path: circle(73% at 50% 0);
   }
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
   <v-app>
+    <!-- <div class="background-fill-secondary" /> -->
     <div class="backgroundImage" />
+    <!-- <div class="background-fill" /> -->
+    <div class="background-image-cropped" />
     <AppBar class="hidden-md-and-up" />
     <v-container fill-height>
       <Layout />
@@ -28,11 +31,15 @@ export default {
 };
 </script>
 <style>
+.v-slide-group__wrapper {
+  border-radius: 15px;
+}
+
 .rounded-corners {
   border-radius: 15px !important;
-  overflow: hidden;
 
-  box-shadow: 2px 2px 5px #5f686b, -2px -2px 5px #818c91;
+  box-shadow: 2px 2px 5px #5f686b, -2px -2px 5px #818c91,
+    inset 0px 0px 1px 0px #474747;
 }
 
 .v-autocomplete__content {
@@ -51,17 +58,54 @@ body::-webkit-scrollbar {
 }
 
 .backgroundImage {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgb(112, 122, 126);
+
   background: radial-gradient(
     circle,
-    rgba(112, 122, 126, 1) 65%,
+    rgba(102, 110, 114, 0.9) 65%,
     rgba(103, 111, 113, 1) 100%
   );
   background-size: cover;
+
+  /* Elipse background
+  clip-path: ellipse(50% 10% at 50% 35%);
+  transform: scale(1.1);
+  */
 }
+
+.background-image-cropped {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(./assets/photos/bild5_test.png);
+  opacity: 0.2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* For elipse background */
+.background-fill {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #5f686b;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+/* For elipse background */
+.background-fill-secondary {
+  position: absolute;
+  background-size: cover;
+
+  background: rgb(90, 100, 100);
+  width: 100%;
+  height: 100%;
+}
+/*
+
+*/
 .backgroundColor {
   background: linear-gradient(145deg, #767676, #8c8c8c);
 }
