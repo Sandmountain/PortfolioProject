@@ -26,7 +26,9 @@
             <h3 class="font-weight-bold text-center ma-1">PROGRAMMING</h3>
             <p
               class="caption text-center"
-            >Enim nisi irure sunt veniam.Ullamco proident dolor commodo eu dolor aute magna occaecat in nulla. Anim anim sit nostrud adipisicing cillum exercitation ipsum sint</p>
+              Enim nisi irure sunt veniam.Ullamco proident dolor commodo eu dolor aute magna
+              occaecat in nulla. Anim anim sit nostrud adipisicing cillum exercitation ipsum sint
+            </p>
           </v-row>
         </v-col>
         <v-divider vertical class="hidden-sm-and-down divider-properties"></v-divider>
@@ -40,7 +42,9 @@
             <h3 class="font-weight-bold text-center ma-1">CREATIVITY</h3>
             <p
               class="caption text-center"
-            >Enim nisi irure sunt veniam.Ullamco proident dolor commodo eu dolor aute magna occaecat in nulla. Anim anim sit nostrud adipisicing cillum exercitation ipsum sint</p>
+              Enim nisi irure sunt veniam.Ullamco proident dolor commodo eu dolor aute magna
+              occaecat in nulla. Anim anim sit nostrud adipisicing cillum exercitation ipsum sint
+            </p>
           </v-row>
         </v-col>
       </v-row>
@@ -92,7 +96,7 @@ export default {};
   color: white;
   top: 0;
   width: 100%;
- 
+
   border-radius: 15px 15px 0 0;
 }
 */

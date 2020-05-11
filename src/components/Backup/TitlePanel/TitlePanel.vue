@@ -3,9 +3,13 @@
     <h2
       color="primary"
       class="display-2 font-weight-black grey--text text--darken-4 text-shadow"
-    >{{this.title.toUpperCase() + " REWORK"}}</h2>
+    >
+      {{ title.toUpperCase() }} "REWORK"
+    </h2>
 
-    <span class="title font-weight-light primary--text text-shadow-thin">{{this.text.toUpperCase()}}</span>
+    <span class="title font-weight-light primary--text text-shadow-thin">{{
+      text.toUpperCase()
+    }}</span>
   </v-container>
 </template>
 

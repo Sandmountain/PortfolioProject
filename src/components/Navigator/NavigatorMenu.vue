@@ -1,28 +1,74 @@
 <template>
   <v-tabs class="nav-menu">
-    <v-tab>
-      <v-icon left>mdi-home</v-icon>Home
-    </v-tab>
-    <v-tab>
-      <v-icon left>mdi-brush</v-icon>Projects
-    </v-tab>
-    <v-tab>
-      <v-icon left>mdi-account</v-icon>About Me
-    </v-tab>
+    <v-tab> <v-icon left>mdi-home</v-icon>Home </v-tab>
+    <v-tab> <v-icon left>mdi-brush</v-icon>Projects </v-tab>
+    <v-tab> <v-icon left>mdi-account</v-icon>About Me </v-tab>
     <v-spacer></v-spacer>
-    <v-text-field
-      style="display: none"
-      light
-      solo
-      prepend-icon="mdi-magnify"
-      placeholder="Type keyword..."
-    ></v-text-field>
+    <span class="search-button">
+      <v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        :nudge-width="400"
+        :nudge-top="75"
+        :nudge-left="390"
+        class="border-rad"
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <span v-if="!menu">
+              <v-icon style>mdi-magnify</v-icon>
+            </span>
+            <span v-else>
+              <v-icon small>mdi-window-close</v-icon>
+            </span>
+          </v-btn>
+        </template>
+
+        <v-card-text class="search-paper">
+          <v-autocomplete
+            outlined
+            dense
+            chips
+            small-chips
+            multiple
+            label="Search for projects, libraries or techniques"
+            :clearable="true"
+            hide-details="auto"
+            single-line
+          ></v-autocomplete>
+          <!--
+              :item-avatar="thumbnails.thumbnail"
+              @input="queryProjects"
+              :items="thumbnails.thumbnail"
+          -->
+        </v-card-text>
+      </v-menu>
+    </span>
   </v-tabs>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      menu: false
+    };
+  }
+};
 </script>
 
 <style scoped>
+.search-paper {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+.search-button {
+  display: flex;
+  align-self: center;
+  margin-right: 10px;
+}
+.v-menu__content {
+  border-radius: 10px;
+}
 </style>

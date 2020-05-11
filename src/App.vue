@@ -13,11 +13,12 @@
 </template>
 
 <script>
-import BottomNavBar from "./components/AppBar/BottomNavBar";
-import Layout from "./components/Layout.vue";
-import AppBar from "./components/AppBar/AppBar";
+import BottomNavBar from './components/AppBar/BottomNavBar';
+import Layout from './components/Layout.vue';
+import AppBar from './components/AppBar/AppBar';
+
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     Layout,
@@ -31,30 +32,10 @@ export default {
 };
 </script>
 <style>
-.v-slide-group__wrapper {
-  border-radius: 15px;
-}
-
 .rounded-corners {
   border-radius: 15px !important;
-
   box-shadow: 2px 2px 5px #5f686b, -2px -2px 5px #818c91,
     inset 0px 0px 1px 0px #474747;
-}
-
-.v-autocomplete__content {
-  z-index: 11 !important;
-}
-.v-dialog__content--active {
-  overflow-y: hidden !important;
-}
-
-body::-webkit-scrollbar {
-  display: none;
-}
-
-.v-parallax__image {
-  top: -450px;
 }
 
 .backgroundImage {
@@ -98,7 +79,6 @@ body::-webkit-scrollbar {
 .background-fill-secondary {
   position: absolute;
   background-size: cover;
-
   background: rgb(90, 100, 100);
   width: 100%;
   height: 100%;
@@ -109,19 +89,55 @@ body::-webkit-scrollbar {
 .backgroundColor {
   background: linear-gradient(145deg, #767676, #8c8c8c);
 }
-@media screen and (max-width: 962px) {
-  .backgroundImage {
-  }
+
+/* CSS overrides */
+.v-dialog--active {
+  background: rgba(255, 255, 255, 1) !important;
+  width: 60%;
 }
 
-/*
-.backgroundImage {
-  height: 100%;
-  opacity: 0.8;
-  background-image: url(./assets/photos/banner_mid_large.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.hooper-slide {
+  padding: 2px !important;
 }
-*/
+.hooper:focus {
+  border: 1px solid rgb(34, 58, 65);
+}
+
+/* When having clones of the projects, this is needed cus
+the clones are not scoped within that vue file*/
+.carousel-box:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.v-application ol,
+.v-application ul {
+  padding-left: 0 !important;
+}
+.hooper-navigation.is-vertical .hooper-next,
+.hooper-navigation.is-vertical .hooper-prev {
+  padding: 0;
+  left: -5px;
+}
+
+.v-slide-group__wrapper {
+  border-radius: 15px;
+}
+
+.v-autocomplete__content {
+  z-index: 11 !important;
+}
+.v-dialog__content--active {
+  overflow-y: hidden !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.v-parallax__image {
+  top: -450px;
+}
+
+/* END CSS OVERRIDES */
 </style>

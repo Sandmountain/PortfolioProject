@@ -1,4 +1,4 @@
-<template >
+<template>
   <v-container fluid class="responsive-margin">
     <v-row align="center" justify="center" no-gutters>
       <v-col xs="6">
@@ -88,4 +88,3 @@ export default {};
   }
 }
 </style>
-

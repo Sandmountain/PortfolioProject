@@ -12,7 +12,9 @@
         </v-col>
         <p
           class="skill-text caption text-center"
-        >Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit ullamco fugiat aute eiusmod amet do et ea ex.</p>
+          Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit
+          ullamco fugiat aute eiusmod amet do et ea ex.
+        </p>
       </v-row>
     </v-card>
     <v-card class="carousel-card elevation-4">
@@ -27,7 +29,9 @@
         </v-col>
         <p
           class="skill-text caption text-center"
-        >Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit ullamco fugiat aute eiusmod amet do et ea ex.</p>
+          Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit
+          ullamco fugiat aute eiusmod amet do et ea ex.
+        </p>
       </v-row>
     </v-card>
     <v-card class="carousel-card elevation-4">
@@ -42,7 +46,9 @@
         </v-col>
         <p
           class="skill-text caption text-center"
-        >Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit ullamco fugiat aute eiusmod amet do et ea ex.</p>
+          Anim anim sit nostrud adipisicing cillum exercitation ipsum sint.Labore do laborum ut elit
+          ullamco fugiat aute eiusmod amet do et ea ex.
+        </p>
       </v-row>
     </v-card>
   </VueSlickCarousel>
@@ -50,13 +56,14 @@
 
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import VueSlickCarousel from 'vue-slick-carousel';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 // optional style for arrows & dots
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+
 export default {
   components: {
-    VueSlickCarousel
+    VueSlickCarousel,
   },
   data() {
     return {
@@ -66,16 +73,16 @@ export default {
       settings: {
         dots: false,
         centerMode: true,
-        centerPadding: "30px",
+        centerPadding: '30px',
         focusOnSelect: true,
         edgeFriction: 0.35,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
-      }
+        slidesToScroll: 1,
+      },
     };
-  }
+  },
 };
 </script>
 
@@ -139,7 +146,7 @@ export default {
   color: white;
   top: 0;
   width: 100%;
- 
+
   border-radius: 15px 15px 0 0;
 }
 */

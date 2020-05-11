@@ -8,7 +8,8 @@
             <p class="subtitle-3 font-weight-bold">Portfolio</p>
             <p
               class="caption font-weight-light slim-margin"
-            >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.</p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.
+            </p>
             <v-icon>mdi-chevron-down</v-icon>
           </v-col>
         </v-flex>
@@ -19,7 +20,8 @@
             <p class="subtitle-3 font-weight-bold">About Me</p>
             <p
               class="caption font-weight-light slim-margin"
-            >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.</p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.
+            </p>
             <v-icon>mdi-chevron-down</v-icon>
           </v-col>
         </v-flex>
@@ -30,7 +32,8 @@
             <p class="subtitle-3 font-weight-bold">Contact Me</p>
             <p
               class="caption font-weight-light slim-margin"
-            >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.</p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto illum quia.
+            </p>
             <v-icon>mdi-chevron-down</v-icon>
           </v-col>
         </v-flex>

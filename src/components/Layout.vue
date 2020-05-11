@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-col cols="12">
       <v-row align="center">
         <v-col cols="12" xl="3" md="4">
@@ -14,7 +14,8 @@
             <NavigatorMenu class="nav-menu" />
           </v-card>
           <v-card class="main-content rounded-corners">
-            <AboutView />
+            <!--<Home />-->
+            <Portfolio />
           </v-card>
         </v-col>
       </v-row>
@@ -23,14 +24,16 @@
 </template>
 
 <script>
-import ProfileCard from "./Profile/ProfileCard";
-import AboutView from "./About/AboutView";
-import NavigatorMenu from "./Navigator/NavigatorMenu";
+import ProfileCard from './Profile/ProfileCard';
+// import Home from "./About/Home";
+import NavigatorMenu from './Navigator/NavigatorMenu';
+import Portfolio from './Portfolio/Portfolio';
 
 export default {
   components: {
     ProfileCard,
-    AboutView,
+    // Home,
+    Portfolio,
     NavigatorMenu
   }
 };
@@ -45,6 +48,7 @@ export default {
   height: 575px;
   width: 100%;
   margin-top: 25px;
+  overflow: hidden;
 }
 @media screen and (max-width: 959px) {
   .profile-card {

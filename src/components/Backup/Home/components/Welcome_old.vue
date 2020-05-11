@@ -17,8 +17,8 @@
             </v-flex>
             <v-flex xs6>
               <span class="caption font-weight-medium">
-                M.Sc student in Media Technology & Engineering with a large
-                interest for UI/UX and Fullstack Development.
+                M.Sc student in Media Technology & Engineering with a large interest for UI/UX and
+                Fullstack Development.
               </span>
             </v-flex>
             <v-flex xs6 align-self-center>
@@ -70,7 +70,7 @@ img {
 <!--
 
 <v-container>
-   
+
       <v-layout>
         <v-flex
           xs4
@@ -79,16 +79,15 @@ img {
           class="first"
           style="padding-left: 15px; padding-top: 15px; padding-bottom: 15px;"
         >
-          
 
-         
+
           </span>
         </v-flex>
         <v-flex xs4 fill-height align-self-end class="second">
-        
+
         </v-flex>
         <v-flex xs4 class="profilePictureBackground">
-          
+
         </v-flex>
       </v-layout>
     </v-sheet>

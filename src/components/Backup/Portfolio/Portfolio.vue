@@ -45,7 +45,10 @@
             </v-menu>
           </span>
         </h2>
-        <p class="caption font-weight-light" style="padding: 0px 10px 0px 10px; margin:0; ">
+        <p
+          class="caption font-weight-light"
+          style="padding: 0px 10px 0px 10px; margin:0; "
+        >
           Down below, I've collected the projects that I'm most proud of. You
           can press on any card to get an overview of the project with images,
           code and an explanation of the project.
@@ -56,19 +59,23 @@
       <v-row align="center" justify="center" no-gutters>
         <v-col cols="8">
           <VueSlickCarousel
+            ref="carousel"
             v-bind="settings"
+            class="center-text-carousel"
             @init="onInitCarousel"
             @afterChange="onNewSlide"
-            ref="carousel"
-            class="center-text-carousel"
           >
-            <div class="carousel-box" v-for="(project, i) in thumbnails" :key="i">
+            <div
+              v-for="(project, i) in thumbnails"
+              :key="i"
+              class="carousel-box"
+            >
               <div>
                 <v-img
+                  :key="project.id"
                   aspect-ratio="1.5"
                   :eager="true"
                   :src="require('../../assets/project/' + project.thumbnail)"
-                  :key="project.id"
                   @click="slidePressed(project.id)"
                 />
               </div>
@@ -98,19 +105,29 @@
             <div class="pa-5" style="text-align: left !important">
               <v-img
                 style="cursor: pointer;"
-                @click.stop="dialog = true"
                 aspect-ratio="4.3"
-                :src="require('../../assets/project/' + currentProject.thumbnail)"
+                :src="
+                  require('../../assets/project/' + currentProject.thumbnail)
+                "
+                @click.stop="dialog = true"
               />
 
               <v-dialog v-model="dialog" max-width="90%" :scrollable="true">
-                <v-img :src="require('../../assets/project/' + currentProject.thumbnail)" />
+                <v-img
+                  :src="
+                    require('../../assets/project/' + currentProject.thumbnail)
+                  "
+                />
               </v-dialog>
               <h2 class="project-title-h2" style="padding-top: 10px">
-                <span class="font-weight-black right">{{currentProject.title.toUpperCase()}}</span>
+                <span class="font-weight-black right">
+                  {{ currentProject.title.toUpperCase() }}</span
+                >
               </h2>
 
-              <p style="text-align: left; padding-top: 10px">{{currentProject.description}}</p>
+              <p style="text-align: left; padding-top: 10px">
+                {{ currentProject.description }}
+              </p>
               <v-btn tile color="primary">Read more</v-btn>
             </div>
           </div>
@@ -132,21 +149,22 @@
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
-import "vue-slick-carousel/src/slick-theme.css";
+import VueSlickCarousel from 'vue-slick-carousel';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+import 'vue-slick-carousel/src/slick-theme.css';
 
-const projectData = require("../../assets/project/projects.json");
-const relativePath = "../../assets/project/";
+const projectData = require('../../assets/project/projects.json');
+
+const relativePath = '../../assets/project/';
 
 export default {
-  name: "Portfolio",
+  name: 'Portfolio',
   components: { VueSlickCarousel },
   data() {
     return {
       carouselIndex: 0,
-      currentProject: "",
+      currentProject: '',
       thumbnails: [],
       initialThumbnails: [],
       projectData,
@@ -155,7 +173,7 @@ export default {
       showCarousel: true,
       settings: {
         focusOnSelect: true,
-        centerPadding: "210px",
+        centerPadding: '210px',
         centerMode: true,
         touchThreshold: 1,
         slidesToShow: 3,
@@ -225,8 +243,8 @@ export default {
       this.showCarousel = false;
 
       if (query.length > 0) {
-        let arr = [];
-        let filtered = this.projectData.forEach((project, i) => {
+        const arr = [];
+        const filtered = this.projectData.forEach((project, i) => {
           if (project.title.toLowerCase().includes(query.toLowerCase())) {
             arr[i] = project.id;
             return;
@@ -239,7 +257,7 @@ export default {
           });
         });
 
-        let temp = [];
+        const temp = [];
         arr.map(slot => {
           if (slot !== null) {
             this.projectData.forEach(project => {
@@ -263,24 +281,22 @@ export default {
         this.settings.rows = 1;
       }
 
-      //projectData.title;
+      // projectData.title;
       console.log(this.thumbnails);
     },
     parseThumbnails() {
-      /*this.thumbnails = projectData.map(project => {
+      /* this.thumbnails = projectData.map(project => {
         return project.thumbnail;
       });
       */
-      this.thumbnails = projectData.map(project => {
-        return {
-          thumbnail: project.thumbnail,
-          id: project.id
-        };
-      });
+      this.thumbnails = projectData.map(project => ({
+        thumbnail: project.thumbnail,
+        id: project.id
+      }));
     },
     logFromDom(str) {
-      //console.log(str);
-      //this.$data.carouselIndex = str;
+      // console.log(str);
+      // this.$data.carouselIndex = str;
     },
     slidePressed(id) {
       this.currentProject = projectData.find(project => project.id === id);
@@ -351,7 +367,7 @@ export default {
 
 .title-h2:after {
   background-color: white;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0.25em;
   left: 0;
@@ -378,7 +394,7 @@ export default {
 
 .project-title-h2:after {
   background-color: #474747;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0.25em;
   left: 0;
