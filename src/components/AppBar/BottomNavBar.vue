@@ -1,5 +1,11 @@
 <template>
-  <v-bottom-navigation :input-value="showNav" style="z-index: 200" light flat fixed>
+  <v-bottom-navigation
+    :input-value="showNav"
+    style="z-index: 200"
+    light
+    flat
+    fixed
+  >
     <v-btn large>
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
@@ -35,10 +41,10 @@ export default {
       window.onscroll = () => {
         const bottomOfWindow =
           Math.max(
-          window.pageYOffset,
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        ) +
+            window.pageYOffset,
+            document.documentElement.scrollTop,
+            document.body.scrollTop
+          ) +
             window.innerHeight ===
           document.documentElement.offsetHeight;
 

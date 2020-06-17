@@ -28,86 +28,24 @@
         </v-btn>
       </transition>
     </span>
-
-    <v-container>
-      <h2 class="title-h2">
-        <span class=" right text-uppercase primary--text">
-          <span v-html="stylingTitles(currentProject.title)" />
-        </span>
-      </h2>
-
-      <v-col
-        class="font-weight-regular project-description"
-        style="text-align: left;
-      padding-top: 10px; "
-      >
-        <v-row>
-          <v-col md="6">
-            <p>
-              {{ currentProject.description }}
-            </p>
-            <p>
-              {{ currentProject.development }}
-            </p>
-          </v-col>
-          <v-col md="6">
-            <v-row>
-              <v-img
-                :src="
-                  require('../../assets/project/' + currentProject.thumbnail)
-                "
-                :alt="currentProject.title"
-              />
-            </v-row>
-
-            <v-row align="center" justify="center">
-              <v-col
-                v-for="(image, index) in currentProject.images.src"
-                :key="index"
-                sm="2"
-              >
-                <v-img
-                  aspect-ratio="1"
-                  :src="require('../../assets/project/' + image)"
-                  :alt="currentProject.title"
-                />
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-container>
+    <transition name="slide-fade">
+      <ProjectDialogContent :current-project="currentProject" />
+    </transition>
   </div>
 </template>
 
 <script>
+import ProjectDialogContent from './ProjectDialogContent';
+
 export default {
+  components: {
+    ProjectDialogContent
+  },
   props: {
     currentProject: { type: Object, required: true },
     showArrows: { type: Boolean, required: true },
     nextProject: { type: Function, required: true },
     prevProject: { type: Function, required: true }
-  },
-  methods: {
-    stylingTitles: title => {
-      let words = title.split(' ');
-
-      if (words.length !== 1) {
-        return (
-          '<span class="font-weight-light">' +
-          words
-            .map((word, index) => {
-              if (index !== words.length - 1) return word + ' ';
-            })
-            .join('') +
-          '</span><span class="font-weight-black ">' +
-          words[words.length - 1] +
-          '</span>'
-        );
-      } else {
-        return title;
-      }
-    }
   }
 };
 </script>
@@ -143,31 +81,5 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-}
-
-.title-h2 {
-  font-size: 1.6rem;
-  z-index: 1 !important;
-  position: relative;
-}
-.title-h2 .right {
-  z-index: 1 !important;
-  background-color: white;
-  padding-right: 10px;
-}
-.title-h2 .left {
-  background-color: white;
-  padding-left: 10px;
-}
-.title-h2:after {
-  background-color: white;
-  content: '';
-  position: absolute;
-  bottom: 0.25em;
-  left: 0;
-  right: 0;
-  height: 0.5em;
-  border-top: 1px solid black;
-  z-index: -1;
 }
 </style>

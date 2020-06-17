@@ -40,7 +40,7 @@
     "images": {
       "src": [
         "Dotabase/thumbnail.jpg",
-        "Dotabase/items.jpg",
+        "Dotabase/items.png",
         "Dotabase/modal.jpg"
       ],
       "legend": [
@@ -94,7 +94,7 @@
     "images": {
       "src": [
         "GreatEscape/mandeln.jpg",
-        "GreatEscape/menu.jph",
+        "GreatEscape/menu.jpg",
         "GreatEscape/options.jpg",
         "GreatEscape/mandeln.gif"
       ],
@@ -295,14 +295,12 @@
     "thumbnail": "SunnyRun/thumbnail.png",
     "images": {
       "src": [
-        "SunnyRun/thumbnail.png",
         "SunnyRun/menu.png",
         "SunnyRun/missions.png",
         "SunnyRun/game.png",
         "SunnyRun/game-over.png"
       ],
       "legend": [
-        "The logo for the game",
         "The main menu of the game",
         "Showing mission to beat while playing the game",
         "A screenshot from playing the game",
@@ -342,15 +340,10 @@
     ],
     "thumbnail": "FoodAlyze/thumbnail.png",
     "images": {
-      "src": [
-        "FoodAlyze/prototype.png",
-        "FoodAlyze/mvp.png",
-        "FoodAlyze/thumbnail.png"
-      ],
+      "src": ["FoodAlyze/prototype.png", "FoodAlyze/mvp.png"],
       "legend": [
         "The Adobe XD prototype",
-        "The MVP developed in Android studio",
-        "The Foodalyze logo"
+        "The MVP developed in Android studio"
       ]
     },
     "report": "FoodAlyze/report.pdf",
@@ -364,7 +357,7 @@
     "id": "8",
     "finished": "03-06-2019",
     "description": "This project was made in the course Image Reproduction and Image Quality. The course fundamentals was image reproduction in conventional medias and also image quality as a part of this. Color management and color prediction was also topics important for the course and project.",
-    "development": "The project that was produced was an application that reproduced images by using other images. An image database was created with from screenshots from movies. The database was evaluated by its dynamic range. To be able to reproduce an image you had to exchange regions of the original image with images from the database. This was done through a multitude of different methods such as taking comparing mean values, most prominent colors or taking the SSIM of the region just to name a few. ",
+    "development": "The project that was produced was an application that reproduced images by using other images. An image database was created with screenshots from movies. The database was evaluated by its dynamic range. To be able to reproduce an image you had to exchange regions of the original image with images from the database. This was done through a multitude of different methods such as taking comparing mean values, most prominent colors or taking the SSIM of the region just to name a few. I strongly suggest you to read the project report if you want to learn this more in detail",
     "keywords": [
       "image processing",
       "Matlab",
@@ -382,25 +375,19 @@
         "img": "logos/matlab.png"
       }
     ],
-    "thumbnail": "ImageReproduction/thumbnail.jpg",
+    "thumbnail": "ImageReproduction/thumbnail.png",
     "images": {
       "src": [
         "ImageReproduction/databas.jpg",
-        "ImageReproduction/obama.jpg",
         "ImageReproduction/obama8.jpg",
         "ImageReproduction/obama4.jpg",
-        "ImageReproduction/obama8ML.jpg",
-        "ImageReproduction/ocean.jpg",
-        "ImageReproduction/landscape.jpg"
+        "ImageReproduction/obama8ML.jpg"
       ],
       "legend": [
         "The Lab-color distrubution in the database used to reproduce the images",
-        "The first image to reproduce was this image of Barack Obama",
-        "Here, an eigth of the size of the original.",
+        "A reproduction of Barrack Obam, here with an eigth of the size of the original.",
         "Here, a quarter of the size of the original.",
-        "Here, an eigth of the size, using edge detections to find structures in the images",
-        "Another image with very vibrant colors",
-        "An eight of the original size, reproduces the colors quite nice."
+        "Here, an eigth of the size, using edge detections to find structures in the images"
       ]
     },
     "report": "ImageReproduction/report.pdf",
@@ -515,10 +502,19 @@
     ],
     "thumbnail": "MovieSquare/thumbnail.png",
     "images": {
-      "src": ["USARealEstate/mapView.png", "USARealEstate/US-economics.png"],
+      "src": [
+        "MovieSquare/MovieSearch.jpg",
+        "MovieSquare/MovieInfo.jpg",
+        "MovieSquare/Trailer.jpg",
+        "MovieSquare/AddToWatchlist.jpg",
+        "MovieSquare/Watchlist.png"
+      ],
       "legend": [
-        "An overview of the total household income of all states",
-        "A zoom in on Texas, showing relations between having a high school degree vs household income"
+        "The result when searching for \"Endgame \" ",
+        "The info that can be found when selecting a movie",
+        "The info page also let's the user watch the movie's trailer",
+        "It is possible to add movies to a watchlist",
+        "The user's watchlist with raitings and short overview of the movie"
       ]
     },
     "report": null,
@@ -551,7 +547,6 @@
     "thumbnail": "SelfDrivingCar/thumbnail.png",
     "images": {
       "src": [
-        "SelfDrivingCar/map1.png",
         "SelfDrivingCar/4movement.gif",
         "SelfDrivingCar/8movement.gif",
         "SelfDrivingCar/final.gif",
@@ -559,7 +554,6 @@
         "SelfDrivingCar/graph2.png"
       ],
       "legend": [
-        "The most basic implementation of the game, a small 20x20 grid",
         "Progress, showing with a 4x movement",
         "Progress, showing with a 8x movement",
         "Final implementation with graphics and movement",
@@ -719,8 +713,16 @@
     ],
     "thumbnail": "Portfolio/thumbnail.png",
     "images": {
-      "src": ["MovieRecomender/thumbnail.png"],
-      "legend": ["The many different layouts that was chosen from"]
+      "src": [
+        "Portfolio/differentdesigns.png",
+        "Portfolio/mountain-version.jpg",
+        "Portfolio/logo.png"
+      ],
+      "legend": [
+        "The many different layouts that was chosen from",
+        "The first iteration of the page with mountain theme",
+        "Logo designed for use on the page,"
+      ]
     },
     "report": null,
     "screencast": null,
