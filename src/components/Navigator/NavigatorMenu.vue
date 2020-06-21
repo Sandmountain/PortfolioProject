@@ -1,8 +1,12 @@
 <template>
-  <v-tabs class="nav-menu">
-    <v-tab> <v-icon left>mdi-home</v-icon>Home </v-tab>
-    <v-tab> <v-icon left>mdi-brush</v-icon>Projects </v-tab>
-    <v-tab> <v-icon left>mdi-account</v-icon>About Me </v-tab>
+  <v-tabs v-model="active" class="nav-menu">
+    <v-tab @click="updatePage(0)"> <v-icon left>mdi-home</v-icon>Home </v-tab>
+    <v-tab @click="updatePage(1)">
+      <v-icon left>mdi-brush</v-icon>Projects
+    </v-tab>
+    <v-tab @click="updatePage(2)">
+      <v-icon left>mdi-account</v-icon>About Me
+    </v-tab>
     <v-spacer></v-spacer>
     <span class="search-button">
       <v-menu
@@ -49,10 +53,23 @@
 
 <script>
 export default {
+  props: ['changePage', 'page'],
   data() {
     return {
-      menu: false
+      active: 0,
+      menu: 0
     };
+  },
+  methods: {
+    updatePage(i) {
+      this.changePage(i);
+      this.active = i;
+    }
+  },
+  watch: {
+    page: function(newVal, oldVal) {
+      this.active = newVal;
+    }
   }
 };
 </script>

@@ -11,11 +11,21 @@
 
         <v-col cols="12" xl="9" md="8">
           <v-card class="rounded-corners">
-            <NavigatorMenu class="nav-menu" />
+            <NavigatorMenu
+              class="nav-menu"
+              :page="currentPage"
+              :change-page="changePage"
+            />
           </v-card>
           <v-card class="main-content rounded-corners">
-            <!--<Home />-->
-            <Portfolio />
+            <span v-if="currentPage == 0">
+              <v-fade-transition>
+                <Home style="height: 100%" :change-page="updateNav" />
+              </v-fade-transition>
+            </span>
+            <span v-if="currentPage == 1">
+              <Portfolio />
+            </span>
           </v-card>
         </v-col>
       </v-row>
@@ -25,16 +35,31 @@
 
 <script>
 import ProfileCard from './Profile/ProfileCard';
-// import Home from "./About/Home";
+import Home from './About/Home';
 import NavigatorMenu from './Navigator/NavigatorMenu';
 import Portfolio from './Portfolio/Portfolio';
 
 export default {
   components: {
     ProfileCard,
-    // Home,
+    Home,
     Portfolio,
     NavigatorMenu
+  },
+  data() {
+    return {
+      currentPage: 0
+    };
+  },
+  methods: {
+    changePage(i) {
+      this.currentPage = i;
+      //console.log(this.currentPage);
+    },
+    updateNav() {
+      this.currentPage = 1;
+      //console.log(this.currentPage);
+    }
   }
 };
 </script>

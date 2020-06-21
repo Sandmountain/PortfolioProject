@@ -33,16 +33,14 @@
         <v-icon
           :color="projectView === 'carousel' ? 'primary' : null"
           @click="changeView('carousel')"
+          >mdi-view-carousel</v-icon
         >
-          mdi-view-carousel
-        </v-icon>
         <v-icon
           :color="projectView === 'grid' ? 'primary' : null"
           @click.stop="gridView = true"
           @click="changeView('grid')"
+          >mdi-view-module</v-icon
         >
-          mdi-view-module
-        </v-icon>
         <v-dialog
           v-model="gridView"
           style="width: 100%; background: white;"
@@ -189,7 +187,7 @@ export default {
         infiniteScroll: true,
         breakpoints: {
           900: {
-            itemsToShow: 3.25
+            itemsToShow: 5.25
           },
           600: {
             itemsToShow: 2.25

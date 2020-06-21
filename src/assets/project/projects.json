@@ -148,8 +148,8 @@
     "thumbnail": "RollerCoasterSim/thumbnail.png",
     "images": {
       "src": [
-        "RollerCoasterSim/graf-matlab-sim.jpg",
-        "RollerCoasterSim/model.png",
+        "RollerCoasterSim/Graf-matlab-sim.jpg",
+        "RollerCoasterSim/Model.png",
         "RollerCoasterSim/gif.gif"
       ],
       "legend": [
@@ -340,7 +340,7 @@
     ],
     "thumbnail": "FoodAlyze/thumbnail.png",
     "images": {
-      "src": ["FoodAlyze/prototype.png", "FoodAlyze/mvp.png"],
+      "src": ["FoodAlyze/Prototype.png", "FoodAlyze/mvp.png"],
       "legend": [
         "The Adobe XD prototype",
         "The MVP developed in Android studio"
@@ -380,7 +380,7 @@
       "src": [
         "ImageReproduction/databas.jpg",
         "ImageReproduction/obama8.jpg",
-        "ImageReproduction/obama4.jpg",
+        "ImageReproduction/Obama4.jpg",
         "ImageReproduction/obama8ML.jpg"
       ],
       "legend": [
@@ -683,8 +683,8 @@
     "title": "Portfolio Page",
     "id": "14",
     "finished": "Ongoing",
-    "description": "This homepage that you are visiting right now, is a page I created to be able to show people what I've done and created on my spare time as well as on my time at the university. A portfolio is a great way for me projects, as well as a great opprtuniy to start another project",
-    "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challange myself to create a page with great aesthetics and a responsive UI for all (except IE etc 😠) browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements. This project's first iteration was creating a SVG-based layout where 'Mountains' were the theme, however, after finishing the page with code and interaction I felt that the page was not very cleverly designed and the layout was not working well on mobile devices. That's why I decided to go for the page you are looking at right now. I am very pleased with the result, and I'm glad that I took the time to redo the entire design, even though I thought that the first design was great!",
+    "description": "This homepage that you are visiting right now, is a page I created to be able to show people what I've done and created on my spare time as well as on my time at the university. A portfolio is a great way for me to share my projects, as well as a great opprtuniy to start another passion project.",
+    "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challange myself to create a page with great aesthetics and a responsive UI for most browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements. This project's first iteration was creating a SVG-based layout where 'Mountains' were the theme, however, after finishing the page with code and interaction I felt that the page was not very cleverly designed and the layout was not working well on mobile devices. That's why I decided to go for the page you are looking at right now. I am very pleased with the result, and I'm glad that I took the time to redo the entire design, even though I thought that the first design was great!",
     "keywords": [
       "Vue.js",
       "JavaScript",

@@ -1,9 +1,5 @@
 <template>
-  <v-row
-    style="height: inherit; padding: 8px 20px 8px 20px;"
-    justify="center"
-    align="center"
-  >
+  <v-row style=" padding: 8px 20px 8px 20px;" justify="center" align="center">
     <v-col md="10">
       <span class="subtitle-1 font-weight-light sub-text" style="margin: 0;"
         >Hello! I am</span
@@ -28,7 +24,9 @@
         a way for me to get even more practice of doing what that I love. To see
         all my project, click the button below.
       </p>
-      <v-btn outlined color="primary" small tile="true">Show Portfolio</v-btn>
+      <v-btn @click="updatePage()" color="primary" small tile outlined
+        >Show Portfolio</v-btn
+      >
     </v-col>
   </v-row>
 
@@ -40,6 +38,15 @@
 export default {
   components: {
     // AppBar
+  },
+
+  props: {
+    changePage: { type: Function }
+  },
+  methods: {
+    updatePage() {
+      this.changePage(1);
+    }
   }
 };
 </script>

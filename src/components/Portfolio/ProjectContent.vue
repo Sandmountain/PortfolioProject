@@ -216,10 +216,6 @@ export default {
   position: absolute;
   bottom: 12px;
 }
-.language-icons {
-  display: flex;
-  justify-content: center;
-}
 
 /* Horizontal line and title text*/
 .project-title-h2 {
@@ -247,6 +243,10 @@ export default {
   z-index: -1;
 }
 
+.language-icons {
+  display: flex;
+  justify-content: center;
+}
 /* Tooltip */
 .tooltip {
   position: relative;
