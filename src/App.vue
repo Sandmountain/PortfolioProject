@@ -5,10 +5,10 @@
     <!-- <div class="background-fill" /> -->
     <div class="background-image-cropped" />
     <AppBar class="hidden-md-and-up" />
-    <v-container fill-height>
+    <div class="main-body-container">
       <Layout />
       <BottomNavBar class="hidden-md-and-up" />
-    </v-container>
+    </div>
   </v-app>
 </template>
 
@@ -32,12 +32,32 @@ export default {
 };
 </script>
 <style>
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #474747;
+}
+
 .rounded-corners {
   border-radius: 15px !important;
   box-shadow: 2px 2px 5px #5f686b, -2px -2px 5px #818c91,
     inset 0px 0px 1px 0px #474747;
 }
-
+.main-body-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .backgroundImage {
   position: fixed;
   width: 100%;

@@ -49,7 +49,7 @@
         "A second view of all the heroes and display"
       ]
     },
-    "report": "Dotabase/report.pdf",
+    "report": "https://drive.google.com/file/d/1ECkI9PhOFwq3pQSQgRwKJa7N0ziWvO41/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm040/ht-2018",
@@ -105,7 +105,7 @@
         "The idle animation of Mandeln"
       ]
     },
-    "report": "GreatEscape/report.pdf",
+    "report": "https://drive.google.com/file/d/1Gg2CF2ikosqK3kcpJHoJbKwdpJ0-2ttt/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm094/",
@@ -158,7 +158,7 @@
         "A gif of the simulation in Unity"
       ]
     },
-    "report": "RollerCoasterSim/report.pdf",
+    "report": "https://drive.google.com/file/d/1YbjIoZDjo1y41UJ-lcwjgd7wUZCZNYQc/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm085/",
@@ -185,8 +185,7 @@
       "Gameplay",
       "Abilities",
       "Procedural map generation",
-      "C#",
-      "Git"
+      "C#"
     ],
     "languages": [
       {
@@ -213,7 +212,7 @@
         "An early stage of multiplayer testing"
       ]
     },
-    "report": "AnimalApproach/report.pdf",
+    "report": "https://drive.google.com/file/d/1aqQrlnXu3BivuNsNow-2T6cijpKz6jGj/view?usp=sharing",
     "screencast": "https://www.youtube.com/watch?v=0SKOaIGg0RY",
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tnm094/",
@@ -307,7 +306,7 @@
         "Game over Screen"
       ]
     },
-    "report": "SunnyRun/report.pdf",
+    "report": null,
     "screencast": "https://www.youtube.com/watch?v=b1tt_8CErPY",
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tddd23",
@@ -346,7 +345,7 @@
         "The MVP developed in Android studio"
       ]
     },
-    "report": "FoodAlyze/report.pdf",
+    "report": "https://drive.google.com/file/d/1ojGUKj3QA63osnHuzYMGOIfDb4Up7e7W/view?usp=sharing",
     "screencast": "https://www.youtube.com/watch?v=ElRvtETSl38",
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/tdde02/",
@@ -390,7 +389,7 @@
         "Here, an eigth of the size, using edge detections to find structures in the images"
       ]
     },
-    "report": "ImageReproduction/report.pdf",
+    "report": "https://drive.google.com/file/d/16EB4NoxTbZzPn3ltcjShjP49wlvYzoHo/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM097/",
@@ -445,7 +444,7 @@
         "A zoom in on Texas, showing relations between having a high school degree vs household income"
       ]
     },
-    "report": "USARealEstate/report.pdf",
+    "report": "https://drive.google.com/file/d/1AhEUOkWv-SqyHvRoQocxPaRDGyObzi68/view?usp=sharing",
     "screencast": null,
     "demoUrl": "https://sandmountain.github.io/TNM048-United-States-Economy-Visualization/",
     "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM048/",
@@ -561,7 +560,7 @@
         "Graph 2 of 2: 1 milion episodes in the q-learning algorithm"
       ]
     },
-    "report": "SelfDrivingCar/report.pdf",
+    "report": "https://drive.google.com/file/d/19R1ujTo3UTo5ybVLsCqg7zdxnvbg9gKL/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM95/",
@@ -619,7 +618,7 @@
         "The result of getting recomended movies to Guardian of the Galaxy"
       ]
     },
-    "report": "MovieRecomender/report.pdf",
+    "report": "https://drive.google.com/file/d/1X45tS7YieiYXr5f8j6H5MtxZaRBk8HBe/view?usp=sharing",
     "screencast": null,
     "demoUrl": null,
     "courseUrl": "https://liu.se/studieinfo/en/kurs/TNM108/",

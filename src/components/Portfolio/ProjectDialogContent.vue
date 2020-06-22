@@ -4,6 +4,16 @@
       <span class=" right text-uppercase primary--text">
         <span v-html="stylingTitles(currentProject.title)" />
       </span>
+      <span v-if="currentProject.githubUrl !== null">
+        <span
+          class="font-weight-black left"
+          style="float: right; margin-top: -3px"
+        >
+          <v-btn icon @click="openNewTab(currentProject.githubUrl)">
+            <v-icon>mdi-github</v-icon>
+          </v-btn>
+        </span>
+      </span>
     </h2>
 
     <v-col
@@ -11,8 +21,13 @@
       style="text-align: left;
       padding-top: 10px;"
     >
-      <v-row>
-        <v-col md="6" style="padding: 0px 12px 0px 0px ">
+      <v-row :style="ifSmallScreen($vuetify.breakpoint.mdAndDown)">
+        <v-col
+          sm="12"
+          md="12"
+          lg="6"
+          style="padding: 0px 12px 0px 0px; align-self: center;"
+        >
           <p
             class="font-weight-bold text-uppercase "
             style="font-size: 10pt; letter-spacing: 2px; text-align: center; padding-top: 12px"
@@ -27,7 +42,7 @@
           </p>
         </v-col>
 
-        <v-col md="6" justify="end">
+        <v-col sm="12" md="12" lg="6" justify="end">
           <v-row align="center" justify="space-between">
             <v-col
               v-for="(image, index) in imageArray.src"
@@ -105,19 +120,55 @@
         </v-col>
       </v-row>
     </v-col>
+
     <v-row>
-      <v-col md="6" class="keyword-container">
-        <p
-          class="font-weight-bold text-uppercase"
-          style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
-        >
-          Keywords
-        </p>
-        <p style="font-size: 8pt; margin-top:3px">
-          <span>
-            {{ createKeywords(currentProject.keywords) }}
-          </span>
-        </p>
+      <v-col md="6" class="keyword-container" align="center">
+        <span v-if="currentProject.screencast !== null">
+          <v-btn
+            @click.stop="showVideo = true"
+            style="margin-left: 12px"
+            tile
+            text
+            color="primary"
+            >View Screencast</v-btn
+          >
+          <v-dialog v-model="showVideo" width="80%" :scrollable="true">
+            <youtube
+              :video-id="getYoutubeID(currentProject.screencast)"
+              ref="youtube"
+              :resize="true"
+            ></youtube>
+          </v-dialog>
+        </span>
+        <span v-if="currentProject.demoUrl !== null">
+          <v-btn
+            style="margin-left: 12px"
+            tile
+            text
+            color="primary"
+            @click.stop="openNewTab(currentProject.demoUrl)"
+            >Demo</v-btn
+          >
+        </span>
+        <span v-if="currentProject.report !== null">
+          <v-btn
+            tile
+            text
+            color="primary"
+            @click.prevent="openNewTab(currentProject.report)"
+            >Report</v-btn
+          >
+        </span>
+        <span v-if="currentProject.courseUrl !== null">
+          <v-btn
+            style="margin-left: 12px"
+            tile
+            text
+            color="primary"
+            @click.stop="openNewTab(currentProject.courseUrl)"
+            >Course website</v-btn
+          >
+        </span>
       </v-col>
 
       <v-col md="6">
@@ -168,12 +219,18 @@
 </template>
 
 <script>
+import VueYoutube from 'vue-youtube';
+import axios from 'axios';
+import pdf from 'vue-pdf';
+
 export default {
   props: {
     currentProject: { type: Object, required: true }
   },
+
   data() {
     return {
+      showVideo: false,
       activeIndex: 0,
       fullscreenImageDialog: false,
       activeImage: { src: String, legend: String },
@@ -192,6 +249,13 @@ export default {
         };
         this.activeIndex = 0;
       }
+    },
+    showVideo: {
+      handler: function(val) {
+        if (!val) {
+          this.pauseVideo();
+        }
+      }
     }
   },
   created() {
@@ -202,6 +266,15 @@ export default {
     this.activeIndex = 0;
   },
   methods: {
+    getYoutubeID(url) {
+      return this.$youtube.getIdFromUrl(url);
+    },
+    pauseVideo() {
+      this.$refs.youtube.player.pauseVideo();
+    },
+    openNewTab(url) {
+      window.open(url, '_blank');
+    },
     createKeywords(keywords) {
       let list = '';
       keywords.forEach((word, idx) => {
@@ -234,6 +307,9 @@ export default {
       } else {
         return title;
       }
+    },
+    ifSmallScreen: check => {
+      if (check) return 'flex-direction: column-reverse';
     }
   }
 };
@@ -247,7 +323,7 @@ export default {
   opacity: 70%;
 }
 .title-h2 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   z-index: 1 !important;
   position: relative;
 }

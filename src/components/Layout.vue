@@ -1,16 +1,19 @@
 <template>
-  <v-container>
+  <div style="width: 90%">
     <v-col cols="12">
       <v-row align="center">
-        <v-col cols="12" xl="3" md="4">
-          <v-card class="profile-card rounded-corners" style="overflow: hidden">
+        <v-col cols="12" xl="3" md="4" class="left-container">
+          <v-card
+            class="profile-card rounded-corners"
+            style="overflow: hidden; "
+          >
             <ProfileCard />
           </v-card>
         </v-col>
         <v-spacer></v-spacer>
 
-        <v-col cols="12" xl="9" md="8">
-          <v-card class="rounded-corners">
+        <v-col cols="12" xl="9" md="8" class="right-container">
+          <v-card class="rounded-corners ">
             <NavigatorMenu
               class="nav-menu"
               :page="currentPage"
@@ -26,11 +29,14 @@
             <span v-if="currentPage == 1">
               <Portfolio />
             </span>
+            <span v-if="currentPage == 3">
+              <FilteredPortfolio />
+            </span>
           </v-card>
         </v-col>
       </v-row>
     </v-col>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -38,13 +44,15 @@ import ProfileCard from './Profile/ProfileCard';
 import Home from './About/Home';
 import NavigatorMenu from './Navigator/NavigatorMenu';
 import Portfolio from './Portfolio/Portfolio';
+import FilteredPortfolio from './Portfolio/FilteredPortfolio';
 
 export default {
   components: {
     ProfileCard,
     Home,
     Portfolio,
-    NavigatorMenu
+    NavigatorMenu,
+    FilteredPortfolio
   },
   data() {
     return {
@@ -65,6 +73,19 @@ export default {
 </script>
 
 <style scoped>
+.left-container {
+  display: flex;
+  align-self: stretch;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+.content-container {
+  height: 100%;
+}
 .profile-card {
   height: 650px;
   width: 100%;

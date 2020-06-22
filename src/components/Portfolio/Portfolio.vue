@@ -12,9 +12,9 @@
           class="body-2 font-weight-regular"
           style="padding: 5px 0px; margin: 0;"
         >
-          Down below, I've collected the projects that I'm most proud of. You
-          can press on any card to get an overview of the project with images,
-          code and an explanation of the project.
+          In the carousel below, I've collected the projects that I'm most proud
+          of. You can click on any image to get a description about the project.
+          Also options to read more, show demo or screencast.
         </p>
         <v-spacer />
       </span>

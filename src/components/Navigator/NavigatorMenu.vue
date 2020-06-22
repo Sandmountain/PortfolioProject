@@ -29,17 +29,19 @@
         </template>
 
         <v-card-text class="search-paper">
-          <v-autocomplete
+          <v-combobox
             outlined
             dense
-            chips
-            small-chips
-            multiple
             label="Search for projects, libraries or techniques"
             :clearable="true"
             hide-details="auto"
             single-line
-          ></v-autocomplete>
+            :items="keyWords"
+            v-model="query"
+            return-object
+            :change="startQuery()"
+            :blur="resetQuery()"
+          ></v-combobox>
           <!--
               :item-avatar="thumbnails.thumbnail"
               @input="queryProjects"
@@ -52,15 +54,76 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-undef
+const projectData = require('../../assets/project/projects.json');
+
 export default {
   props: ['changePage', 'page'],
   data() {
     return {
+      parsedData: ['project 1', 'project 2'],
+      keyWords: [],
+      query: '',
       active: 0,
       menu: 0
     };
   },
+  created() {
+    let tempWords = [];
+    projectData.forEach(project => {
+      tempWords.push(project.title);
+
+      project.keywords.forEach(keyword => {
+        tempWords.push(keyword);
+      });
+      /*
+      if (project.report !== null) {
+        tempWords.push({ word: 'report', id: project.id });
+      }
+      if (project.screencast !== null) {
+        tempWords.push({ word: 'screencast', id: project.id });
+      }
+      if (project.githubUrl !== null) {
+        tempWords.push({ word: 'github', id: project.id });
+      }
+      */
+    });
+    this.keyWords = tempWords;
+  },
   methods: {
+    resetQuery() {
+      this.query = '';
+    },
+    startQuery() {
+      if (this.query !== '' && this.query) {
+        const testArr = [];
+        projectData.forEach((project, index) => {
+          project.title === this.query
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'screencast' &&
+          project.screencast !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'report' && project.report !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'github' && project.githubUrl !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          project.keywords.includes(this.query)
+            ? testArr.push(projectData[index])
+            : null;
+        });
+
+        console.log(testArr);
+        this.updatePage(3);
+      }
+    },
     updatePage(i) {
       this.changePage(i);
       this.active = i;
@@ -68,7 +131,7 @@ export default {
   },
   watch: {
     page: function(newVal, oldVal) {
-      this.active = newVal;
+      newVal === 3 ? (this.active = 1) : (this.active = newVal);
     }
   }
 };
