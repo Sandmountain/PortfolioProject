@@ -1,34 +1,35 @@
 <template>
-  <v-tabs v-model="active" class="nav-menu">
-    <v-tab @click="updatePage(0)"> <v-icon left>mdi-home</v-icon>Home </v-tab>
-    <v-tab @click="updatePage(1)">
-      <v-icon left>mdi-brush</v-icon>Projects
-    </v-tab>
-    <v-tab @click="updatePage(2)">
-      <v-icon left>mdi-account</v-icon>About Me
-    </v-tab>
-    <v-spacer></v-spacer>
-    <span class="search-button">
-      <v-menu
-        v-model="menu"
-        :close-on-content-click="false"
-        :nudge-width="400"
-        :nudge-top="75"
-        :nudge-left="390"
-        class="border-rad"
-      >
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <span v-if="!menu">
-              <v-icon style>mdi-magnify</v-icon>
-            </span>
-            <span v-else>
-              <v-icon small>mdi-window-close</v-icon>
-            </span>
-          </v-btn>
-        </template>
+  <v-app-bar collapse-on-scroll dense fixed light>
+    <v-app-bar-nav-icon
+      class="primary--text"
+      @click="$vuetify.goTo(0)"
+    ></v-app-bar-nav-icon>
 
-        <v-card-text class="search-paper">
+    <v-toolbar-title>
+      <span class="font-weight-regular primary--text">VIKTOR</span>
+      <span class="font-weight-black right primary--text">SANDBERG.COM</span>
+    </v-toolbar-title>
+
+    <v-spacer />
+    <v-menu
+      v-model="menu"
+      :close-on-content-click="false"
+      :nudge-width="550"
+      :nudge-bottom="55"
+      :nudge-left="390"
+    >
+      <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
+          <span v-if="!menu">
+            <v-icon class="primary--text">mdi-magnify</v-icon>
+          </span>
+          <span v-else>
+            <v-icon class="primary--text" small>mdi-window-close</v-icon>
+          </span>
+        </v-btn>
+      </template>
+      <div>
+        <v-card-text style="background: white; padding: 10px; ">
           <v-combobox
             outlined
             dense
@@ -48,31 +49,23 @@
               :items="thumbnails.thumbnail"
           -->
         </v-card-text>
-      </v-menu>
-    </span>
-  </v-tabs>
+      </div>
+    </v-menu>
+  </v-app-bar>
 </template>
-
 <script>
 // eslint-disable-next-line no-undef
-const projectData = require('../../assets/project/projects.json');
-
+const projectData = require('../../../assets/project/projects.json');
 export default {
   // eslint-disable-next-line vue/require-prop-types
   props: ['changePage', 'changeFilterPage', 'page'],
   data() {
     return {
-      parsedData: ['project 1', 'project 2'],
       keyWords: [],
       query: '',
       active: 0,
       menu: 0
     };
-  },
-  watch: {
-    page: function(newVal) {
-      newVal === 3 ? (this.active = 1) : (this.active = newVal);
-    }
   },
   created() {
     let tempWords = [];
@@ -97,6 +90,9 @@ export default {
     this.keyWords = tempWords;
   },
   methods: {
+    test() {
+      console.log('hello');
+    },
     resetQuery() {
       this.query = '';
     },
@@ -138,19 +134,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.search-paper {
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-.search-button {
-  display: flex;
-  align-self: center;
-  margin-right: 10px;
-}
-.v-menu__content {
-  border-radius: 10px;
-}
-</style>

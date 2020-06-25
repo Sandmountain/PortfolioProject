@@ -17,7 +17,7 @@
     ></v-img>
 
     <v-container fluid class="title-box">
-      <span class="font-weight-light headline">Viktor</span>
+      <span class="font-weight-light headline">Viktor </span>
 
       <span class="font-weight-regular headline">Sandberg</span>
 
@@ -45,10 +45,22 @@
         justify="center"
         align="center"
       >
-        <v-btn color="primary" tile text style="width:50%; height: 48px"
+        <v-btn
+          color="primary"
+          @click="
+            openNewTab(
+              'https://drive.google.com/file/d/1NftM13B1b3HAiAxELcQqtvfImhal41iB/view?usp=sharing'
+            )
+          "
+          text
+          style="width:50%; height: 48px"
           >View resume</v-btn
         >
-        <v-btn color="primary" tile text style="width:50%; height: 48px"
+        <v-btn
+          color="primary"
+          @click="sendMail()"
+          text
+          style="width:50%; height: 48px"
           >Contact me</v-btn
         >
       </v-row>
@@ -69,6 +81,14 @@ export default {
       ],
       right: null
     };
+  },
+  methods: {
+    openNewTab(url) {
+      window.open(url, '_blank');
+    },
+    sendMail() {
+      window.open('mailto:sandtain@gmail.com');
+    }
   },
   mounted() {
     console.log(this.$vuetify.theme);
@@ -104,6 +124,7 @@ export default {
   .profile-picture {
     top: -100px;
   }
+
   .title-box {
     margin-top: -60px;
   }

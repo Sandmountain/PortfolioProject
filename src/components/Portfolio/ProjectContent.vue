@@ -40,6 +40,7 @@
                 :scrollable="true"
               >
                 <ProjectDialog
+                  fullscreen
                   :current-project="currentProject"
                   :show-arrows="showMoreInfo"
                   :next-project="nextProject"

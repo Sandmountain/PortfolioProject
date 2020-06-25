@@ -18,19 +18,23 @@
               class="nav-menu"
               :page="currentPage"
               :change-page="changePage"
+              :change-filter-page="changeFilterPage"
             />
           </v-card>
           <v-card class="main-content rounded-corners">
             <span v-if="currentPage == 0">
               <v-fade-transition>
-                <Home style="height: 100%" :change-page="updateNav" />
+                <Portfolio />
               </v-fade-transition>
             </span>
             <span v-if="currentPage == 1">
-              <Portfolio />
+              <Home style="height: 100%" :change-page="updateNav" />
             </span>
             <span v-if="currentPage == 3">
-              <FilteredPortfolio />
+              <FilteredPortfolio
+                :change-page="changePage"
+                :filter-data="filterData"
+              />
             </span>
           </v-card>
         </v-col>
@@ -46,6 +50,8 @@ import NavigatorMenu from './Navigator/NavigatorMenu';
 import Portfolio from './Portfolio/Portfolio';
 import FilteredPortfolio from './Portfolio/FilteredPortfolio';
 
+//import AppBar from './AppBar/AppBar';
+
 export default {
   components: {
     ProfileCard,
@@ -53,13 +59,20 @@ export default {
     Portfolio,
     NavigatorMenu,
     FilteredPortfolio
+    //AppBar
   },
   data() {
     return {
-      currentPage: 0
+      currentPage: 0,
+      filterData: null
     };
   },
   methods: {
+    changeFilterPage(i, data) {
+      this.currentPage = i;
+      this.filterData = data;
+      console.log(data);
+    },
     changePage(i) {
       this.currentPage = i;
       //console.log(this.currentPage);
@@ -81,13 +94,14 @@ export default {
 .right-container {
   display: flex;
   flex-direction: column;
+
   align-self: stretch;
 }
 .content-container {
   height: 100%;
 }
 .profile-card {
-  height: 650px;
+  height: 648px;
   width: 100%;
 }
 .main-content {

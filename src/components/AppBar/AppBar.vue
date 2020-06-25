@@ -27,33 +27,88 @@
       </template>
       <div>
         <v-card-text style="background: white; padding: 10px; ">
-          <v-autocomplete
+          <v-combobox
             outlined
             dense
-            chips
-            small-chips
-            multiple
             label="Search for projects, libraries or techniques"
             :clearable="true"
             hide-details="auto"
             single-line
-          ></v-autocomplete>
-          <!--
-              :item-avatar="thumbnails.thumbnail"
-              @input="queryProjects"
-              :items="thumbnails.thumbnail"
-          -->
+            :items="keyWords"
+            v-model="query"
+            return-object
+            :change="startQuery()"
+            :blur="resetQuery()"
+          ></v-combobox>
         </v-card-text>
       </div>
     </v-menu>
   </v-app-bar>
 </template>
 <script>
+// eslint-disable-next-line no-undef
+const projectData = require('../../assets/project/projects.json');
 export default {
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['changePage', 'changeFilterPage', 'page'],
   data() {
     return {
-      menu: false
+      keyWords: [],
+      query: '',
+      active: 0,
+      menu: 0
     };
+  },
+  created() {
+    let tempWords = [];
+    projectData.forEach(project => {
+      tempWords.push(project.title);
+
+      project.keywords.forEach(keyword => {
+        tempWords.push(keyword);
+      });
+    });
+    this.keyWords = tempWords;
+  },
+  methods: {
+    resetQuery() {
+      this.query = '';
+    },
+    startQuery() {
+      if (this.query !== '' && this.query) {
+        const testArr = [];
+        projectData.forEach((project, index) => {
+          project.title === this.query
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'screencast' &&
+          project.screencast !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'report' && project.report !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          this.query.toLowerCase() === 'github' && project.githubUrl !== null
+            ? testArr.push(projectData[index])
+            : null;
+
+          project.keywords.includes(this.query)
+            ? testArr.push(projectData[index])
+            : null;
+        });
+
+        //console.log(testArr);
+
+        this.changeFilterPage(3, { data: testArr, query: this.query });
+      }
+    },
+    updatePage(i) {
+      this.changePage(i);
+      this.active = i;
+    }
   }
 };
 </script>

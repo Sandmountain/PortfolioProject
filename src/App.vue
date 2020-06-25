@@ -4,26 +4,31 @@
     <div class="backgroundImage" />
     <!-- <div class="background-fill" /> -->
     <div class="background-image-cropped" />
-    <AppBar class="hidden-md-and-up" />
-    <div class="main-body-container">
-      <Layout />
-      <BottomNavBar class="hidden-md-and-up" />
-    </div>
+    <span v-if="$vuetify.breakpoint.smAndDown" style="height: 100%">
+      <MobileLayout class="mobile-body-container" />
+    </span>
+    <span v-else style="height: 100%">
+      <div class="main-body-container">
+        <Layout />
+      </div>
+    </span>
   </v-app>
 </template>
 
 <script>
-import BottomNavBar from './components/AppBar/BottomNavBar';
+//import BottomNavBar from './components/AppBar/BottomNavBar';
 import Layout from './components/Layout.vue';
-import AppBar from './components/AppBar/AppBar';
+import MobileLayout from './components/Mobile/MobileLayout';
 
+//import AppBar from './components/AppBar/AppBar';
 export default {
   name: 'App',
 
   components: {
     Layout,
-    BottomNavBar,
-    AppBar
+    //BottomNavBar,
+
+    MobileLayout
   },
 
   data: () => ({
@@ -43,7 +48,7 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #474747;
+  background-color: #006080;
 }
 
 .rounded-corners {
@@ -52,6 +57,13 @@ export default {
     inset 0px 0px 1px 0px #474747;
 }
 .main-body-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-body-container {
   width: 100%;
   height: 100%;
   display: flex;

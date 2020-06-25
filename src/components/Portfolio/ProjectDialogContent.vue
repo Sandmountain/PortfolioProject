@@ -1,44 +1,39 @@
 <template>
-  <v-container>
-    <h2 class="title-h2">
-      <span class=" right text-uppercase primary--text">
-        <span v-html="stylingTitles(currentProject.title)" />
-      </span>
-      <span v-if="currentProject.githubUrl !== null">
-        <span
-          class="font-weight-black left"
-          style="float: right; margin-top: -3px"
-        >
-          <v-btn icon @click="openNewTab(currentProject.githubUrl)">
-            <v-icon>mdi-github</v-icon>
-          </v-btn>
+  <div>
+    <div class="top-content">
+      <h2 class="title-h2">
+        <span class=" right text-uppercase primary--text">
+          <span v-html="stylingTitles(currentProject.title)" />
         </span>
-      </span>
-    </h2>
-
-    <v-col
-      class="font-weight-regular project-description"
-      style="text-align: left;
-      padding-top: 10px;"
-    >
-      <v-row :style="ifSmallScreen($vuetify.breakpoint.mdAndDown)">
+      </h2>
+    </div>
+    <v-col class="font-weight-regular project-description">
+      <v-row
+        :style="ifSmallScreen($vuetify.breakpoint.mdAndDown)"
+        style="padding: 12px"
+      >
         <v-col
           sm="12"
           md="12"
           lg="6"
-          style="padding: 0px 12px 0px 0px; align-self: center;"
+          style="align-self: center; padding: 0px 12px 0px 0px"
         >
           <p
-            class="font-weight-bold text-uppercase "
-            style="font-size: 10pt; letter-spacing: 2px; text-align: center; padding-top: 12px"
+            class="font-weight-bold text-uppercase primary--text"
+            style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
           >
             about the project
           </p>
+
           <p class="text--primary">
             {{ currentProject.description }}
           </p>
           <p class="text--primary">
             {{ currentProject.development }}
+          </p>
+          <p style="font-size: 10pt">
+            <b>Project Keywords</b>:
+            {{ createKeywords(currentProject.keywords) }}
           </p>
         </v-col>
 
@@ -78,7 +73,6 @@
               overlay-opacity="0.9"
               v-model="fullscreenImageDialog"
               scrollable
-              max-width="100%"
             >
               <v-btn
                 absolute
@@ -120,65 +114,16 @@
         </v-col>
       </v-row>
     </v-col>
-
-    <v-row>
-      <v-col md="6" class="keyword-container" align="center">
-        <span v-if="currentProject.screencast !== null">
-          <v-btn
-            @click.stop="showVideo = true"
-            style="margin-left: 12px"
-            tile
-            text
-            color="primary"
-            >View Screencast</v-btn
-          >
-          <v-dialog v-model="showVideo" width="80%" :scrollable="true">
-            <youtube
-              :video-id="getYoutubeID(currentProject.screencast)"
-              ref="youtube"
-              :resize="true"
-            ></youtube>
-          </v-dialog>
-        </span>
-        <span v-if="currentProject.demoUrl !== null">
-          <v-btn
-            style="margin-left: 12px"
-            tile
-            text
-            color="primary"
-            @click.stop="openNewTab(currentProject.demoUrl)"
-            >Demo</v-btn
-          >
-        </span>
-        <span v-if="currentProject.report !== null">
-          <v-btn
-            tile
-            text
-            color="primary"
-            @click.prevent="openNewTab(currentProject.report)"
-            >Report</v-btn
-          >
-        </span>
-        <span v-if="currentProject.courseUrl !== null">
-          <v-btn
-            style="margin-left: 12px"
-            tile
-            text
-            color="primary"
-            @click.stop="openNewTab(currentProject.courseUrl)"
-            >Course website</v-btn
-          >
-        </span>
-      </v-col>
-
-      <v-col md="6">
+    <v-row class="bottom-content">
+      <v-col md="5.5">
         <span>
           <p
-            class="font-weight-bold text-uppercase"
+            class="font-weight-bold text-uppercase primary--text"
             style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
           >
             Languages used
           </p>
+
           <span class="language-icons">
             <span v-for="(language, i) in currentProject.languages" :key="i">
               <span v-if="language.icon !== null">
@@ -214,8 +159,68 @@
           </span>
         </span>
       </v-col>
+      <v-col md="1" class="center-line">
+        <v-divider vertical />
+      </v-col>
+      <v-col md="5.5" class="keyword-container" align="center">
+        <p
+          class="font-weight-bold text-uppercase primary--text"
+          style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
+        >
+          Resources
+        </p>
+        <span v-if="currentProject.githubUrl !== null" class="tooltip">
+          <span class="font-weight-black left">
+            <v-btn icon @click="openNewTab(currentProject.githubUrl)">
+              <v-icon>mdi-github</v-icon>
+            </v-btn>
+          </span>
+          <span class="tooltiptext tooltip-bottom font-weight-black caption">
+            Github Repo
+          </span>
+        </span>
+        <span v-if="currentProject.screencast !== null" class="tooltip">
+          <v-btn @click.stop="showVideo = true" icon>
+            <v-icon>mdi-youtube</v-icon>
+          </v-btn>
+          <span class="tooltiptext tooltip-bottom font-weight-black caption">
+            Play Screencast
+          </span>
+          <v-dialog v-model="showVideo" width="80%" :scrollable="true">
+            <youtube
+              :video-id="getYoutubeID(currentProject.screencast)"
+              ref="youtube"
+              :resize="true"
+            ></youtube>
+          </v-dialog>
+        </span>
+        <span v-if="currentProject.demoUrl !== null" class="tooltip">
+          <v-btn icon @click.stop="openNewTab(currentProject.demoUrl)">
+            <v-icon>mdi-web</v-icon>
+          </v-btn>
+          <span class="tooltiptext tooltip-bottom font-weight-black caption">
+            Project Demo
+          </span>
+        </span>
+        <span v-if="currentProject.report !== null" class="tooltip">
+          <v-btn icon @click.prevent="openNewTab(currentProject.report)">
+            <v-icon>mdi-file-document</v-icon>
+          </v-btn>
+          <span class="tooltiptext tooltip-bottom font-weight-black caption">
+            Project Report
+          </span>
+        </span>
+        <span v-if="currentProject.courseUrl !== null" class="tooltip">
+          <v-btn icon @click.stop="openNewTab(currentProject.courseUrl)">
+            <v-icon>mdi-school</v-icon>
+          </v-btn>
+          <span class="tooltiptext tooltip-bottom font-weight-black caption">
+            Course Website
+          </span>
+        </span>
+      </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -281,7 +286,7 @@ export default {
         if (idx < keywords.length - 1) {
           list += word + ', ';
         } else {
-          list += word;
+          list += word + '.';
         }
       });
       return list;
@@ -316,6 +321,17 @@ export default {
 </script>
 
 <style scoped>
+.center-line {
+  display: flex;
+  justify-content: center;
+}
+.project-description {
+  text-align: left;
+  padding: 12px;
+  height: 55vh;
+  overflow: auto;
+}
+
 .slideshow-selected-image {
   opacity: 50%;
 }
@@ -369,7 +385,7 @@ export default {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
+  bottom: 115%;
   left: 50%;
   margin-left: -60px;
   opacity: 0;
@@ -395,5 +411,30 @@ export default {
 
 .tooltip-icon:hover {
   filter: opacity(0.5) drop-shadow(0 0 0 #a0a0a0);
+}
+
+.top-content {
+  padding: 12px 12px 8px 12px;
+  z-index: 2;
+  width: 100%;
+
+  -webkit-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bottom-content {
+  /*display: flex;
+  align-items: center;
+  justify-content: center;
+  */
+  position: relative;
+  bottom: 0;
+
+  width: 100%;
+  margin: 0px;
+  -webkit-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 </style>

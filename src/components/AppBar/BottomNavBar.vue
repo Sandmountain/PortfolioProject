@@ -1,65 +1,89 @@
 <template>
-  <v-bottom-navigation
-    :input-value="showNav"
-    style="z-index: 200"
-    light
-    flat
-    fixed
-  >
-    <v-btn large>
-      <span>Home</span>
-      <v-icon>mdi-home</v-icon>
-    </v-btn>
+  <span v-if="!isScroll">
+    <v-bottom-navigation
+      :input-value="showNav"
+      color="primary"
+      style="z-index: 200;"
+      class="rounded-corners bottom-navigation"
+      absolute
+      light
+      grow
+      flat
+    >
+      <v-btn large @click="$vuetify.goTo('#home-id')">
+        <span>Home</span>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
 
-    <v-btn large>
-      <span>Portfolio</span>
-      <v-icon>mdi-pencil-ruler</v-icon>
-    </v-btn>
+      <v-btn large @click="$vuetify.goTo('#portfolio-id')">
+        <span>Portfolio</span>
+        <v-icon>mdi-brush</v-icon>
+      </v-btn>
 
-    <v-btn large>
-      <span>Resume</span>
-      <v-icon>mdi-file-account</v-icon>
-    </v-btn>
+      <v-btn large>
+        <span>Resume</span>
+        <v-icon>mdi-file-account</v-icon>
+      </v-btn>
 
-    <v-btn large>
-      <span>Contact Me</span>
-      <v-icon>mdi-email</v-icon>
-    </v-btn>
-  </v-bottom-navigation>
+      <v-btn large>
+        <span>Contact Me</span>
+        <v-icon>mdi-email</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+  </span>
+  <span v-else>
+    <v-bottom-navigation
+      :input-value="showNav"
+      style="z-index: 200;"
+      color="primary"
+      grow
+      fixed
+      light
+      flat
+    >
+      <v-btn large @click="$vuetify.goTo(0)">
+        <span>Home</span>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+
+      <v-btn large @click="$vuetify.goTo('#portfolio-id')">
+        <span>Portfolio</span>
+        <v-icon>mdi-brush</v-icon>
+      </v-btn>
+
+      <v-btn large>
+        <span>Resume</span>
+        <v-icon>mdi-file-account</v-icon>
+      </v-btn>
+
+      <v-btn large>
+        <span>Contact Me</span>
+        <v-icon>mdi-email</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+  </span>
 </template>
 
 <script>
 export default {
+  props: ['isScroll'],
   data() {
     return {
       showNav: false
     };
   },
-
-  methods: {
-    scroll() {
-      window.onscroll = () => {
-        const bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop
-          ) +
-            window.innerHeight ===
-          document.documentElement.offsetHeight;
-
-        if (window.pageYOffset == 0 || bottomOfWindow) {
-          this.showNav = false;
-        } else {
-          this.showNav = true;
-        }
-      };
+  watch: {
+    isScroll: function(newVal, oldVal) {
+      // watch it
+      if (newVal !== oldVal) this.showNav = newVal;
     }
   },
-  mounted() {
-    this.scroll();
-  }
+  methods: {}
 };
 </script>
 
-<style></style>
+<style scoped>
+.bottom-navigation {
+  overflow: hidden;
+}
+</style>

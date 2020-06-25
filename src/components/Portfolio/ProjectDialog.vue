@@ -43,9 +43,9 @@ export default {
   },
   props: {
     currentProject: { type: Object, required: true },
-    showArrows: { type: Boolean, required: true },
-    nextProject: { type: Function, required: true },
-    prevProject: { type: Function, required: true }
+    showArrows: { type: Boolean, required: false },
+    nextProject: { type: Function, required: false },
+    prevProject: { type: Function, required: false }
   }
 };
 </script>

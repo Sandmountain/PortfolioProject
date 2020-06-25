@@ -1,34 +1,16 @@
 <template>
   <div class="portfolio-container">
     <div class="top-content">
-      <span v-if="$vuetify.breakpoint.smAndUp">
-        <h2 class="title-h2">
-          <span class="font-weight-black right">
-            <span class="font-weight-light">MY RECENT</span>
-            <span class="primary--text"> PROJECTS</span>
-          </span>
-        </h2>
-        <p
-          class="body-2 font-weight-regular"
-          style="padding: 5px 0px; margin: 0;"
-        >
-          In the carousel below, I've collected the projects that I'm most proud
-          of. You can click on any image to get a description about the project.
-          Also options to read more, show demo or screencast.
-        </p>
-        <v-spacer />
+      <span class="font-weight-black primary--text headline">
+        <span class="font-weight-light black--text">MY RECENT</span>
+        PROJECTS
       </span>
-      <span v-else>
-        <span class="font-weight-black primary--text headline">
-          <span class="font-weight-light black--text">MY RECENT</span>
-          PROJECTS
-        </span>
-        <p class="caption font-weight-regular" style="margin: 0;">
-          Down below, I've collected the projects that I'm most proud of. You
-          can press on any card to get an overview of the project with images,
-          code and an explanation of the project.
-        </p>
-      </span>
+      <p class="caption font-weight-regular" style="margin: 0;">
+        Down below, I've collected the projects that I'm most proud of. You can
+        press on any card to get an overview of the project with images, code
+        and an explanation of the project.
+      </p>
+
       <div class="pb-0 pt-0 text-right">
         <v-icon
           :color="projectView === 'carousel' ? 'primary' : null"
