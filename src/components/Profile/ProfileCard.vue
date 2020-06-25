@@ -47,20 +47,20 @@
       >
         <v-btn
           color="primary"
+          text
+          style="width:50%; height: 48px"
           @click="
             openNewTab(
               'https://drive.google.com/file/d/1NftM13B1b3HAiAxELcQqtvfImhal41iB/view?usp=sharing'
             )
           "
-          text
-          style="width:50%; height: 48px"
           >View resume</v-btn
         >
         <v-btn
           color="primary"
-          @click="sendMail()"
           text
           style="width:50%; height: 48px"
+          @click="sendMail()"
           >Contact me</v-btn
         >
       </v-row>
@@ -82,6 +82,9 @@ export default {
       right: null
     };
   },
+  mounted() {
+    //console.log(this.$vuetify.theme);
+  },
   methods: {
     openNewTab(url) {
       window.open(url, '_blank');
@@ -89,9 +92,6 @@ export default {
     sendMail() {
       window.open('mailto:sandtain@gmail.com');
     }
-  },
-  mounted() {
-    console.log(this.$vuetify.theme);
   }
 };
 </script>

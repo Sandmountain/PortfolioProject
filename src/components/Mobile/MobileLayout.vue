@@ -28,7 +28,7 @@
             <v-card class="main-content rounded-corners">
               <span v-if="currentPage == 0">
                 <v-fade-transition>
-                  <Portfolio id="portfolio-id" />
+                  <MobilePortfolio id="portfolio-id" />
                 </v-fade-transition>
               </span>
               <span v-if="currentPage == 1">
@@ -51,15 +51,15 @@
 <script>
 import Home from '../About/Home';
 import MobileProfileCard from './ProfileCard/MobileProfileCard';
-import BottomNavBar from '../AppBar/BottomNavBar';
-import Portfolio from '../Portfolio/Portfolio';
+import BottomNavBar from './AppBar/BottomNavBar';
+import MobilePortfolio from './Portfolio/MobilePorfolio';
 import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
 import AppBar from './AppBar/AppBar';
 
 export default {
   components: {
     Home,
-    Portfolio,
+    MobilePortfolio,
     MobileProfileCard,
     FilteredPortfolio,
     BottomNavBar,

@@ -10,7 +10,7 @@
       grow
       flat
     >
-      <v-btn large @click="$vuetify.goTo('#home-id')">
+      <v-btn large @click="$vuetify.goTo(0)">
         <span>Home</span>
         <v-icon>mdi-home</v-icon>
       </v-btn>

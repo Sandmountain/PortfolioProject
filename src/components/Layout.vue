@@ -71,7 +71,7 @@ export default {
     changeFilterPage(i, data) {
       this.currentPage = i;
       this.filterData = data;
-      console.log(data);
+      //console.log(data);
     },
     changePage(i) {
       this.currentPage = i;

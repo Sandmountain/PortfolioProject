@@ -31,6 +31,7 @@
       <div>
         <v-card-text style="background: white; padding: 10px; ">
           <v-combobox
+            v-model="query"
             outlined
             dense
             label="Search for projects, libraries or techniques"
@@ -38,7 +39,6 @@
             hide-details="auto"
             single-line
             :items="keyWords"
-            v-model="query"
             return-object
             :change="startQuery()"
             :blur="resetQuery()"

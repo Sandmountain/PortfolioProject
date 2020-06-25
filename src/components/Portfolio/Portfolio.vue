@@ -122,14 +122,14 @@
             </v-btn>
           </div>
         </div>
-        <hooper
+        <Hooper
           ref="carousel"
           :settings="hooperSettings"
           class="scroll-thumbnail"
           style="height: 100px;"
           @slide="updateCarousel"
         >
-          <slide
+          <Slide
             v-for="(project, i) in thumbnails"
             :key="i"
             class="carousel-box"
@@ -141,8 +141,8 @@
               :src="require('../../assets/project/' + project.thumbnail)"
               @click="slidePressed(i)"
             />
-          </slide>
-        </hooper>
+          </Slide>
+        </Hooper>
       </v-col>
     </div>
     <div class="project-content">
@@ -304,7 +304,7 @@ export default {
       }
 
       // projectData.title;
-      console.log(this.thumbnails);
+      //console.log(this.thumbnails);
     },
     updateCarousel() {
       switch (this.$refs.carousel.currentSlide) {

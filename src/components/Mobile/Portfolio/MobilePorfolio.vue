@@ -29,40 +29,24 @@
           @input="onModalClose"
         >
           <v-container style="padding: 12px 24px 12px 24px">
-            <span v-if="$vuetify.breakpoint.mdAndUp">
-              <v-row align="center" justify="center">
-                <v-col v-for="(project, i) in thumbnails" :key="i" md="3">
-                  <v-card>
-                    <v-img
-                      :key="project.id"
-                      aspect-ratio="1.8"
-                      style="cursor: pointer;"
-                      :src="
-                        require('../../assets/project/' + project.thumbnail)
-                      "
-                      @click="gridItemPressed(i)"
-                      @click.stop="
-                        gridView = false;
-                        projectView = 'carousel';
-                      "
-                    />
-                  </v-card>
-                </v-col>
-              </v-row>
-            </span>
-            <span v-else>
+            <span>
               <p class="font-weight-thin black--text text-center">
                 Select a project
               </p>
-              <v-row v-for="(project, i) in thumbnails" :key="i" sm="6">
-                <v-col class="hidden-xs-and-up">
+              <v-row
+                v-for="(project, i) in thumbnails"
+                :key="i"
+                sm="6"
+                style="padding-top: 0px"
+              >
+                <v-col>
                   <v-card>
                     <v-img
                       :key="project.id"
                       aspect-ratio="2.5"
                       style="cursor: pointer;"
                       :src="
-                        require('../../assets/project/' + project.thumbnail)
+                        require('../../../assets/project/' + project.thumbnail)
                       "
                       @click="gridItemPressed(i)"
                       @click.stop="
@@ -79,81 +63,90 @@
       </div>
     </div>
     <div class="carousel-track">
-      <v-col md="11" style="margin: 0px auto;">
-        <div style="position: relative;">
-          <div class="arrow-previous hidden-sm-and-down">
-            <v-btn
-              icon
-              small
-              color="white"
-              style="background: #474747;"
-              @click.prevent="slidePrev"
-            >
-              <v-icon>mdi-chevron-left</v-icon>
+      <v-col
+        v-for="(project, i) in thumbnails"
+        :key="i"
+        sm="12"
+        style="padding-bottom: 0px"
+      >
+        <v-card class="mx-auto" style="">
+          <v-img
+            :key="project.id"
+            style="width: 100%; height: 100%;"
+            class="carousel-thumbnail"
+            :src="require('../../../assets/project/' + project.thumbnail)"
+            @click="slidePressed(i)"
+          />
+          <v-card-title>
+            <span class="subtitle-1 font-weight-bold text-uppercase ">
+              {{ projectData[i].title }}
+            </span>
+          </v-card-title>
+          <v-card-subtitle>
+            Tex for later
+          </v-card-subtitle>
+          <v-card-actions>
+            <v-btn text color="deep-purple accent-4">
+              Read
             </v-btn>
-          </div>
-          <div class="arrow-next hidden-sm-and-down">
-            <v-btn
-              icon
-              small
-              color="white"
-              style="background: #474747;"
-              @click.prevent="slideNext"
-            >
-              <v-icon>mdi-chevron-right</v-icon>
-            </v-btn>
-          </div>
-        </div>
-        <hooper
-          ref="carousel"
-          :settings="hooperSettings"
-          class="scroll-thumbnail"
-          style="height: 100px;"
-          @slide="updateCarousel"
-        >
-          <slide
-            v-for="(project, i) in thumbnails"
-            :key="i"
-            class="carousel-box"
-          >
-            <v-img
-              :key="project.id"
-              style="width: 100%; height: 100%;"
-              class="carousel-thumbnail"
-              :src="require('../../assets/project/' + project.thumbnail)"
-              @click="slidePressed(i)"
-            />
-          </slide>
-        </hooper>
+            <v-spacer></v-spacer>
+            <span v-if="projectData[i].githubUrl !== null">
+              <span class="font-weight-black left">
+                <v-btn icon @click="openNewTab(projectData[i].githubUrl)">
+                  <v-icon>mdi-github</v-icon>
+                </v-btn>
+              </span>
+            </span>
+            <span v-if="projectData[i].screencast !== null">
+              <v-btn @click.stop="showVideo = true" icon>
+                <v-icon>mdi-youtube</v-icon>
+              </v-btn>
+              <v-dialog v-model="showVideo" width="80%" :scrollable="true">
+                <youtube
+                  :video-id="getYoutubeID(projectData[i].screencast)"
+                  ref="youtube"
+                  :resize="true"
+                ></youtube>
+              </v-dialog>
+            </span>
+            <span v-if="projectData[i].demoUrl !== null">
+              <v-btn icon @click.stop="openNewTab(projectData[i].demoUrl)">
+                <v-icon>mdi-web</v-icon>
+              </v-btn>
+            </span>
+            <span v-if="projectData[i].report !== null">
+              <v-btn icon @click.prevent="openNewTab(projectData[i].report)">
+                <v-icon>mdi-file-document</v-icon>
+              </v-btn>
+            </span>
+            <span v-if="projectData[i].courseUrl !== null">
+              <v-btn icon @click.stop="openNewTab(projectData[i].courseUrl)">
+                <v-icon>mdi-school</v-icon>
+              </v-btn>
+            </span>
+          </v-card-actions>
+        </v-card>
       </v-col>
     </div>
     <div class="project-content">
-      <ProjectContent
-        :current-project="currentProject"
-        :next-project="slideNext"
-        :prev-project="slidePrev"
-      />
+      <p>Text and all</p>
     </div>
   </div>
 </template>
 
 <script>
-import { Hooper, Slide } from 'hooper';
-import 'hooper/dist/hooper.css';
-
-import ProjectContent from './ProjectContent';
+//import ProjectContent from '../../Portfolio/ProjectContent';
 
 // eslint-disable-next-line no-undef
-let projectData = require('../../assets/project/projects.json');
+let projectData = require('../../../assets/project/projects.json');
 
 /*const relativePath = '../../assets/project/';*/
+import VueYoutube from 'vue-youtube';
 
 export default {
   name: 'Portfolio',
   components: {
-    Hooper,
-    Slide,
-    ProjectContent
+    //ProjectContent
   },
   data() {
     return {
@@ -162,28 +155,13 @@ export default {
       carouselData: 0,
       carouselIndex: 0,
       currentProject: {},
-      hooperSettings: {
-        initialSlide: 0,
-        pagination: true,
-        centerMode: true,
-        infiniteScroll: true,
-        breakpoints: {
-          900: {
-            itemsToShow: 5.25
-          },
-          600: {
-            itemsToShow: 2.25
-          },
-          300: {
-            itemsToShow: 2.25
-          }
-        }
-      },
+
       thumbnails: [],
       initialThumbnails: [],
       projectData,
       gridView: false,
-      showCarousel: true
+      showCarousel: true,
+      showVideo: false
     };
   },
   created() {
@@ -198,6 +176,12 @@ export default {
 
   updated() {},
   methods: {
+    getYoutubeID(url) {
+      return this.$youtube.getIdFromUrl(url);
+    },
+    slidePressed(i) {
+      console.log(i);
+    },
     openNewTab(url) {
       window.open(url, '_blank');
     },
@@ -207,113 +191,7 @@ export default {
     onModalClose() {
       this.projectView = 'carousel';
     },
-    slidePrev() {
-      this.$refs.carousel.slidePrev();
-    },
-    slideNext() {
-      this.$refs.carousel.slideNext();
-    },
-    gridItemPressed(id) {
-      this.$refs.carousel.slideTo(id);
-    },
-    slidePressed(id) {
-      // Creating seemless transition between first/last item. This could probably be rewritten witha switch/case
-
-      // When pressing the last/next to last item in the carousel from start
-      if (this.$refs.carousel.currentSlide < 2 && id > 2) {
-        if (id === this.projectData.length - 1) {
-          this.$refs.carousel.slideTo(-1);
-        } else {
-          this.$refs.carousel.slideTo(-2);
-        }
-        // When pressing the first items, from the the last slides
-      } else if (
-        this.$refs.carousel.currentSlide > this.projectData.length - 3 &&
-        id < 2
-      ) {
-        if (id === 0) {
-          this.$refs.carousel.slideTo(this.projectData.length);
-        } else {
-          this.$refs.carousel.slideTo(this.projectData.length + 1);
-        }
-      } else {
-        this.$refs.carousel.slideTo(id);
-      }
-    },
-    // Use a set (to only have one instance of each project)
-    queryProjects(query) {
-      this.settings.slidesToShow = 4;
-      this.showCarousel = false;
-
-      if (query.length > 0) {
-        const arr = [];
-        //Disabled because of eslint
-        /*const filtered = this.projectData.forEach((project, i) => {
-          if (project.title.toLowerCase().includes(query.toLowerCase())) {
-            arr[i] = project.id;
-            return;
-          }
-          project.keywords.forEach(keyword => {
-            if (keyword.toLowerCase().includes(query.toLowerCase())) {
-              arr[i] = project.id;
-              return;
-            }
-          });
-        });
-        */
-        const temp = [];
-        arr.map(slot => {
-          if (slot !== null) {
-            this.projectData.forEach(project => {
-              if (project.id === slot) {
-                temp.push({
-                  thumbnail: project.thumbnail,
-                  id: project.id
-                });
-              }
-            });
-          }
-        });
-        if (temp.length !== 0) {
-          this.thumbnails = temp;
-          this.settings.rows = 1;
-
-          this.slidePressed(temp[0].id);
-        }
-      } else {
-        this.thumbnails = this.initialThumbnails;
-        // this.settings.rows = 1;
-      }
-
-      // projectData.title;
-      console.log(this.thumbnails);
-    },
-    updateCarousel() {
-      switch (this.$refs.carousel.currentSlide) {
-        case -1:
-          this.currentProject = this.projectData[this.projectData.length - 1];
-          break;
-        case -2:
-          this.currentProject = this.projectData[this.projectData.length - 2];
-          break;
-        case this.projectData.length:
-          this.currentProject = this.projectData[0];
-          break;
-        case this.projectData.length + 1:
-          this.currentProject = this.projectData[1];
-          break;
-        default:
-          this.currentProject = this.projectData[
-            this.$refs.carousel.currentSlide
-          ];
-          break;
-      }
-    },
     parseThumbnails() {
-      /* this.thumbnails = projectData.map(project => {
-        return project.thumbnail;
-      });
-      */
       this.thumbnails = projectData.map(project => ({
         thumbnail: project.thumbnail,
         id: project.id
@@ -372,6 +250,7 @@ export default {
 .carousel-track {
   width: 100%;
   background: #d1d1d1;
+  padding-bottom: 12px;
 }
 
 /* Horizontal lines titles */
