@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="main-app">
     <!-- <div class="background-fill-secondary" /> -->
     <div class="backgroundImage" />
     <!-- <div class="background-fill" /> -->
@@ -37,6 +37,16 @@ export default {
 };
 </script>
 <style>
+.v-dialog--custom {
+  width: 100% !important;
+  max-height: 70% !important;
+  margin: 12px !important;
+}
+
+.v-menu--custom {
+  border-radius: 0px;
+}
+
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;

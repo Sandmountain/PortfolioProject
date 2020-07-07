@@ -43,11 +43,6 @@
             :change="startQuery()"
             :blur="resetQuery()"
           ></v-combobox>
-          <!--
-              :item-avatar="thumbnails.thumbnail"
-              @input="queryProjects"
-              :items="thumbnails.thumbnail"
-          -->
         </v-card-text>
       </div>
     </v-menu>
@@ -90,9 +85,6 @@ export default {
     this.keyWords = tempWords;
   },
   methods: {
-    test() {
-      console.log('hello');
-    },
     resetQuery() {
       this.query = '';
     },

@@ -14,13 +14,7 @@
 
     <v-container fluid class="title-box">
       <p
-        class=" overline font-weight-light sub-text text-center"
-        style="margin: 0;"
-      >
-        Hello! I am
-      </p>
-      <p
-        class="display-1 font-weight-black"
+        class="font-weight-black"
         style="line-height: 90%; margin: 0; text-align: center;"
       >
         VIKTOR SANDBERG
@@ -88,7 +82,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$vuetify.theme);
+    //console.log(this.$vuetify.theme);
   }
 };
 </script>

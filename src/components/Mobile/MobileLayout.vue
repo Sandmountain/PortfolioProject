@@ -1,23 +1,24 @@
 <template>
   <div>
-    <AppBar />
-    <div style="width: 100%; padding-top: 36px">
-      <v-col cols="12">
+    <!--<AppBar id="app-bar-position" style="opacity: 50" />-->
+    <MobileNavBar :is-scroll="isScroll" />
+    <div
+      style=" 
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 200
+     "
+      id="top-position"
+    ></div>
+
+    <div style="width: 100%; padding-top: 0px">
+      <v-col cols="12" style=" padding-top: 0px">
         <v-row>
-          <v-col cols="12" xl="3" md="4" class="left-container">
-            <v-card
-              class="profile-card rounded-corners"
-              style="overflow: hidden; "
-            >
-              <MobileProfileCard id="home-id" />
-            </v-card>
+          <v-col cols="12" style="height: 100vh; padding: 0px">
+            <LandingPage :is-scroll="isScroll" id="home-id" />
           </v-col>
 
-          <v-col cols="12" :style="[isScroll ? 'padding:0px' : '']">
-            <v-card class="rounded-corners">
-              <BottomNavBar :is-scroll="isScroll" />
-            </v-card>
-          </v-col>
           <v-col
             cols="12"
             xl="9"
@@ -51,8 +52,9 @@
 <script>
 import Home from '../About/Home';
 import MobileProfileCard from './ProfileCard/MobileProfileCard';
-import BottomNavBar from './AppBar/BottomNavBar';
+import LandingPage from './LandingPage/LandingPage';
 import MobilePortfolio from './Portfolio/MobilePorfolio';
+import MobileNavBar from './AppBar/MobileAppBar';
 import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
 import AppBar from './AppBar/AppBar';
 
@@ -60,10 +62,12 @@ export default {
   components: {
     Home,
     MobilePortfolio,
-    MobileProfileCard,
-    FilteredPortfolio,
-    BottomNavBar,
-    AppBar
+    MobileNavBar,
+    //MobileProfileCard,
+    LandingPage,
+    FilteredPortfolio
+
+    //AppBar
   },
   data() {
     return {
@@ -79,7 +83,6 @@ export default {
     changeFilterPage(i, data) {
       this.currentPage = i;
       this.filterData = data;
-      console.log(data);
     },
     changePage(i) {
       this.currentPage = i;
@@ -98,7 +101,7 @@ export default {
             window.innerHeight ===
           document.documentElement.offsetHeight;
 
-        if (window.pageYOffset === 0) {
+        if (window.pageYOffset <= 0) {
           this.isScroll = false;
         } else {
           this.isScroll = true;

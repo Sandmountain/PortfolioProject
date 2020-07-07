@@ -245,13 +245,6 @@ export default {
   },
   //Need to listen to changes in current Project
   watch: {
-    showVideo: {
-      handler: function(val) {
-        if (!val) {
-          this.pauseVideo();
-        }
-      }
-    },
     currentProject: {
       immediate: true,
       handler(newValue) {
@@ -260,6 +253,13 @@ export default {
           src: [newValue.thumbnail, ...newValue.images.src]
         };
         this.activeIndex = 0;
+      }
+    },
+    showVideo: {
+      handler: function(val) {
+        if (!val) {
+          this.pauseVideo();
+        }
       }
     }
   },

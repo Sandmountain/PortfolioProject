@@ -15,7 +15,7 @@
         <v-icon
           :color="projectView === 'carousel' ? 'primary' : null"
           @click="changeView('carousel')"
-          >mdi-view-carousel</v-icon
+          >mdi-view-stream</v-icon
         >
         <v-icon
           :color="projectView === 'grid' ? 'primary' : null"
@@ -25,37 +25,36 @@
         >
         <v-dialog
           v-model="gridView"
-          style="width: 100%; background: white;"
+          content-class="v-dialog--custom"
+          style="background: white;"
           @input="onModalClose"
         >
-          <v-container style="padding: 12px 24px 12px 24px">
+          <v-container style="padding: 12px 24px 12px 24px; width: 100%">
             <span>
-              <p class="font-weight-thin black--text text-center">
+              <p class="h4 black--text text-center">
                 Select a project
               </p>
-              <v-row
-                v-for="(project, i) in thumbnails"
-                :key="i"
-                sm="6"
-                style="padding-top: 0px"
-              >
-                <v-col>
-                  <v-card>
-                    <v-img
-                      :key="project.id"
-                      aspect-ratio="2.5"
-                      style="cursor: pointer;"
-                      :src="
-                        require('../../../assets/project/' + project.thumbnail)
-                      "
-                      @click="gridItemPressed(i)"
-                      @click.stop="
-                        gridView = false;
-                        projectView = 'carousel';
-                      "
-                    />
-                  </v-card>
-                </v-col>
+
+              <v-row sm="2" justify="center">
+                <div
+                  style="width:33.3%; padding: 6px;  "
+                  v-for="(project, i) in thumbnails"
+                  :key="i"
+                >
+                  <v-img
+                    aspect-ratio="1"
+                    :key="project.id"
+                    style="cursor: pointer; height: 100%; border-radius: 6px"
+                    :src="
+                      require('../../../assets/project/' + project.thumbnail)
+                    "
+                    @click="gridItemPressed(i)"
+                    @click.stop="
+                      gridView = false;
+                      projectView = 'carousel';
+                    "
+                  />
+                </div>
               </v-row>
             </span>
           </v-container>
@@ -69,7 +68,7 @@
         sm="12"
         style="padding-bottom: 0px"
       >
-        <v-card class="mx-auto" style="">
+        <v-card class="mx-auto">
           <v-img
             :key="project.id"
             style="width: 100%; height: 100%;"
@@ -77,17 +76,17 @@
             :src="require('../../../assets/project/' + project.thumbnail)"
             @click="slidePressed(i)"
           />
-          <v-card-title>
+          <v-card-title style="">
             <span class="subtitle-1 font-weight-bold text-uppercase ">
               {{ projectData[i].title }}
             </span>
           </v-card-title>
-          <v-card-subtitle>
+          <v-card-subtitle style="padding-top: 0px">
             Tex for later
           </v-card-subtitle>
-          <v-card-actions>
-            <v-btn text color="deep-purple accent-4">
-              Read
+          <v-card-actions style="padding-top: 0px">
+            <v-btn text color="primary">
+              Read More
             </v-btn>
             <v-spacer></v-spacer>
             <span v-if="projectData[i].githubUrl !== null">
@@ -173,14 +172,25 @@ export default {
 
     // gets the height of the 2 tops other divs in the project container
   },
-
+  watch: {
+    showVideo: {
+      handler: function(val) {
+        if (!val) {
+          this.pauseVideo();
+        }
+      }
+    }
+  },
   updated() {},
   methods: {
     getYoutubeID(url) {
       return this.$youtube.getIdFromUrl(url);
     },
+    pauseVideo() {
+      this.$refs.youtube.player.pauseVideo();
+    },
     slidePressed(i) {
-      console.log(i);
+      //console.log(i);
     },
     openNewTab(url) {
       window.open(url, '_blank');
