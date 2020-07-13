@@ -144,6 +144,7 @@ import VueYoutube from 'vue-youtube';
 
 export default {
   name: 'Portfolio',
+
   components: {
     //ProjectContent
   },

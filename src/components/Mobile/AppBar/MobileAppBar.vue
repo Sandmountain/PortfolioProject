@@ -27,7 +27,10 @@
     <div :class="['menu', showMenu ? 'opened-menu' : 'closed-menu']">
       <div class="popup-app-bar-menu">
         <div class="logo-and-title">
-          <img class="logo-image" src="../../../assets/photos/logo.png" />
+          <img
+            class="logo-image"
+            src="../../../assets/photos/logo_primary.png"
+          />
           <p class="font-weight-bold primary--text">VIKTORSANDBERG.COM</p>
         </div>
       </div>
@@ -138,8 +141,10 @@ export default {
       this.icon = this.showMenu ? 'close' : 'menu';
     },
     btnColor() {
-      if (this.showMenu || this.isScroll) {
+      if (this.showMenu) {
         return 'dark-btn-color';
+      } else if (this.isScroll) {
+        return 'primary-btn-color';
       } else {
         return 'white-btn-color';
       }
@@ -255,6 +260,9 @@ export default {
 .white-btn-color {
   color: white !important;
 }
+.primary-btn-color {
+  color: #007399 !important;
+}
 .dark-btn-color {
   color: rgba(0, 0, 0, 0.54) !important;
 }
@@ -284,7 +292,6 @@ export default {
 .menu {
   width: 100%;
   position: fixed;
-  width: 100%;
   background: white;
   top: 0;
   z-index: 10;
@@ -295,7 +302,7 @@ export default {
   top: 0;
 }
 .menu.closed-menu {
-  top: -40vh;
+  top: -50vh;
 }
 
 .main-app-bar {

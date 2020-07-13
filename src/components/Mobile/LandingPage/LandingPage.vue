@@ -37,14 +37,20 @@
         </h2>
       </div>
 
-      <span class="caption swipe-text">
-        <span class="font-weight-light">
-          SWIPE DOWN
-        </span>
-        <div class="arrow bounce">
-          <v-icon class="arrow-icon"> mdi-chevron-down</v-icon>
-        </div>
-      </span>
+      <v-fade-transition>
+        <a
+          v-if="!isScroll"
+          class="caption swipe-text"
+          @click="$vuetify.goTo('#portfolio-id')"
+        >
+          <span class="font-weight-light">
+            SWIPE DOWN
+          </span>
+          <div class="arrow bounce">
+            <v-icon class="arrow-icon"> mdi-chevron-down</v-icon>
+          </div>
+        </a>
+      </v-fade-transition>
     </v-container>
   </div>
 </template>
@@ -111,10 +117,16 @@ export default {
 .title-box {
   margin-top: -150px;
 }
+
+.swipe-text-navigator {
+  text-decoration: none;
+  color: inherit;
+}
+
 .swipe-text {
   bottom: 0;
   position: fixed;
-  color: white;
+  color: white !important;
   opacity: 0.8;
 }
 .arrow-icon {

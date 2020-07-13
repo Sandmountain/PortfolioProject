@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--<AppBar id="app-bar-position" style="opacity: 50" />-->
-    <MobileNavBar :is-scroll="isScroll" />
+    <MobileAppBar :is-scroll="isScroll" />
     <div
       style=" 
     position: fixed;
@@ -25,11 +25,12 @@
             md="8"
             class="right-container"
             :class="[!isScroll ? 'navbar-padding' : '']"
+            id="portfolio-id"
           >
             <v-card class="main-content rounded-corners">
               <span v-if="currentPage == 0">
                 <v-fade-transition>
-                  <MobilePortfolio id="portfolio-id" />
+                  <MobilePortfolio :is-bottom="isBottom" />
                 </v-fade-transition>
               </span>
               <span v-if="currentPage == 1">
@@ -42,6 +43,9 @@
                 />
               </span>
             </v-card>
+            <span>
+              <p>Scroll up</p>
+            </span>
           </v-col>
         </v-row>
       </v-col>
@@ -54,7 +58,7 @@ import Home from '../About/Home';
 import MobileProfileCard from './ProfileCard/MobileProfileCard';
 import LandingPage from './LandingPage/LandingPage';
 import MobilePortfolio from './Portfolio/MobilePorfolio';
-import MobileNavBar from './AppBar/MobileAppBar';
+import MobileAppBar from './AppBar/MobileAppBar';
 import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
 import AppBar from './AppBar/AppBar';
 
@@ -62,7 +66,7 @@ export default {
   components: {
     Home,
     MobilePortfolio,
-    MobileNavBar,
+    MobileAppBar,
     //MobileProfileCard,
     LandingPage,
     FilteredPortfolio
@@ -73,7 +77,8 @@ export default {
     return {
       currentPage: 0,
       filterData: null,
-      isScroll: false
+      isScroll: false,
+      isBottom: false
     };
   },
   mounted() {
