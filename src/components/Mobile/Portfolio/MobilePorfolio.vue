@@ -68,13 +68,16 @@
         sm="12"
         style="padding-bottom: 0px"
       >
-        <v-card :id="createProjectID(projectData[i].title)" class="mx-auto">
+        <v-card
+          :id="createProjectID(projectData[i].title)"
+          class="mx-auto card-list"
+        >
           <v-img
             :key="project.id"
             style="width: 100%; height: 100%;"
             class="list-thumbnail"
             :src="require('../../../assets/project/' + project.thumbnail)"
-            @click="(currentProject = projectData[i]), (showProject = true)"
+            @click="(currentProject = projectData[i]), toggleContentDialog()"
           />
           <v-card-title style="">
             <span class="subtitle-1 font-weight-bold text-uppercase ">
@@ -91,7 +94,7 @@
               @click="
                 scrollToID(createProjectID(projectData[i].title)),
                   (currentProject = projectData[i]),
-                  (showProject = true)
+                  toggleContentDialog()
               "
             >
               Read More
@@ -134,11 +137,23 @@
         </v-card>
       </v-col>
     </div>
-    <v-dialog v-model="showVideo" width="80%" :scrollable="false">
-      <youtube :video-id="currentVideo" ref="youtube" :resize="true"></youtube>
+    <v-dialog
+      content-class="mobile__video-dialog"
+      v-model="showVideo"
+      width="100%"
+      :scrollable="false"
+    >
+      <youtube :video-id="currentVideo" ref="youtube"></youtube>
     </v-dialog>
-    <v-dialog v-model="showProject" fullscreen="" :scrollable="false">
-      <MobileProjectDialog :current-project="currentProject" />
+    <v-dialog
+      content-class="mobile__content-dialog"
+      :scrollable="false"
+      v-model="showProject"
+    >
+      <MobileProjectDialog
+        :current-project="currentProject"
+        :toggle-content-dialog="toggleContentDialog"
+      />
     </v-dialog>
     <div class="project-content">
       <p>Text and all</p>
@@ -195,6 +210,9 @@ export default {
   },
   updated() {},
   methods: {
+    toggleContentDialog() {
+      this.showProject = !this.showProject;
+    },
     getYoutubeID(url) {
       return this.$youtube.getIdFromUrl(url);
     },
@@ -246,13 +264,6 @@ export default {
   box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 
-.list-box {
-  background-color: #474747;
-  border-style: solid;
-  border-color: #00000030;
-  border-width: 1px;
-}
-
 .project-content {
   padding: 0px 12px;
   margin-bottom: 10px;
@@ -263,61 +274,16 @@ export default {
   box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 
-.hooper-slide.is-current {
-  background: #007399;
-}
-.list-box:hover {
-  background-color: #ffffff;
-  cursor: pointer;
-}
-.scroll-thumbnail {
-  border-color: #474747;
-  border-width: 2px;
-  background: #474747;
-  box-shadow: 0px 0px 0px 2px #474747;
-}
 .list-track {
   width: 100%;
   background: #d1d1d1;
   padding-bottom: 12px;
 }
-
-/* Horizontal lines titles */
-.title-h2 {
-  font-size: 1.6rem;
-  z-index: 1 !important;
-  position: relative;
+.card-list {
+  overflow: hidden;
 }
-.title-h2 .right {
-  z-index: 1 !important;
-  background-color: white;
-  padding-right: 10px;
-}
-.title-h2 .left {
-  background-color: white;
-  padding-left: 10px;
-}
-.title-h2:after {
-  background-color: white;
-  content: '';
-  position: absolute;
-  bottom: 0.25em;
-  left: 0;
-  right: 0;
-  height: 0.5em;
-  border-top: 1px solid black;
-  z-index: -1;
-}
-
-.arrow-next {
-  position: absolute;
-  left: 100%;
-  margin: 36px 1vw;
-}
-.arrow-previous {
-  position: absolute;
-  right: 100%;
-  margin: 36px 1vw;
+.list-thumbnail {
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive layout */

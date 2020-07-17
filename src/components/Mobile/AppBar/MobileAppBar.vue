@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div style="position: absolute; z-index: 40; ">
+    <div style="position: absolute; z-index: 20; ">
       <div style="top: -1px; right: 0; position: fixed; margin: 1em  ">
         <v-fade-transition>
           <v-btn
@@ -31,13 +31,16 @@
             class="logo-image"
             src="../../../assets/photos/logo_primary.png"
           />
-          <p class="font-weight-bold primary--text">VIKTORSANDBERG.COM</p>
+          <p class="font-weight-bold" style="color: rgba(0, 0, 0, 0.54)">
+            VIKTORSANDBERG.COM
+          </p>
         </div>
       </div>
 
       <v-card-text class="menu-search" style=" padding: 16px; ">
         <v-combobox
           v-model="query"
+          solo
           style="background: white;"
           outlined
           dense
@@ -158,6 +161,7 @@ export default {
     queryMessage(message) {
       return message.length < 35 ? message : message.slice(0, 35) + '...';
     },
+
     startQuery() {
       if (this.query !== '' && this.query) {
         this.snackbarMessage = this.query;
@@ -187,7 +191,9 @@ export default {
 
         console.log(testArr);
         this.hideMenu();
+        document.activeElement.blur();
         this.snackbar = true;
+
         this.$vuetify.goTo('#portfolio-id');
         //this.changeFilterPage(3, { data: testArr, query: this.query });
       }
@@ -252,7 +258,7 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 5;
+  z-index: 10;
   transition: opacity 0.2s ease;
   background-color: rgb(33, 33, 33);
 }
@@ -278,11 +284,12 @@ export default {
   height: 36px;
   widows: 36px;
   box-shadow: 0px 0px 4px #5f686b;
+  z-index: 20;
 }
 
 .fab-btn {
   transition: all 0.1s ease-in-out;
-  z-index: 110;
+  z-index: 20;
   color: #007399;
   border-radius: 50%;
   height: 24px;
@@ -294,12 +301,14 @@ export default {
   position: fixed;
   background: white;
   top: 0;
-  z-index: 10;
+  z-index: 19;
   transition: all 0.4s ease;
 }
 
 .menu.opened-menu {
   top: 0;
+  touch-action: none;
+  overflow: hidden;
 }
 .menu.closed-menu {
   top: -100vh;

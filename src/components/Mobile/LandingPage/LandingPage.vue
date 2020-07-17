@@ -41,7 +41,7 @@
           class="caption swipe-text"
           @click="$vuetify.goTo('#portfolio-id')"
         >
-          <span class="font-weight-light">
+          <span class="font-weight-light " style="user-select: none;">
             SWIPE DOWN
           </span>
           <div class="arrow bounce">

@@ -11,7 +11,7 @@
         VIKTOR SANDBERG
       </p>
       <p class="subtitle-2 font-weight-medium primary--text sub-text">
-        M.Sc student with a large interest for UI/UX and Web Development.
+        Creative developer with a big passion for Design and UX.
       </p>
 
       <p style="font-size: 10pt; text-align: left; margin-top: 2vw;">

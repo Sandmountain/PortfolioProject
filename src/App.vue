@@ -1,8 +1,6 @@
 <template>
   <v-app id="main-app">
-    <!-- <div class="background-fill-secondary" /> -->
-    <div class="backgroundImage" />
-    <!-- <div class="background-fill" /> -->
+    <div class="background-gradient " />
     <div class="background-image-cropped" />
     <span
       v-if="isMobile() || $vuetify.breakpoint.smAndDown"
@@ -43,6 +41,23 @@ export default {
 };
 </script>
 <style>
+/* Custom dialogs */
+.mobile__video-dialog {
+  background-color: black !important;
+}
+.mobile__content-dialog {
+  width: 100% !important;
+  height: 100vh;
+  max-height: 100% !important;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0;
+}
+/* overides */
+.v-autocomplete__content {
+  height: calc((32px * 5) + 8px);
+}
+
 .v-dialog--custom {
   width: 100% !important;
   max-height: 70% !important;
@@ -86,8 +101,8 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.backgroundImage {
-  position: fixed;
+.background-gradient {
+  position: absolute;
   width: 100%;
   height: 100%;
 
@@ -140,7 +155,7 @@ export default {
 
 /* CSS overrides */
 .v-dialog--active {
-  background: rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 1);
   width: 60%;
 }
 

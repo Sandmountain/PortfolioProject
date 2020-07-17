@@ -24,11 +24,11 @@
           <v-card class="main-content rounded-corners">
             <span v-if="currentPage == 0">
               <v-fade-transition>
-                <Portfolio />
+                <Home style="height: 100%" :change-page="updateNav" />
               </v-fade-transition>
             </span>
             <span v-if="currentPage == 1">
-              <Home style="height: 100%" :change-page="updateNav" />
+              <Portfolio />
             </span>
             <span v-if="currentPage == 3">
               <FilteredPortfolio
@@ -45,7 +45,7 @@
 
 <script>
 import ProfileCard from './Profile/ProfileCard';
-import Home from './About/Home';
+import Home from './Home/Home';
 import NavigatorMenu from './Navigator/NavigatorMenu';
 import Portfolio from './Portfolio/Portfolio';
 import FilteredPortfolio from './Portfolio/FilteredPortfolio';

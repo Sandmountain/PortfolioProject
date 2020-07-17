@@ -59,26 +59,19 @@
 </template>
 
 <script>
-import Home from '../About/Home';
-import MobileProfileCard from './ProfileCard/MobileProfileCard';
 import LandingPage from './LandingPage/LandingPage';
 import LandscapeLandingPage from './LandingPage/LandscapeLandingPage';
 import MobilePortfolio from './Portfolio/MobilePorfolio';
 import MobileAppBar from './AppBar/MobileAppBar';
 import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
-import AppBar from './AppBar/AppBar';
 
 export default {
   components: {
-    Home,
     MobilePortfolio,
     MobileAppBar,
     LandscapeLandingPage,
-    //MobileProfileCard,
     LandingPage,
     FilteredPortfolio
-
-    //AppBar
   },
   data() {
     return {
