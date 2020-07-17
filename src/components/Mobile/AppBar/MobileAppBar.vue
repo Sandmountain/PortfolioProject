@@ -302,7 +302,7 @@ export default {
   top: 0;
 }
 .menu.closed-menu {
-  top: -50vh;
+  top: -100vh;
 }
 
 .main-app-bar {

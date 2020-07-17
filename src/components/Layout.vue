@@ -2,7 +2,7 @@
   <div style="width: 90%">
     <v-col cols="12">
       <v-row align="center">
-        <v-col cols="12" xl="3" md="4" class="left-container">
+        <v-col cols="12" xl="3" lg="3" md="4" class="left-container">
           <v-card
             class="profile-card rounded-corners"
             style="overflow: hidden; "
@@ -12,7 +12,7 @@
         </v-col>
         <v-spacer></v-spacer>
 
-        <v-col cols="12" xl="9" md="8" class="right-container">
+        <v-col cols="12" xl="9" lg="9" md="8" class="right-container">
           <v-card class="rounded-corners ">
             <NavigatorMenu
               class="nav-menu"

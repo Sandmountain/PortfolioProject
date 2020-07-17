@@ -13,8 +13,8 @@
 
       <div class="pb-0 pt-0 text-right">
         <v-icon
-          :color="projectView === 'carousel' ? 'primary' : null"
-          @click="changeView('carousel')"
+          :color="projectView === 'list' ? 'primary' : null"
+          @click="changeView('list')"
           >mdi-view-stream</v-icon
         >
         <v-icon
@@ -48,10 +48,10 @@
                     :src="
                       require('../../../assets/project/' + project.thumbnail)
                     "
-                    @click="gridItemPressed(i)"
+                    @click="scrollToID(createProjectID(projectData[i].title))"
                     @click.stop="
                       gridView = false;
-                      projectView = 'carousel';
+                      projectView = 'list';
                     "
                   />
                 </div>
@@ -61,20 +61,20 @@
         </v-dialog>
       </div>
     </div>
-    <div class="carousel-track">
+    <div class="list-track">
       <v-col
         v-for="(project, i) in thumbnails"
         :key="i"
         sm="12"
         style="padding-bottom: 0px"
       >
-        <v-card class="mx-auto">
+        <v-card :id="createProjectID(projectData[i].title)" class="mx-auto">
           <v-img
             :key="project.id"
             style="width: 100%; height: 100%;"
-            class="carousel-thumbnail"
+            class="list-thumbnail"
             :src="require('../../../assets/project/' + project.thumbnail)"
-            @click="slidePressed(i)"
+            @click="(currentProject = projectData[i]), (showProject = true)"
           />
           <v-card-title style="">
             <span class="subtitle-1 font-weight-bold text-uppercase ">
@@ -85,7 +85,15 @@
             Tex for later
           </v-card-subtitle>
           <v-card-actions style="padding-top: 0px">
-            <v-btn text color="primary">
+            <v-btn
+              text
+              color="primary"
+              @click="
+                scrollToID(createProjectID(projectData[i].title)),
+                  (currentProject = projectData[i]),
+                  (showProject = true)
+              "
+            >
               Read More
             </v-btn>
             <v-spacer></v-spacer>
@@ -97,16 +105,15 @@
               </span>
             </span>
             <span v-if="projectData[i].screencast !== null">
-              <v-btn @click.stop="showVideo = true" icon>
+              <v-btn
+                @click.stop="
+                  (showVideo = true),
+                    (currentVideo = getYoutubeID(projectData[i].screencast))
+                "
+                icon
+              >
                 <v-icon>mdi-youtube</v-icon>
               </v-btn>
-              <v-dialog v-model="showVideo" width="80%" :scrollable="true">
-                <youtube
-                  :video-id="getYoutubeID(projectData[i].screencast)"
-                  ref="youtube"
-                  :resize="true"
-                ></youtube>
-              </v-dialog>
             </span>
             <span v-if="projectData[i].demoUrl !== null">
               <v-btn icon @click.stop="openNewTab(projectData[i].demoUrl)">
@@ -127,6 +134,12 @@
         </v-card>
       </v-col>
     </div>
+    <v-dialog v-model="showVideo" width="80%" :scrollable="false">
+      <youtube :video-id="currentVideo" ref="youtube" :resize="true"></youtube>
+    </v-dialog>
+    <v-dialog v-model="showProject" fullscreen="" :scrollable="false">
+      <MobileProjectDialog :current-project="currentProject" />
+    </v-dialog>
     <div class="project-content">
       <p>Text and all</p>
     </div>
@@ -135,43 +148,41 @@
 
 <script>
 //import ProjectContent from '../../Portfolio/ProjectContent';
+import MobileProjectDialog from './MobileProjectDialog';
 
 // eslint-disable-next-line no-undef
 let projectData = require('../../../assets/project/projects.json');
 
-/*const relativePath = '../../assets/project/';*/
+//const relativePath = '../../assets/project/';
 import VueYoutube from 'vue-youtube';
 
 export default {
   name: 'Portfolio',
-
   components: {
-    //ProjectContent
+    MobileProjectDialog
   },
   data() {
     return {
-      projectView: 'carousel',
+      projectView: 'list',
       styledObject: {},
-      carouselData: 0,
-      carouselIndex: 0,
+      listData: 0,
+      listIndex: 0,
       currentProject: {},
-
+      currentVideo: 0,
       thumbnails: [],
       initialThumbnails: [],
       projectData,
+      showProject: false,
       gridView: false,
-      showCarousel: true,
+      showlist: true,
       showVideo: false
     };
   },
   created() {
     projectData = projectData.reverse();
     this.currentProject = projectData[0];
-
     this.parseThumbnails();
     this.initialThumbnails = this.thumbnails;
-
-    // gets the height of the 2 tops other divs in the project container
   },
   watch: {
     showVideo: {
@@ -190,8 +201,15 @@ export default {
     pauseVideo() {
       this.$refs.youtube.player.pauseVideo();
     },
-    slidePressed(i) {
-      //console.log(i);
+    createProjectID(title) {
+      return title.split(' ').join('-');
+    },
+    scrollToID(ID) {
+      this.$vuetify.goTo('#' + ID, {
+        duration: 250,
+        offset: 12,
+        easing: 'easeInOutCubic'
+      });
     },
     openNewTab(url) {
       window.open(url, '_blank');
@@ -200,7 +218,7 @@ export default {
       this.projectView = view;
     },
     onModalClose() {
-      this.projectView = 'carousel';
+      this.projectView = 'list';
     },
     parseThumbnails() {
       this.thumbnails = projectData.map(project => ({
@@ -228,7 +246,7 @@ export default {
   box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 
-.carousel-box {
+.list-box {
   background-color: #474747;
   border-style: solid;
   border-color: #00000030;
@@ -248,7 +266,7 @@ export default {
 .hooper-slide.is-current {
   background: #007399;
 }
-.carousel-box:hover {
+.list-box:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
@@ -258,7 +276,7 @@ export default {
   background: #474747;
   box-shadow: 0px 0px 0px 2px #474747;
 }
-.carousel-track {
+.list-track {
   width: 100%;
   background: #d1d1d1;
   padding-bottom: 12px;
@@ -320,166 +338,3 @@ export default {
   }
 }
 </style>
-
-<!--
-<v-carousel height="100px" hide-delimiter-background color="primary" show-arrows-on-hover>
-      <v-carousel-item style="padding: 0 13vw 13vw">
-        <v-row justify="center">
-          <v-col cols="12" xs="6" md="2" v-for="i in 5 " :key="i">
-            <v-card class="thumbnail-paper">{{i + " side"}}</v-card>
-          </v-col>
-        </v-row>
-      </v-carousel-item>
-      <v-carousel-item style="padding: 0 13vw 13vw">
-        <v-row justify="center">
-          <v-col cols="12" xs="6" md="2" v-for="i in 5 " :key="i">
-            <v-card class="thumbnail-paper">{{i + " paper"}}</v-card>
-          </v-col>
-        </v-row>
-      </v-carousel-item>
-    </v-carousel>
-
-
--->
-
-<!--- Main
-
-  <v-container fill-height style="padding: 0">
-    <div class="title-container">
-      <v-col md="12">
-
-      </v-col>
-
-
-    </div>
-    <div class="carousel-track">
-      <v-col md="11" style="margin: 0px auto; ">
-        <div style="position: relative;">
-          <div class="arrow-previous hidden-sm-and-down">
-            <v-btn
-              icon
-              small
-              color="white"
-              style="background:#474747 "
-              @click.prevent="slidePrev"
-            >
-              <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
-          </div>
-          <div class="arrow-next hidden-sm-and-down">
-            <v-btn
-              icon
-              small
-              color="white"
-              style="background:#474747 "
-              @click.prevent="slideNext"
-            >
-              <v-icon>mdi-chevron-right</v-icon>
-            </v-btn>
-          </div>
-        </div>
-        <hooper
-          ref="carousel"
-          :settings="hooperSettings"
-          class="scroll-thumbnail"
-          style="height: 100px; "
-          @slide="updateCarousel"
-        >
-          <slide
-            v-for="(project, i) in thumbnails"
-            :key="i"
-            class="carousel-box"
-          >
-            <v-img
-              :key="project.id"
-              style="width: 100%; height: 100%;  "
-              class="carousel-thumbnail"
-              :src="require('../../assets/project/' + project.thumbnail)"
-              @click="slidePressed(i)"
-            />
-          </slide>
-        </hooper>
-      </v-col>
-    </div>
-    <v-container class="project-box">
-      <span v-if="$vuetify.breakpoint.smAndUp">
-        <v-row no-gutters class="project-row">
-          <v-col md="6" sm="12" no-gutters>
-            <h2 class="project-title-h2">
-              <span class="font-weight-black right">{{
-                currentProject.title.toUpperCase()
-              }}</span>
-            </h2>
-
-            <p
-              class="body-2 font-weight-light"
-              style="text-align: left; padding-top: 10px"
-            >
-              {{ currentProject.description }}
-            </p>
-          </v-col>
-          <v-col md="6" sm="12" no-gutters>
-            <v-img
-              style="cursor: pointer;"
-              aspect-ratio="4.8"
-              :src="require('../../assets/project/' + currentProject.thumbnail)"
-              @click.stop="dialog = true"
-            />
-
-            <v-dialog v-model="dialog" max-width="100%" :scrollable="true">
-              <v-img
-                :src="
-                  require('../../assets/project/' + currentProject.thumbnail)
-                "
-              />
-            </v-dialog>
-            <div style="text-align: center">
-              <span v-for="(language, i) in currentProject.keywords" :key="i">
-                <span class="caption">{{ language + ", " }}</span>
-               BYT UT MOT ICONER HÄR
-              </span>
-            </div>
-          </v-col>
-        </v-row>
-      </span>
-      <span v-else>
-        <v-row no-gutters class="project-row">
-          <v-col style="padding: 15px" md="6" sm="12" no-gutters>
-            <span class="font-weight-black right">{{
-              currentProject.title.toUpperCase()
-            }}</span>
-
-            <p style="text-align: left; padding-top: 10px">
-              {{ currentProject.description }}
-            </p>
-            <v-btn tile color="primary">Read more</v-btn>
-          </v-col>
-        </v-row>
-      </span>
-    </v-container>
-    <div
-      style="position: relative;
-     "
-    >
-      <div style="position: absolute; right:0; bottom:0">
-        <v-btn tile color="primary">Read more</v-btn>
-      </div>
-    </div>
-  </v-container>
--->
-
-<!-- Show Icons (fixa så att ikoner fungerar) byt ut alla så att de passar in
-                <span v-if="language.icon !== null">
-                <v-tooltip bottom style="padding: 5px 10px !important">
-                  <template v-slot:activator="{ on }">
-                    <v-icon style="padding: 5px" v-on="on" :class="language.icon" />
-                  </template>
-                  <span class="caption">{{language.name}}</span>
-                </v-tooltip>
-              </span>
-              <span v-else>
-                <v-img
-                  style="; position: absolute"
-                  :src="require('../../assets/' +  language.img)"
-                />
-                </span>-->

@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- position: absolute; -->
-
-    <!-- style="clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)"
-    style=" clip-path: polygon(50% 0%, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0)"-->
     <v-img
       src="../../assets/photos/banner.jpg"
       :aspect-ratio="1.8"
@@ -120,7 +116,7 @@ export default {
     margin-top: -130px;
   }
 }
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 1650px) {
   .profile-picture {
     top: -100px;
   }

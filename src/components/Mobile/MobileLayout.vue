@@ -3,29 +3,34 @@
     <!--<AppBar id="app-bar-position" style="opacity: 50" />-->
     <MobileAppBar :is-scroll="isScroll" />
     <div
-      style=" 
+      id="top-position"
+      style="
     position: fixed;
     top: 0px;
     width: 100%;
     z-index: 200
      "
-      id="top-position"
     ></div>
 
     <div style="width: 100%; padding-top: 0px">
       <v-col cols="12" style=" padding-top: 0px">
         <v-row>
           <v-col cols="12" style="height: 100vh; padding: 0px">
-            <LandingPage :is-scroll="isScroll" id="home-id" />
+            <span v-if="!isLandscaped">
+              <LandingPage id="home-id" :is-scroll="isScroll" />
+            </span>
+            <span v-else>
+              <LandscapeLandingPage id="home-id" :is-scroll="isScroll" />
+            </span>
           </v-col>
 
           <v-col
+            id="portfolio-id"
             cols="12"
             xl="9"
             md="8"
             class="right-container"
             :class="[!isScroll ? 'navbar-padding' : '']"
-            id="portfolio-id"
           >
             <v-card class="main-content rounded-corners">
               <span v-if="currentPage == 0">
@@ -57,6 +62,7 @@
 import Home from '../About/Home';
 import MobileProfileCard from './ProfileCard/MobileProfileCard';
 import LandingPage from './LandingPage/LandingPage';
+import LandscapeLandingPage from './LandingPage/LandscapeLandingPage';
 import MobilePortfolio from './Portfolio/MobilePorfolio';
 import MobileAppBar from './AppBar/MobileAppBar';
 import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
@@ -67,6 +73,7 @@ export default {
     Home,
     MobilePortfolio,
     MobileAppBar,
+    LandscapeLandingPage,
     //MobileProfileCard,
     LandingPage,
     FilteredPortfolio
@@ -78,13 +85,31 @@ export default {
       currentPage: 0,
       filterData: null,
       isScroll: false,
-      isBottom: false
+      isBottom: false,
+      isLandscaped: false
     };
   },
   mounted() {
     this.scroll();
+
+    if (window.screen.orientation.type === 'landscape-primary') {
+      this.editForSmallScreen(window.screen.height);
+    }
+    window.addEventListener('orientationchange', this.handleOrientationChange);
   },
   methods: {
+    editForSmallScreen(height) {
+      if (height < 450) {
+        this.isLandscaped = true;
+      }
+    },
+    handleOrientationChange() {
+      if (window.screen.orientation.type === 'landscape-primary') {
+        this.editForSmallScreen(window.screen.height);
+      } else {
+        this.isLandscaped = false;
+      }
+    },
     changeFilterPage(i, data) {
       this.currentPage = i;
       this.filterData = data;

@@ -4,7 +4,10 @@
     <div class="backgroundImage" />
     <!-- <div class="background-fill" /> -->
     <div class="background-image-cropped" />
-    <span v-if="$vuetify.breakpoint.smAndDown" style="height: 100%">
+    <span
+      v-if="isMobile() || $vuetify.breakpoint.smAndDown"
+      style="height: 100%"
+    >
       <MobileLayout class="mobile-body-container" />
     </span>
     <span v-else style="height: 100%">
@@ -19,21 +22,24 @@
 //import BottomNavBar from './components/AppBar/BottomNavBar';
 import Layout from './components/Layout.vue';
 import MobileLayout from './components/Mobile/MobileLayout';
+import { isMobileOnly } from 'mobile-device-detect';
 
 //import AppBar from './components/AppBar/AppBar';
 export default {
   name: 'App',
-
   components: {
     Layout,
-    //BottomNavBar,
-
     MobileLayout
   },
 
   data: () => ({
     //
-  })
+  }),
+  methods: {
+    isMobile() {
+      return isMobileOnly;
+    }
+  }
 };
 </script>
 <style>

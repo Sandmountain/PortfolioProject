@@ -16,6 +16,7 @@
     "gh-pages": "^3.1.0",
     "hooper": "^0.3.4",
     "minimist": ">=1.2.2",
+    "mobile-device-detect": "^0.4.3",
     "vue": "^2.6.10",
     "vue-material-design-icons": "^4.4.0",
     "vue-parallaxy": "^1.1.1",

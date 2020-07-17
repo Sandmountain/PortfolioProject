@@ -48,7 +48,7 @@
             >
               <span v-if="index === activeIndex">
                 <v-img
-                  :src="require('../../assets/project/' + image)"
+                  :src="require('../../../assets/project/' + image)"
                   :alt="currentProject.title"
                   style="cursor: pointer"
                   class="slideshow-image slideshow-selected-image"
@@ -59,7 +59,7 @@
               <span v-else>
                 <v-img
                   style="cursor: pointer"
-                  :src="require('../../assets/project/' + image)"
+                  :src="require('../../../assets/project/' + image)"
                   :alt="currentProject.title"
                   class="slideshow-image"
                   aspect-ratio="1"
@@ -85,7 +85,8 @@
               </v-btn>
               <v-img
                 :src="
-                  require('../../assets/project/' + imageArray.src[activeIndex])
+                  require('../../../assets/project/' +
+                    imageArray.src[activeIndex])
                 "
                 :alt="imageArray.legend[activeIndex]"
               />
@@ -94,7 +95,8 @@
             <v-img
               style="cursor: pointer"
               :src="
-                require('../../assets/project/' + imageArray.src[activeIndex])
+                require('../../../assets/project/' +
+                  imageArray.src[activeIndex])
               "
               :alt="imageArray.legend[activeIndex]"
               @click.stop="fullscreenImageDialog = true"
@@ -145,7 +147,7 @@
                   <v-img
                     class="tooltip-icon"
                     style="; height: 26px; width: 25px; margin: 3px 0px 0px 3px; "
-                    :src="require('../../assets/' + language.img)"
+                    :src="require('../../../assets/' + language.img)"
                     :alt="language.name"
                   />
                   <span

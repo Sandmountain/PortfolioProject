@@ -10,7 +10,6 @@
         aspect-ratio="1"
         class="profile-picture"
       />
-
       <h1
         class="font-weight-black white--text"
         style="font-size: 2.2rem; line-height: 0.8; text-align: center; padding-top: 12px "
@@ -36,7 +35,6 @@
           </v-btn>
         </h2>
       </div>
-
       <v-fade-transition>
         <a
           v-if="!isScroll"
@@ -56,7 +54,14 @@
 </template>
 
 <script>
+import LandscapeLandingPage from './LandscapeLandingPage';
+import ProfileLandingPage from './ProfileLandingPage';
+
 export default {
+  components: {
+    //LandscapeLandingPage,
+    //ProfileLandingPage
+  },
   props: ['isScroll'],
   data() {
     return {};
@@ -77,10 +82,9 @@ export default {
 
 <style scoped>
 .profile-picture {
-  width: 50vw;
+  width: 50%;
   z-index: 3;
 }
-
 .landing-container {
   display: flex;
   flex-direction: column;
