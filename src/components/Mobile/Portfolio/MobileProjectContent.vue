@@ -1,92 +1,122 @@
 <template>
-  <div
-    class="font-weight-regular project-description"
-    style="overflow-wrap:auto;"
-  >
-    <p
-      class="font-weight-bold text-uppercase primary--text"
-      style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
-    >
-      about the project
-    </p>
-
-    <p class="text--primary">
-      {{ currentProject.description }}
-    </p>
-    <v-col justify="end">
-      <v-row align="center" justify="space-between">
-        <v-col
-          v-for="(image, index) in imageArray.src"
-          :key="index"
-          sm="2"
-          class="slideshow-image"
-          style="padding: 4px 0px; max-width: 65px"
+  <div class="font-weight-regular project-description">
+    <v-row class="thumbnail-image-container">
+      <v-img
+        :src="require('../../../assets/project/' + currentProject.thumbnail)"
+      >
+      </v-img>
+    </v-row>
+    <div class="project-meta-container">
+      <div class="meta-text">
+        <span class="overline ">Project size: {{ projectSize() }}</span>
+        <span class="overline "
+          ><v-icon x-small>mdi-clock</v-icon>{{ ' ' + timeToRead() }} min
+          read</span
         >
-          <span v-if="index === activeIndex">
-            <v-img
-              :src="require('../../../assets/project/' + image)"
-              :alt="currentProject.title"
-              style="cursor: pointer"
-              class="slideshow-image slideshow-selected-image"
-              aspect-ratio="1"
-              @click.stop="selectImage(index)"
-            />
+      </div>
+      <div class="resources">
+        <span v-if="currentProject.githubUrl !== null">
+          <span class="font-weight-black left">
+            <v-btn
+              color="primary"
+              icon
+              @click="openNewTab(currentProject.githubUrl)"
+            >
+              <v-icon>mdi-github</v-icon>
+            </v-btn>
           </span>
-          <span v-else>
+        </span>
+        <span v-if="currentProject.screencast !== null">
+          <v-btn color="primary" icon @click.stop="showVideo = true">
+            <v-icon>mdi-youtube</v-icon>
+          </v-btn>
+
+          <v-dialog
+            v-model="showVideo"
+            content-class="mobile__video-dialog"
+            width="80%"
+            :scrollable="true"
+          >
+            <youtube
+              ref="youtube"
+              :video-id="getYoutubeID(currentProject.screencast)"
+              :resize="true"
+            ></youtube>
+          </v-dialog>
+        </span>
+        <span v-if="currentProject.demoUrl !== null">
+          <!-- TODO: Fixa en popup om de leder till ny sida -->
+          <v-btn
+            icon
+            color="primary"
+            @click.stop="openNewTab(currentProject.demoUrl)"
+          >
+            <v-icon>mdi-web</v-icon>
+          </v-btn>
+        </span>
+        <span v-if="currentProject.report !== null">
+          <v-btn
+            icon
+            color="primary"
+            @click.prevent="openNewTab(currentProject.report)"
+          >
+            <v-icon>mdi-file-document</v-icon>
+          </v-btn>
+        </span>
+        <span v-if="currentProject.courseUrl !== null">
+          <v-btn
+            icon
+            color="primary"
+            @click.stop="openNewTab(currentProject.courseUrl)"
+          >
+            <v-icon>mdi-school</v-icon>
+          </v-btn>
+        </span>
+      </div>
+    </div>
+    <div class="padded-section description-container">
+      <p
+        class="font-weight-bold text-uppercase primary--text "
+        style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin-bottom: 24px; padding-top: 12px "
+      >
+        about the project
+      </p>
+
+      <p class="text--primary ">
+        {{ currentProject.description }}
+      </p>
+    </div>
+    <v-col class="hooper-mobile-projects" style="padding: 0; margin: 0">
+      <Swiper
+        ref="swiperComponent"
+        class="swiper"
+        :options="swiperOption"
+        @click.native="handleSwiperDOMClick"
+        @slideChange="changeSwiperIndex"
+      >
+        <SwiperSlide v-for="(image, index) in imageArray.src" :key="index"
+          ><v-card style="overflow:hidden" class="carousel-image-card">
+            <v-btn class="fullscreen-icon" icon @click="selectImage(index)">
+              <v-icon small>mdi-fullscreen</v-icon>
+            </v-btn>
+
             <v-img
-              style="cursor: pointer"
               :src="require('../../../assets/project/' + image)"
               :alt="currentProject.title"
               class="slideshow-image"
-              aspect-ratio="1"
-              @click.stop="selectImage(index)"
-            />
-          </span>
-        </v-col>
-      </v-row>
-      <v-row justify="center" align="center">
-        <v-dialog
-          overlay-opacity="0.9"
-          v-model="fullscreenImageDialog"
-          scrollable
-        >
-          <v-btn
-            absolute
-            fab
-            small
-            style="top: 10px; right: 10px;"
-            @click.stop="fullscreenImageDialog = false"
-          >
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <v-img
-            :src="
-              require('../../../assets/project/' + imageArray.src[activeIndex])
-            "
-            :alt="imageArray.legend[activeIndex]"
-          />
-        </v-dialog>
+            /> </v-card
+        ></SwiperSlide>
+        <div slot="pagination" class="swiper-pagination"></div>
+      </Swiper>
 
-        <v-img
-          style="cursor: pointer"
-          :src="
-            require('../../../assets/project/' + imageArray.src[activeIndex])
-          "
-          :alt="imageArray.legend[activeIndex]"
-          @click.stop="fullscreenImageDialog = true"
-        />
-        <div
-          class="text-center"
-          style="font-size: 10pt; margin-top: 10px; width: 80%"
+      <div class="text-center padded-section" style="font-size: 10pt;  ">
+        <span class="font-weight-bold ">
+          {{ 'Figure ' + (activeIndex + 1) + ': ' }}
+        </span>
+        <span class="font-weight-regular ">
+          {{ imageArray.legend[activeIndex] }}</span
         >
-          <span class="font-weight-bold ">
-            {{ 'Figure ' + (activeIndex + 1) + ': ' }}
-          </span>
-          <span class="font-weight-regular ">
-            {{ imageArray.legend[activeIndex] }}</span
-          >
-        </div>
-      </v-row>
+      </div>
     </v-col>
 
     <p
@@ -96,170 +126,184 @@
       The Development
     </p>
 
-    <p class="text--primary">
+    <p class="text--primary padded-section">
       {{ currentProject.development }}
     </p>
-    <v-row>
-      <v-col md="5.5">
-        <span>
-          <p
-            class="font-weight-bold text-uppercase primary--text"
-            style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
-          >
-            Languages used
-          </p>
-
-          <span class="language-icons">
-            <span v-for="(language, i) in currentProject.languages" :key="i">
-              <span v-if="language.icon !== null">
-                <div class="tooltip">
-                  <v-icon
-                    class="tooltip-icon"
-                    style="padding: 5px"
-                    :class="language.icon"
-                  />
-                  <span
-                    class="tooltiptext tooltip-bottom font-weight-black caption"
-                  >
-                    {{ language.name }}
-                  </span>
-                </div>
-              </span>
-              <span v-else>
-                <div class="tooltip">
-                  <v-img
-                    class="tooltip-icon"
-                    style="; height: 26px; width: 25px; margin: 3px 0px 0px 3px; "
-                    :src="require('../../../assets/' + language.img)"
-                    :alt="language.name"
-                  />
-                  <span
-                    class="tooltiptext tooltip-bottom font-weight-black caption"
-                  >
-                    {{ language.name }}
-                  </span>
-                </div>
-              </span>
-            </span>
-          </span>
-        </span>
-      </v-col>
-      <v-col md="1" class="center-line">
-        <v-divider vertical />
-      </v-col>
-      <v-col md="5.5" class="keyword-container" align="center">
+    <v-col md="5.5">
+      <span>
         <p
           class="font-weight-bold text-uppercase primary--text"
           style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
         >
-          Resources
+          Languages used
         </p>
-        <span v-if="currentProject.githubUrl !== null" class="tooltip">
-          <span class="font-weight-black left">
-            <v-btn icon @click="openNewTab(currentProject.githubUrl)">
-              <v-icon>mdi-github</v-icon>
-            </v-btn>
-          </span>
-          <span class="tooltiptext tooltip-bottom font-weight-black caption">
-            Github Repo
-          </span>
-        </span>
-        <span v-if="currentProject.screencast !== null" class="tooltip">
-          <v-btn @click.stop="showVideo = true" icon>
-            <v-icon>mdi-youtube</v-icon>
-          </v-btn>
-          <span class="tooltiptext tooltip-bottom font-weight-black caption">
-            Play Screencast
-          </span>
-          <v-dialog v-model="showVideo" width="80%" :scrollable="true">
-            <youtube
-              :video-id="getYoutubeID(currentProject.screencast)"
-              ref="youtube"
-              :resize="true"
-            ></youtube>
-          </v-dialog>
-        </span>
-        <span v-if="currentProject.demoUrl !== null" class="tooltip">
-          <v-btn icon @click.stop="openNewTab(currentProject.demoUrl)">
-            <v-icon>mdi-web</v-icon>
-          </v-btn>
-          <span class="tooltiptext tooltip-bottom font-weight-black caption">
-            Project Demo
-          </span>
-        </span>
-        <span v-if="currentProject.report !== null" class="tooltip">
-          <v-btn icon @click.prevent="openNewTab(currentProject.report)">
-            <v-icon>mdi-file-document</v-icon>
-          </v-btn>
-          <span class="tooltiptext tooltip-bottom font-weight-black caption">
-            Project Report
+
+        <span class="language-icons">
+          <span v-for="(language, i) in currentProject.languages" :key="i">
+            <span v-if="language.icon !== null">
+              <div class="tooltip">
+                <v-icon
+                  class="tooltip-icon"
+                  style="padding: 5px"
+                  :class="language.icon"
+                />
+                <span
+                  class="tooltiptext tooltip-bottom font-weight-black caption"
+                >
+                  {{ language.name }}
+                </span>
+              </div>
+            </span>
+            <span v-else>
+              <div class="tooltip">
+                <v-img
+                  class="tooltip-icon"
+                  style="; height: 26px; width: 25px; margin: 3px 0px 0px 3px; "
+                  :src="require('../../../assets/' + language.img)"
+                  :alt="language.name"
+                />
+                <span
+                  class="tooltiptext tooltip-bottom font-weight-black caption"
+                >
+                  {{ language.name }}
+                </span>
+              </div>
+            </span>
           </span>
         </span>
-        <span v-if="currentProject.courseUrl !== null" class="tooltip">
-          <v-btn icon @click.stop="openNewTab(currentProject.courseUrl)">
-            <v-icon>mdi-school</v-icon>
-          </v-btn>
-          <span class="tooltiptext tooltip-bottom font-weight-black caption">
-            Course Website
-          </span>
-        </span>
-      </v-col>
-    </v-row>
-    <p style="font-size: 10pt">
+      </span>
+    </v-col>
+    <v-col md="1" class="center-line">
+      <v-divider vertical />
+    </v-col>
+
+    <p class="padded-section" style="font-size: 10pt">
       <b>Project Keywords</b>:
       {{ createKeywords(currentProject.keywords) }}
     </p>
+    <v-dialog
+      v-model="fullscreenImageDialog"
+      content-class="project-image-fullscreen-dialog"
+      overlay-opacity="0.9"
+    >
+      <v-img
+        :src="
+          require('../../../assets/project/' + imageArray.src[clickedImageIdx])
+        "
+        :alt="imageArray.legend[clickedImageIdx]"
+      />
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import VueYoutube from 'vue-youtube';
-import axios from 'axios';
-import pdf from 'vue-pdf';
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+//import 'swiper/swiper-bundle.css';
+import 'swiper/css/swiper.css';
 
 export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
+  },
   props: {
     currentProject: { type: Object, required: true }
   },
-
   data() {
     return {
-      showVideo: false,
+      swiperOption: {
+        slidesPerView: 1.2,
+        spaceBetween: 12,
+        centeredSlides: true,
+        slideToClickedSlide: true,
+        onSlideChangeEnd: () => {
+          this.onSwipe();
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      },
+      clickedImageIdx: 0,
       activeIndex: 0,
+      showVideo: false,
       fullscreenImageDialog: false,
       activeImage: { src: String, legend: String },
       imageArray: { legend: [], src: [] },
       imageList: { legend: [], src: [] }
     };
   },
-  //Need to listen to changes in current Project
   watch: {
-    currentProject: {
-      immediate: true,
-      handler(newValue) {
-        this.imageArray = {
-          legend: ['The project thumbnail', ...newValue.images.legend],
-          src: [newValue.thumbnail, ...newValue.images.src]
-        };
-        this.activeIndex = 0;
-      }
-    },
     showVideo: {
       handler: function(val) {
         if (!val) {
           this.pauseVideo();
         }
       }
+    },
+    currentProject: {
+      handler() {
+        this.imageArray = {
+          legend: this.currentProject.images.legend,
+          src: this.currentProject.images.src
+        };
+        this.activeIndex = 0;
+      }
     }
   },
   created() {
     this.imageArray = {
-      legend: ['Project thumbnail', ...this.currentProject.images.legend],
-      src: [this.currentProject.thumbnail, ...this.currentProject.images.src]
+      legend: this.currentProject.images.legend,
+      src: this.currentProject.images.src
     };
     this.activeIndex = 0;
   },
   methods: {
+    timeToRead() {
+      //Mediums formula for amount of time to read
+
+      return (
+        Math.round(
+          ((this.currentProject.description.split(' ').filter(function(n) {
+            return n != '';
+          }).length +
+            this.currentProject.development.split(' ').filter(function(n) {
+              return n != '';
+            }).length) /
+            240 +
+            (this.imageArray.legend.length * 12) / 60) *
+            2
+        ) / 2
+      );
+    },
+    projectSize() {
+      switch (this.currentProject.projectSize) {
+        case 'S':
+          return 'Small';
+        case 'M':
+          return 'Medium';
+        case 'L':
+          return 'Large';
+        default:
+          break;
+      }
+    },
+    changeSwiperIndex() {
+      this.activeIndex = this.$refs.swiperComponent.$swiper.activeIndex;
+    },
+    /* Fix for slider not resetting to first slide when new window opens */
+    resetSlider() {
+      setTimeout(() => {
+        this.$refs.swiperComponent.$swiper.slideTo(0);
+      }, 120);
+    },
+    handleSwiperDOMClick() {
+      this.clickedImageIdx = this.$refs.swiperComponent.swiperInstance.activeIndex;
+      this.fullscreenImageDialog = true;
+    },
     getYoutubeID(url) {
       return this.$youtube.getIdFromUrl(url);
     },
@@ -281,6 +325,7 @@ export default {
       return list;
     },
     selectImage(idx) {
+      console.log(idx);
       this.activeIndex = idx;
     }
   }
@@ -291,13 +336,6 @@ export default {
 .center-line {
   display: flex;
   justify-content: center;
-}
-
-.slideshow-selected-image {
-  opacity: 50%;
-}
-.slideshow-image:hover {
-  opacity: 70%;
 }
 
 .language-icons {
@@ -347,5 +385,83 @@ export default {
 
 .tooltip-icon:hover {
   filter: opacity(0.5) drop-shadow(0 0 0 #a0a0a0);
+}
+
+.fullscreen-icon {
+  height: 20px !important;
+  width: 20px !important;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 1;
+  background: white;
+  border-radius: 50% !important;
+  padding: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.resource-container {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 12px;
+}
+.project-meta-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px;
+  background: #d1d1d1;
+}
+.project-meta-container .meta-text {
+  display: flex;
+  flex-direction: column;
+}
+.project-meta-container .resources {
+  display: flex;
+  flex-direction: row;
+}
+.thumbnail-image-container {
+  margin-top: -20px;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+}
+.description-container {
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Padding section to have the slider take upp full width */
+.padded-section {
+  padding: 0 12px;
+}
+.padded-section:last-of-type {
+  padding-bottom: 24px;
+}
+
+/* Carousel Styling */
+.swiper-slide {
+  height: 200px;
+}
+.swiper-container {
+  padding: 20px 0;
+}
+.carousel-image-card {
+  height: 100%;
+}
+.slideshow-image {
+  height: 100%;
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  top: -7px;
+
+  text-align: center;
 }
 </style>

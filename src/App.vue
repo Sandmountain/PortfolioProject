@@ -33,6 +33,7 @@ export default {
   data: () => ({
     //
   }),
+
   methods: {
     isMobile() {
       return isMobileOnly;
@@ -42,8 +43,13 @@ export default {
 </script>
 <style>
 /* Custom dialogs */
+
+.project-image-fullscreen-dialog {
+  width: 100% !important;
+}
 .mobile__video-dialog {
   background-color: black !important;
+  width: 100% !important;
 }
 .mobile__content-dialog {
   width: 100% !important;
@@ -154,6 +160,7 @@ export default {
 }
 
 /* CSS overrides */
+
 .v-dialog--active {
   background: rgba(255, 255, 255, 1);
   width: 60%;
@@ -163,7 +170,8 @@ export default {
   padding: 2px !important;
 }
 .hooper:focus {
-  border: 1px solid rgb(34, 58, 65);
+  border: none;
+  outline: none;
 }
 
 /* When having clones of the projects, this is needed cus
@@ -200,6 +208,25 @@ body::-webkit-scrollbar {
 
 .v-parallax__image {
   top: -450px;
+}
+
+/* Hooper settings for mobile */
+.hooper-mobile-projects .hooper-pagination {
+  top: -30px;
+  right: 0px;
+  padding: 0 12px 0 0;
+  transform: none;
+}
+.hooper-mobile-projects .hooper-pagination ol li button {
+  border-radius: 100%;
+  width: 7px;
+  height: 7px;
+  background: #b9b9b9;
+}
+
+.hooper-mobile-projects .hooper-pagination ol li .is-active {
+  background: #007399;
+  box-shadow: 0px 0px 1px rgba(34, 58, 65, 0.8);
 }
 
 /* END CSS OVERRIDES */

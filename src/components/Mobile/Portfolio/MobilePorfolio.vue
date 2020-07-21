@@ -37,13 +37,13 @@
 
               <v-row sm="2" justify="center">
                 <div
-                  style="width:33.3%; padding: 6px;  "
                   v-for="(project, i) in thumbnails"
                   :key="i"
+                  style="width:33.3%; padding: 6px;  "
                 >
                   <v-img
-                    aspect-ratio="1"
                     :key="project.id"
+                    aspect-ratio="1"
                     style="cursor: pointer; height: 100%; border-radius: 6px"
                     :src="
                       require('../../../assets/project/' + project.thumbnail)
@@ -109,11 +109,11 @@
             </span>
             <span v-if="projectData[i].screencast !== null">
               <v-btn
+                icon
                 @click.stop="
                   (showVideo = true),
                     (currentVideo = getYoutubeID(projectData[i].screencast))
                 "
-                icon
               >
                 <v-icon>mdi-youtube</v-icon>
               </v-btn>
@@ -138,17 +138,17 @@
       </v-col>
     </div>
     <v-dialog
-      content-class="mobile__video-dialog"
       v-model="showVideo"
+      content-class="mobile__video-dialog"
       width="100%"
       :scrollable="false"
     >
-      <youtube :video-id="currentVideo" ref="youtube"></youtube>
+      <youtube ref="youtube" :video-id="currentVideo"></youtube>
     </v-dialog>
     <v-dialog
-      content-class="mobile__content-dialog"
-      :scrollable="false"
       v-model="showProject"
+      eager
+      content-class="mobile__content-dialog"
     >
       <MobileProjectDialog
         :current-project="currentProject"
@@ -193,12 +193,6 @@ export default {
       showVideo: false
     };
   },
-  created() {
-    projectData = projectData.reverse();
-    this.currentProject = projectData[0];
-    this.parseThumbnails();
-    this.initialThumbnails = this.thumbnails;
-  },
   watch: {
     showVideo: {
       handler: function(val) {
@@ -207,6 +201,12 @@ export default {
         }
       }
     }
+  },
+  created() {
+    projectData = projectData.reverse();
+    this.currentProject = projectData[0];
+    this.parseThumbnails();
+    this.initialThumbnails = this.thumbnails;
   },
   updated() {},
   methods: {

@@ -70,8 +70,8 @@
           </v-row>
           <v-row justify="center" align="center">
             <v-dialog
-              overlay-opacity="0.9"
               v-model="fullscreenImageDialog"
+              overlay-opacity="0.9"
               scrollable
             >
               <v-btn
@@ -180,7 +180,7 @@
           </span>
         </span>
         <span v-if="currentProject.screencast !== null" class="tooltip">
-          <v-btn @click.stop="showVideo = true" icon>
+          <v-btn icon @click.stop="showVideo = true">
             <v-icon>mdi-youtube</v-icon>
           </v-btn>
           <span class="tooltiptext tooltip-bottom font-weight-black caption">
@@ -188,8 +188,8 @@
           </span>
           <v-dialog v-model="showVideo" width="80%" :scrollable="true">
             <youtube
-              :video-id="getYoutubeID(currentProject.screencast)"
               ref="youtube"
+              :video-id="getYoutubeID(currentProject.screencast)"
               :resize="true"
             ></youtube>
           </v-dialog>
