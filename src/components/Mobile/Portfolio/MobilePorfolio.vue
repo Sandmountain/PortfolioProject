@@ -19,45 +19,41 @@
         >
         <v-icon
           :color="projectView === 'grid' ? 'primary' : null"
-          @click.stop="gridView = true"
-          @click="changeView('grid')"
+          @click.stop="(gridView = true), changeView('grid')"
           >mdi-view-module</v-icon
         >
         <v-dialog
           v-model="gridView"
           content-class="v-dialog--custom"
           style="background: white;"
+          overlay-opacity="0.9"
           @input="onModalClose"
         >
-          <v-container style="padding: 12px 24px 12px 24px; width: 100%">
-            <span>
-              <p class="h4 black--text text-center">
-                Select a project
-              </p>
+          <v-card style="padding: 12px 24px 12px 24px;">
+            <p class="h4 black--text text-center">
+              Select a project
+            </p>
 
-              <v-row sm="2" justify="center">
-                <div
-                  v-for="(project, i) in thumbnails"
-                  :key="i"
-                  style="width:33.3%; padding: 6px;  "
-                >
-                  <v-img
-                    :key="project.id"
-                    aspect-ratio="1"
-                    style="cursor: pointer; height: 100%; border-radius: 6px"
-                    :src="
-                      require('../../../assets/project/' + project.thumbnail)
-                    "
-                    @click="scrollToID(createProjectID(projectData[i].title))"
-                    @click.stop="
-                      gridView = false;
-                      projectView = 'list';
-                    "
-                  />
-                </div>
-              </v-row>
-            </span>
-          </v-container>
+            <v-row sm="2" justify="center">
+              <div
+                v-for="(project, i) in thumbnails"
+                :key="i"
+                style="width: calc( 100% / 4); padding: 6px;  "
+              >
+                <v-img
+                  :key="project.id"
+                  aspect-ratio="1"
+                  style="cursor: pointer; height: 100%; border-radius: 6px"
+                  :src="require('../../../assets/project/' + project.thumbnail)"
+                  @click="scrollToID(createProjectID(projectData[i].title))"
+                  @click.stop="
+                    gridView = false;
+                    projectView = 'list';
+                  "
+                />
+              </div>
+            </v-row>
+          </v-card>
         </v-dialog>
       </div>
     </div>
@@ -79,13 +75,13 @@
             :src="require('../../../assets/project/' + project.thumbnail)"
             @click="(currentProject = projectData[i]), toggleContentDialog()"
           />
-          <v-card-title style="">
+          <v-card-title>
             <span class="subtitle-1 font-weight-bold text-uppercase ">
               {{ projectData[i].title }}
             </span>
           </v-card-title>
           <v-card-subtitle style="padding-top: 0px">
-            Tex for later
+            {{ projectData[i].shortDescription }}
           </v-card-subtitle>
           <v-card-actions style="padding-top: 0px">
             <v-btn
@@ -145,11 +141,7 @@
     >
       <youtube ref="youtube" :video-id="currentVideo"></youtube>
     </v-dialog>
-    <v-dialog
-      v-model="showProject"
-      eager
-      content-class="mobile__content-dialog"
-    >
+    <v-dialog v-model="showProject" content-class="mobile__content-dialog">
       <MobileProjectDialog
         :current-project="currentProject"
         :toggle-content-dialog="toggleContentDialog"
@@ -165,13 +157,11 @@
 //import ProjectContent from '../../Portfolio/ProjectContent';
 import MobileProjectDialog from './MobileProjectDialog';
 
-// eslint-disable-next-line no-undef
-let projectData = require('../../../assets/project/projects.json');
-
 //const relativePath = '../../assets/project/';
 import VueYoutube from 'vue-youtube';
 
 export default {
+  props: ['projectData'],
   name: 'Portfolio',
   components: {
     MobileProjectDialog
@@ -179,17 +169,12 @@ export default {
   data() {
     return {
       projectView: 'list',
-      styledObject: {},
-      listData: 0,
-      listIndex: 0,
       currentProject: {},
       currentVideo: 0,
       thumbnails: [],
       initialThumbnails: [],
-      projectData,
       showProject: false,
       gridView: false,
-      showlist: true,
       showVideo: false
     };
   },
@@ -200,15 +185,23 @@ export default {
           this.pauseVideo();
         }
       }
+    },
+    projectData: {
+      handler() {
+        this.currentProject = this.projectData[0];
+        this.parseThumbnails();
+        this.initialThumbnails = this.thumbnails;
+      }
     }
   },
-  created() {
-    projectData = projectData.reverse();
-    this.currentProject = projectData[0];
-    this.parseThumbnails();
-    this.initialThumbnails = this.thumbnails;
+  created: function() {
+    let vm = this;
+    vm.$nextTick(function() {
+      this.currentProject = this.projectData[0];
+      this.parseThumbnails();
+      this.initialThumbnails = this.thumbnails;
+    });
   },
-  updated() {},
   methods: {
     toggleContentDialog() {
       this.showProject = !this.showProject;
@@ -239,7 +232,7 @@ export default {
       this.projectView = 'list';
     },
     parseThumbnails() {
-      this.thumbnails = projectData.map(project => ({
+      this.thumbnails = this.projectData.map(project => ({
         thumbnail: project.thumbnail,
         id: project.id
       }));
@@ -259,8 +252,6 @@ export default {
   padding: 12px 12px 0px 12px;
   z-index: 2;
   width: 100%;
-  -webkit-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
   box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -269,8 +260,6 @@ export default {
   margin-bottom: 10px;
   height: 100%;
   margin: 0px;
-  -webkit-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
 }
 

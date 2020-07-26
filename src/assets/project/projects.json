@@ -495,7 +495,8 @@
       "TheMovieDB",
       "OMDb",
       "JavaScript",
-      "UX"
+      "UX",
+      "Data management"
     ],
     "languages": [
       {
@@ -608,7 +609,8 @@
       "React.js",
       "Data Cleaning",
       "The movies dataset",
-      "Cosine similarity"
+      "Cosine similarity",
+      "Data management"
     ],
     "languages": [
       {
@@ -773,7 +775,8 @@
       "PHP",
       "Laravel",
       "Chart.js",
-      "Agile workflow"
+      "Agile workflow",
+      "Data management"
     ],
     "languages": [
       {

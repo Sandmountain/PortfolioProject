@@ -33,20 +33,12 @@
             :class="[!isScroll ? 'navbar-padding' : '']"
           >
             <v-card class="main-content rounded-corners">
-              <span v-if="currentPage == 0">
-                <v-fade-transition>
-                  <MobilePortfolio :is-bottom="isBottom" />
-                </v-fade-transition>
-              </span>
-              <span v-if="currentPage == 1">
-                <Home style="height: 100%" :change-page="updateNav" />
-              </span>
-              <span v-if="currentPage == 3">
-                <FilteredPortfolio
-                  :change-page="changePage"
-                  :filter-data="filterData"
+              <v-fade-transition>
+                <MobilePortfolio
+                  :is-bottom="isBottom"
+                  :project-data="projectData"
                 />
-              </span>
+              </v-fade-transition>
             </v-card>
             <span>
               <p>Scroll up</p>
@@ -63,27 +55,29 @@ import LandingPage from './LandingPage/LandingPage';
 import LandscapeLandingPage from './LandingPage/LandscapeLandingPage';
 import MobilePortfolio from './Portfolio/MobilePorfolio';
 import MobileAppBar from './AppBar/MobileAppBar';
-import FilteredPortfolio from '../Portfolio/FilteredPortfolio';
+
+// eslint-disable-next-line no-undef
+let data = require('../../assets/project/projects.json');
 
 export default {
   components: {
     MobilePortfolio,
     MobileAppBar,
     LandscapeLandingPage,
-    LandingPage,
-    FilteredPortfolio
+    LandingPage
   },
   data() {
     return {
-      currentPage: 0,
-      filterData: null,
+      projectData: {},
       isScroll: false,
+      isFiltered: false,
       isBottom: false,
       isLandscaped: false
     };
   },
   mounted() {
     this.scroll();
+    this.projectData = data.reverse();
 
     if (window.screen.orientation.type === 'landscape-primary') {
       this.editForSmallScreen(window.screen.height);
@@ -95,6 +89,10 @@ export default {
       if (height < 450) {
         this.isLandscaped = true;
       }
+    },
+    filterProjectData(data) {
+      this.isFiltered = !this.isFiltered;
+      this.projectData = data.reverse();
     },
     handleOrientationChange() {
       if (window.screen.orientation.type === 'landscape-primary') {

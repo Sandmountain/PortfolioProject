@@ -189,13 +189,14 @@ export default {
             : null;
         });
 
-        console.log(testArr);
         this.hideMenu();
         document.activeElement.blur();
         this.snackbar = true;
-
-        this.$vuetify.goTo('#portfolio-id');
-        //this.changeFilterPage(3, { data: testArr, query: this.query });
+        if (testArr.length > 0) {
+          this.$parent.filterProjectData(testArr);
+          this.$vuetify.goTo('#portfolio-id');
+          //this.changeFilterPage(3, { data: testArr, query: this.query });
+        }
       }
     }
   },

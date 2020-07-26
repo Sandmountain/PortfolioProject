@@ -196,7 +196,7 @@ the clones are not scoped within that vue file*/
 }
 
 .v-autocomplete__content {
-  z-index: 11 !important;
+  z-index: 21 !important;
 }
 .v-dialog__content--active {
   overflow-y: hidden !important;

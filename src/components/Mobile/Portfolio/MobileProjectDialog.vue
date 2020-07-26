@@ -46,7 +46,7 @@ export default {
       this.$refs.projectContent.resetSlider();
     },
     stylingTitles: title => {
-      let words = title.split(' ');
+      let words = title ? title.split(' ') : ' ';
 
       if (words.length !== 1) {
         return (
@@ -79,7 +79,7 @@ export default {
 
 .project-description {
   text-align: left;
-  padding: 20px 0 0 0;
+  padding: 20px 0 24px 0;
   height: calc(100vh - 50px);
   overflow: hidden auto;
 }

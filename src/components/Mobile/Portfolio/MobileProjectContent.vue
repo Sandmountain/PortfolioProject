@@ -85,8 +85,53 @@
       <p class="text--primary ">
         {{ currentProject.description }}
       </p>
+
+      <v-col md="5.5">
+        <span>
+          <p
+            class="font-weight-bold text-uppercase primary--text"
+            style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
+          >
+            Languages used
+          </p>
+
+          <span class="language-icons">
+            <span v-for="(language, i) in currentProject.languages" :key="i">
+              <span v-if="language.icon !== null">
+                <div class="tooltip">
+                  <v-icon
+                    class="tooltip-icon"
+                    style="padding: 5px"
+                    :class="language.icon"
+                  />
+                  <span
+                    class="tooltiptext tooltip-bottom font-weight-black caption"
+                  >
+                    {{ language.name }}
+                  </span>
+                </div>
+              </span>
+              <span v-else>
+                <div class="tooltip">
+                  <v-img
+                    class="tooltip-icon"
+                    style="; height: 26px; width: 25px; margin: 3px 0px 0px 3px; "
+                    :src="require('../../../assets/' + language.img)"
+                    :alt="language.name"
+                  />
+                  <span
+                    class="tooltiptext tooltip-bottom font-weight-black caption"
+                  >
+                    {{ language.name }}
+                  </span>
+                </div>
+              </span>
+            </span>
+          </span>
+        </span>
+      </v-col>
     </div>
-    <v-col class="hooper-mobile-projects" style="padding: 0; margin: 0">
+    <v-col class="carousel-container">
       <Swiper
         ref="swiperComponent"
         class="swiper"
@@ -119,68 +164,21 @@
       </div>
     </v-col>
 
-    <p
-      class="font-weight-bold text-uppercase primary--text"
-      style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
-    >
-      The Development
-    </p>
+    <div class="development-container">
+      <p class="font-weight-bold text-uppercase primary--text title-text">
+        The Development
+      </p>
 
-    <p class="text--primary padded-section">
-      {{ currentProject.development }}
-    </p>
-    <v-col md="5.5">
-      <span>
-        <p
-          class="font-weight-bold text-uppercase primary--text"
-          style="font-size: 10pt; letter-spacing: 2px; text-align: center; margin: 0"
-        >
-          Languages used
-        </p>
-
-        <span class="language-icons">
-          <span v-for="(language, i) in currentProject.languages" :key="i">
-            <span v-if="language.icon !== null">
-              <div class="tooltip">
-                <v-icon
-                  class="tooltip-icon"
-                  style="padding: 5px"
-                  :class="language.icon"
-                />
-                <span
-                  class="tooltiptext tooltip-bottom font-weight-black caption"
-                >
-                  {{ language.name }}
-                </span>
-              </div>
-            </span>
-            <span v-else>
-              <div class="tooltip">
-                <v-img
-                  class="tooltip-icon"
-                  style="; height: 26px; width: 25px; margin: 3px 0px 0px 3px; "
-                  :src="require('../../../assets/' + language.img)"
-                  :alt="language.name"
-                />
-                <span
-                  class="tooltiptext tooltip-bottom font-weight-black caption"
-                >
-                  {{ language.name }}
-                </span>
-              </div>
-            </span>
-          </span>
-        </span>
-      </span>
-    </v-col>
-    <v-col md="1" class="center-line">
-      <v-divider vertical />
-    </v-col>
-
-    <p class="padded-section" style="font-size: 10pt">
-      <b>Project Keywords</b>:
-      {{ createKeywords(currentProject.keywords) }}
-    </p>
+      <p class="text--primary ma-0 padded-section">
+        {{ currentProject.development }}
+      </p>
+    </div>
+    <div class="padded-section keyword-container">
+      <p style="font-size: 10pt">
+        <b>Project Keywords</b>:
+        {{ createKeywords(currentProject.keywords) }}
+      </p>
+    </div>
     <v-dialog
       v-model="fullscreenImageDialog"
       content-class="project-image-fullscreen-dialog"
@@ -399,42 +397,61 @@ export default {
   padding: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.resource-container {
-  position: absolute;
-  display: flex;
-  z-index: 20;
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  align-items: end;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding-right: 12px;
+
+.thumbnail-image-container {
+  margin-top: -20px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .project-meta-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 12px;
-  background: #d1d1d1;
+  position: relative;
+  z-index: 4;
+  background: white;
 }
 .project-meta-container .meta-text {
+  opacity: 0.6;
   display: flex;
   flex-direction: column;
+  color: #474747;
 }
 .project-meta-container .resources {
   display: flex;
   flex-direction: row;
 }
-.thumbnail-image-container {
-  margin-top: -20px;
-  position: relative;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-}
 .description-container {
-  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+.carousel-container {
+  padding: 12px 0 0 0;
+  margin: 0;
+  background: #d1d1d1;
+}
+.development-container {
+  padding-top: 12px;
+  position: relative;
+  z-index: 1;
+  background: white;
+  box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2);
+}
+.keyword-container {
+  position: relative;
+  background: white;
+  z-index: 5;
 }
 
+.title-text {
+  font-size: 10pt;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 12px;
+}
 /* Padding section to have the slider take upp full width */
 .padded-section {
   padding: 0 12px;
@@ -455,6 +472,10 @@ export default {
 }
 .slideshow-image {
   height: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #007399;
 }
 
 .swiper-pagination-fraction,
