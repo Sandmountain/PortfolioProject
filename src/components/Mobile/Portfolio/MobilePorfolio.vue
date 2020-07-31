@@ -2,7 +2,7 @@
   <div class="portfolio-container">
     <div class="top-content">
       <span class="font-weight-black primary--text headline">
-        <span class="font-weight-light black--text">MY RECENT</span>
+        <span class="font-weight-light black--text">MY PROUDEST</span>
         PROJECTS
       </span>
       <p class="caption font-weight-regular" style="margin: 0;">
@@ -58,6 +58,16 @@
       </div>
     </div>
     <div class="list-track">
+      <v-card
+        v-if="isFiltered"
+        class="card-list"
+        style=" padding: 12px; margin: 12px 12px 0; text-align: center"
+      >
+        <v-btn block color="primary" text @click.stop="resetFilter()">
+          Reset query
+        </v-btn>
+      </v-card>
+
       <v-col
         v-for="(project, i) in thumbnails"
         :key="i"
@@ -148,7 +158,15 @@
       />
     </v-dialog>
     <div class="project-content">
-      <p>Text and all</p>
+      <v-btn
+        color="primary"
+        solid
+        block
+        text
+        style="border-radius:0;"
+        @click="$vuetify.goTo('#portfolio-id')"
+        >Scroll to top</v-btn
+      >
     </div>
   </div>
 </template>
@@ -161,10 +179,15 @@ import MobileProjectDialog from './MobileProjectDialog';
 import VueYoutube from 'vue-youtube';
 
 export default {
-  props: ['projectData'],
-  name: 'Portfolio',
+  name: 'MobilePortfolio',
   components: {
     MobileProjectDialog
+  },
+  props: {
+    // eslint-disable-next-line vue/require-prop-types
+    projectData: { required: true },
+    isFiltered: { type: Boolean, required: true },
+    filterQuery: { type: String, required: true }
   },
   data() {
     return {
@@ -215,6 +238,9 @@ export default {
     createProjectID(title) {
       return title.split(' ').join('-');
     },
+    resetFilter() {
+      this.$parent.$parent.filterProjectData();
+    },
     scrollToID(ID) {
       this.$vuetify.goTo('#' + ID, {
         duration: 250,
@@ -244,6 +270,7 @@ export default {
 <style scoped>
 .portfolio-container {
   height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -256,15 +283,15 @@ export default {
 }
 
 .project-content {
-  padding: 0px 12px;
-  margin-bottom: 10px;
-  height: 100%;
+  margin-top: auto;
   margin: 0px;
   box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .list-track {
   width: 100%;
+  height: 100%;
   background: #d1d1d1;
   padding-bottom: 12px;
 }

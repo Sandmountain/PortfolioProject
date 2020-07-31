@@ -2,27 +2,24 @@
   <v-app id="main-app">
     <div class="background-gradient " />
     <div class="background-image-cropped" />
-    <span
+
+    <MobileLayout
       v-if="isMobile() || $vuetify.breakpoint.smAndDown"
       style="height: 100%"
-    >
-      <MobileLayout class="mobile-body-container" />
-    </span>
-    <span v-else style="height: 100%">
-      <div class="main-body-container">
-        <Layout />
-      </div>
-    </span>
+      class="mobile-body-container"
+    />
+
+    <div v-else style="height: 100%" class="main-body-container">
+      <Layout />
+    </div>
   </v-app>
 </template>
 
 <script>
-//import BottomNavBar from './components/AppBar/BottomNavBar';
 import Layout from './components/Layout.vue';
 import MobileLayout from './components/Mobile/MobileLayout';
-import { isMobileOnly } from 'mobile-device-detect';
+import { isMobileOnly, isTablet } from 'mobile-device-detect';
 
-//import AppBar from './components/AppBar/AppBar';
 export default {
   name: 'App',
   components: {
@@ -43,7 +40,6 @@ export default {
 </script>
 <style>
 /* Custom dialogs */
-
 .project-image-fullscreen-dialog {
   width: 100% !important;
 }
@@ -63,7 +59,6 @@ export default {
 .v-autocomplete__content {
   height: calc((32px * 5) + 8px);
 }
-
 .v-dialog--custom {
   width: 100% !important;
   max-height: 70% !important;
@@ -72,6 +67,13 @@ export default {
 
 .v-menu--custom {
   border-radius: 0px;
+}
+.parallax-image > .v-image__image {
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 ::-webkit-scrollbar-track {
@@ -118,11 +120,6 @@ export default {
     rgba(103, 111, 113, 1) 100%
   );
   background-size: cover;
-
-  /* Elipse background
-  clip-path: ellipse(50% 10% at 50% 35%);
-  transform: scale(1.1);
-  */
 }
 
 .background-image-cropped {

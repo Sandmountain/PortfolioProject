@@ -26,23 +26,19 @@
 
           <v-col
             id="portfolio-id"
-            cols="12"
-            xl="9"
-            md="8"
-            class="right-container"
+            class="portfolio-container-layout"
             :class="[!isScroll ? 'navbar-padding' : '']"
           >
             <v-card class="main-content rounded-corners">
               <v-fade-transition>
                 <MobilePortfolio
                   :is-bottom="isBottom"
+                  :is-filtered="isFiltered"
+                  :filter-query="filterQuery"
                   :project-data="projectData"
                 />
               </v-fade-transition>
             </v-card>
-            <span>
-              <p>Scroll up</p>
-            </span>
           </v-col>
         </v-row>
       </v-col>
@@ -53,6 +49,7 @@
 <script>
 import LandingPage from './LandingPage/LandingPage';
 import LandscapeLandingPage from './LandingPage/LandscapeLandingPage';
+
 import MobilePortfolio from './Portfolio/MobilePorfolio';
 import MobileAppBar from './AppBar/MobileAppBar';
 
@@ -71,11 +68,12 @@ export default {
       projectData: {},
       isScroll: false,
       isFiltered: false,
+      filterQuery: '',
       isBottom: false,
       isLandscaped: false
     };
   },
-  mounted() {
+  created() {
     this.scroll();
     this.projectData = data.reverse();
 
@@ -90,9 +88,22 @@ export default {
         this.isLandscaped = true;
       }
     },
-    filterProjectData(data) {
+    resetFilter() {
+      if (this.isFiltered) {
+        console.log('reset');
+      }
+    },
+    filterProjectData(inData = data, query = '') {
       this.isFiltered = !this.isFiltered;
-      this.projectData = data.reverse();
+
+      if (query === '') {
+        this.filterQuery = '';
+        this.$children[0].resetQuery();
+      } else {
+        this.filterQuery = query;
+      }
+
+      this.projectData = inData;
     },
     handleOrientationChange() {
       if (window.screen.orientation.type === 'landscape-primary') {
@@ -101,27 +112,8 @@ export default {
         this.isLandscaped = false;
       }
     },
-    changeFilterPage(i, data) {
-      this.currentPage = i;
-      this.filterData = data;
-    },
-    changePage(i) {
-      this.currentPage = i;
-    },
-    updateNav() {
-      this.currentPage = 1;
-    },
     scroll() {
       window.onscroll = () => {
-        const bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop
-          ) +
-            window.innerHeight ===
-          document.documentElement.offsetHeight;
-
         if (window.pageYOffset <= 0) {
           this.isScroll = false;
         } else {
@@ -145,11 +137,11 @@ export default {
   width: 100%;
 }
 
-.right-container {
+.portfolio-container-layout {
+  padding-bottom: 0px;
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  padding-bottom: 56px;
 }
 .content-container {
   height: 100%;

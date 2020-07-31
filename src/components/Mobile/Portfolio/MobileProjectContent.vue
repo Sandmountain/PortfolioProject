@@ -292,7 +292,7 @@ export default {
     changeSwiperIndex() {
       this.activeIndex = this.$refs.swiperComponent.$swiper.activeIndex;
     },
-    /* Fix for slider not resetting to first slide when new window opens */
+    /* Fix for image slider not resetting to first slide when new window opens */
     resetSlider() {
       setTimeout(() => {
         this.$refs.swiperComponent.$swiper.slideTo(0);

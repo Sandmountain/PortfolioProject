@@ -7,17 +7,47 @@
         </span>
       </h2>
     </div>
-    <v-col class="font-weight-regular project-description">
-      <v-row
-        :style="ifSmallScreen($vuetify.breakpoint.mdAndDown)"
-        style="padding: 12px"
-      >
-        <v-col
-          sm="12"
-          md="12"
-          lg="6"
-          style="align-self: center; padding: 0px 12px 0px 0px"
+    <div class="font-weight-regular project-description">
+      <div class="thumbnail-banner">
+        <v-img
+          class="parallax-image"
+          style="height: 120px; background-attachment: fixed; opacity: 0.2"
+          :src="require('../../assets/project/' + currentProject.thumbnail)"
         >
+        </v-img>
+      </div>
+      <v-row
+        style="margin: 0; padding-top: 12px; display: flex; justify-content: center"
+      >
+        <v-col cols="8" style="align-content: center; padding: 0px">
+          <div
+            class="meta-text"
+            style="display:flex; flex-direction: row; justify-content:space-between; width: 100%; padding-bottom: 12px"
+          >
+            <div style="display: flex; flex-direction: column">
+              <span class="overline">Title: {{ currentProject.title }}</span>
+              <span class="overline ">Project size: {{ projectSize() }}</span>
+            </div>
+            <div
+              style="display: flex; flex-direction: column; text-align: right"
+            >
+              <span class="overline">
+                status:
+              </span>
+
+              <span
+                :class="[
+                  'overline',
+                  currentProject.finished === 'Ongoing' ? 'green--text' : ''
+                ]"
+                >{{
+                  currentProject.finished !== 'Ongoing'
+                    ? 'Finished at ' + currentProject.finished
+                    : currentProject.finished
+                }}</span
+              >
+            </div>
+          </div>
           <p
             class="font-weight-bold text-uppercase primary--text"
             style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
@@ -25,8 +55,32 @@
             about the project
           </p>
 
-          <p class="text--primary">
+          <p class="text--primary ma-0">
             {{ currentProject.description }}
+          </p>
+          <Swiper ref="swiperComponent" class="swiper" :options="swiperOption">
+            <SwiperSlide
+              v-for="(image, index) in imageArray.src"
+              :key="index"
+              style="height: 35vh"
+              ><v-card style="overflow:hidden; height: 100%; width: 100%">
+                <v-btn class="fullscreen-icon" icon @click="selectImage(index)">
+                  <v-icon small>mdi-fullscreen</v-icon>
+                </v-btn>
+                <v-img
+                  :aspect-ratio="16 / 10"
+                  :src="require('../../assets/project/' + image)"
+                  :alt="currentProject.title"
+                  class="slideshow-image"
+                /> </v-card
+            ></SwiperSlide>
+            <div slot="pagination" class="swiper-pagination"></div>
+          </Swiper>
+          <p
+            class="font-weight-bold text-uppercase primary--text"
+            style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
+          >
+            The Development
           </p>
           <p class="text--primary">
             {{ currentProject.development }}
@@ -36,84 +90,8 @@
             {{ createKeywords(currentProject.keywords) }}
           </p>
         </v-col>
-
-        <v-col sm="12" md="12" lg="6" justify="end">
-          <v-row align="center" justify="space-between">
-            <v-col
-              v-for="(image, index) in imageArray.src"
-              :key="index"
-              sm="2"
-              class="slideshow-image"
-              style="padding: 4px 0px; max-width: 65px"
-            >
-              <span v-if="index === activeIndex">
-                <v-img
-                  :src="require('../../assets/project/' + image)"
-                  :alt="currentProject.title"
-                  style="cursor: pointer"
-                  class="slideshow-image slideshow-selected-image"
-                  aspect-ratio="1"
-                  @click.stop="selectImage(index)"
-                />
-              </span>
-              <span v-else>
-                <v-img
-                  style="cursor: pointer"
-                  :src="require('../../assets/project/' + image)"
-                  :alt="currentProject.title"
-                  class="slideshow-image"
-                  aspect-ratio="1"
-                  @click.stop="selectImage(index)"
-                />
-              </span>
-            </v-col>
-          </v-row>
-          <v-row justify="center" align="center">
-            <v-dialog
-              v-model="fullscreenImageDialog"
-              overlay-opacity="0.9"
-              scrollable
-            >
-              <v-btn
-                absolute
-                fab
-                small
-                style="top: 10px; right: 10px;"
-                @click.stop="fullscreenImageDialog = false"
-              >
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-              <v-img
-                :src="
-                  require('../../assets/project/' + imageArray.src[activeIndex])
-                "
-                :alt="imageArray.legend[activeIndex]"
-              />
-            </v-dialog>
-
-            <v-img
-              style="cursor: pointer"
-              :src="
-                require('../../assets/project/' + imageArray.src[activeIndex])
-              "
-              :alt="imageArray.legend[activeIndex]"
-              @click.stop="fullscreenImageDialog = true"
-            />
-            <div
-              class="text-center"
-              style="font-size: 10pt; margin-top: 10px; width: 80%"
-            >
-              <span class="font-weight-bold ">
-                {{ 'Figure ' + (activeIndex + 1) + ': ' }}
-              </span>
-              <span class="font-weight-regular ">
-                {{ imageArray.legend[activeIndex] }}</span
-              >
-            </div>
-          </v-row>
-        </v-col>
       </v-row>
-    </v-col>
+    </div>
     <v-row class="bottom-content">
       <v-col md="5.5">
         <span>
@@ -225,14 +203,17 @@
 
 <script>
 import VueYoutube from 'vue-youtube';
-import axios from 'axios';
-import pdf from 'vue-pdf';
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+import 'swiper/css/swiper.css';
 
 export default {
   props: {
     currentProject: { type: Object, required: true }
   },
-
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data() {
     return {
       showVideo: false,
@@ -240,7 +221,20 @@ export default {
       fullscreenImageDialog: false,
       activeImage: { src: String, legend: String },
       imageArray: { legend: [], src: [] },
-      imageList: { legend: [], src: [] }
+      imageList: { legend: [], src: [] },
+      swiperOption: {
+        slidesPerView: 1.2,
+        spaceBetween: 12,
+        centeredSlides: true,
+        slideToClickedSlide: true,
+        onSlideChangeEnd: () => {
+          this.onSwipe();
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      }
     };
   },
   //Need to listen to changes in current Project
@@ -271,6 +265,37 @@ export default {
     this.activeIndex = 0;
   },
   methods: {
+    timeToRead() {
+      //Mediums formula for amount of time to read
+      return (
+        Math.round(
+          ((this.currentProject.description.split(' ').filter(function(n) {
+            return n != '';
+          }).length +
+            this.currentProject.development.split(' ').filter(function(n) {
+              return n != '';
+            }).length) /
+            240 +
+            (this.currentProject.images.legend.length * 12) / 60) *
+            2
+        ) / 2
+      );
+    },
+    projectSize() {
+      switch (this.currentProject.projectSize) {
+        case 'S':
+          return 'Small';
+        case 'M':
+          return 'Medium';
+        case 'L':
+          return 'Large';
+        default:
+          break;
+      }
+    },
+    printProject(the) {
+      console.log(the);
+    },
     getYoutubeID(url) {
       return this.$youtube.getIdFromUrl(url);
     },
@@ -321,13 +346,17 @@ export default {
 </script>
 
 <style scoped>
+.v-image__image {
+  background-attachment: fixed;
+}
+
 .center-line {
   display: flex;
   justify-content: center;
 }
 .project-description {
   text-align: left;
-  padding: 12px;
+  padding: 0;
   height: 55vh;
   overflow: auto;
 }
@@ -422,7 +451,9 @@ export default {
   -moz-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
   box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
 }
-
+.thumbnail-banner {
+  width: 100%;
+}
 .bottom-content {
   /*display: flex;
   align-items: center;
@@ -430,7 +461,7 @@ export default {
   */
   position: relative;
   bottom: 0;
-
+  overflow: hidden;
   width: 100%;
   margin: 0px;
   -webkit-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);

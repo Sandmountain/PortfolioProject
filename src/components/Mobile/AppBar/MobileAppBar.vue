@@ -39,6 +39,7 @@
 
       <v-card-text class="menu-search" style=" padding: 16px; ">
         <v-combobox
+          ref="combo-box"
           v-model="query"
           solo
           style="background: white;"
@@ -50,8 +51,8 @@
           single-line
           :items="keyWords"
           return-object
-          :change="startQuery()"
-          :blur="resetQuery()"
+          @change="startQuery()"
+          @click:clear="resetFilter()"
         ></v-combobox>
       </v-card-text>
       <v-list dense class="menu-list">
@@ -89,7 +90,6 @@
       :class="[isScroll ? 'added-bottom' : '']"
       style="    padding: 0 4px;"
     >
-      You've searched for:
       {{ queryMessage(snackbarMessage) }}
 
       <v-btn color="primary" text @click="snackbar = false">
@@ -157,6 +157,12 @@ export default {
     },
     resetQuery() {
       this.query = '';
+      this.$refs['combo-box'].clearableCallback();
+    },
+    resetFilter() {
+      this.$parent.filterProjectData();
+      this.snackbarMessage = 'The filter has been resetted';
+      this.snackbar = true;
     },
     queryMessage(message) {
       return message.length < 35 ? message : message.slice(0, 35) + '...';
@@ -164,7 +170,7 @@ export default {
 
     startQuery() {
       if (this.query !== '' && this.query) {
-        this.snackbarMessage = this.query;
+        this.snackbarMessage = "You've searched for: " + this.query;
         const testArr = [];
         projectData.forEach((project, index) => {
           project.title === this.query
@@ -193,7 +199,7 @@ export default {
         document.activeElement.blur();
         this.snackbar = true;
         if (testArr.length > 0) {
-          this.$parent.filterProjectData(testArr);
+          this.$parent.filterProjectData(testArr, this.query);
           this.$vuetify.goTo('#portfolio-id');
           //this.changeFilterPage(3, { data: testArr, query: this.query });
         }

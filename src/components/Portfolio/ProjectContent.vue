@@ -18,7 +18,10 @@
               </span>
             </span>
           </h2>
-
+          <span class="overline "
+            ><v-icon x-small>mdi-clock</v-icon>{{ ' ' + timeToRead() }} min read
+            article</span
+          >
           <div
             class="font-weight-regular project-description"
             style="text-align: left; padding-top: 10px; "
@@ -194,6 +197,34 @@ export default {
     }
   },
   methods: {
+    timeToRead() {
+      //Mediums formula for amount of time to read
+      return (
+        Math.round(
+          ((this.currentProject.description.split(' ').filter(function(n) {
+            return n != '';
+          }).length +
+            this.currentProject.development.split(' ').filter(function(n) {
+              return n != '';
+            }).length) /
+            240 +
+            (this.currentProject.images.legend.length * 12) / 60) *
+            2
+        ) / 2
+      );
+    },
+    projectSize() {
+      switch (this.currentProject.projectSize) {
+        case 'S':
+          return 'Small';
+        case 'M':
+          return 'Medium';
+        case 'L':
+          return 'Large';
+        default:
+          break;
+      }
+    },
     openNewTab(url) {
       window.open(url, '_blank');
     },

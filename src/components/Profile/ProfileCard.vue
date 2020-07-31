@@ -31,6 +31,9 @@
               <v-icon medium>mdi-linkedin</v-icon>
             </v-btn>
             <v-btn icon small color="gray">
+              <v-icon medium>mdi-facebook</v-icon>
+            </v-btn>
+            <v-btn icon small color="gray">
               <v-icon medium>mdi-github</v-icon>
             </v-btn>
           </h2>

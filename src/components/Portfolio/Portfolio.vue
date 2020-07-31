@@ -4,7 +4,7 @@
       <span v-if="$vuetify.breakpoint.smAndUp">
         <h2 class="title-h2">
           <span class="font-weight-black right">
-            <span class="font-weight-light">MY RECENT</span>
+            <span class="font-weight-light">MY PROUDEST</span>
             <span class="primary--text"> PROJECTS</span>
           </span>
         </h2>
@@ -17,17 +17,6 @@
           Also options to read more, show demo or screencast.
         </p>
         <v-spacer />
-      </span>
-      <span v-else>
-        <span class="font-weight-black primary--text headline">
-          <span class="font-weight-light black--text">MY RECENT</span>
-          PROJECTS
-        </span>
-        <p class="caption font-weight-regular" style="margin: 0;">
-          Down below, I've collected the projects that I'm most proud of. You
-          can press on any card to get an overview of the project with images,
-          code and an explanation of the project.
-        </p>
       </span>
       <div class="pb-0 pt-0 text-right">
         <v-icon
@@ -68,30 +57,6 @@
                 </v-col>
               </v-row>
             </span>
-            <span v-else>
-              <p class="font-weight-thin black--text text-center">
-                Select a project
-              </p>
-              <v-row v-for="(project, i) in thumbnails" :key="i" sm="6">
-                <v-col class="hidden-xs-and-up">
-                  <v-card>
-                    <v-img
-                      :key="project.id"
-                      aspect-ratio="2.5"
-                      style="cursor: pointer;"
-                      :src="
-                        require('../../assets/project/' + project.thumbnail)
-                      "
-                      @click="gridItemPressed(i)"
-                      @click.stop="
-                        gridView = false;
-                        projectView = 'carousel';
-                      "
-                    />
-                  </v-card>
-                </v-col>
-              </v-row>
-            </span>
           </v-container>
         </v-dialog>
       </div>
@@ -99,7 +64,7 @@
     <div class="carousel-track">
       <v-col md="11" style="margin: 0px auto;">
         <div style="position: relative;">
-          <div class="arrow-previous hidden-sm-and-down">
+          <div class="arrow-previous">
             <v-btn
               icon
               small
@@ -110,7 +75,7 @@
               <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
           </div>
-          <div class="arrow-next hidden-sm-and-down">
+          <div class="arrow-next">
             <v-btn
               icon
               small
@@ -164,8 +129,6 @@ import ProjectContent from './ProjectContent';
 // eslint-disable-next-line no-undef
 let projectData = require('../../assets/project/projects.json');
 
-/*const relativePath = '../../assets/project/';*/
-
 export default {
   name: 'Portfolio',
   components: {
@@ -176,8 +139,6 @@ export default {
   data() {
     return {
       projectView: 'carousel',
-      styledObject: {},
-      carouselData: 0,
       carouselIndex: 0,
       currentProject: {},
       hooperSettings: {
@@ -186,14 +147,14 @@ export default {
         centerMode: true,
         infiniteScroll: true,
         breakpoints: {
-          900: {
+          1904: {
             itemsToShow: 5.25
           },
-          600: {
-            itemsToShow: 2.25
+          1264: {
+            itemsToShow: 5.25
           },
-          300: {
-            itemsToShow: 2.25
+          900: {
+            itemsToShow: 3.25
           }
         }
       },

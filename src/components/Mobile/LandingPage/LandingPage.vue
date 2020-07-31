@@ -54,14 +54,7 @@
 </template>
 
 <script>
-import LandscapeLandingPage from './LandscapeLandingPage';
-import ProfileLandingPage from './ProfileLandingPage';
-
 export default {
-  components: {
-    //LandscapeLandingPage,
-    //ProfileLandingPage
-  },
   props: ['isScroll'],
   data() {
     return {};
