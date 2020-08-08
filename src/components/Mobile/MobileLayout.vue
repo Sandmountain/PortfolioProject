@@ -88,11 +88,6 @@ export default {
         this.isLandscaped = true;
       }
     },
-    resetFilter() {
-      if (this.isFiltered) {
-        console.log('reset');
-      }
-    },
     filterProjectData(inData = data, query = '') {
       this.isFiltered = !this.isFiltered;
 

@@ -74,9 +74,9 @@
               @slideChange="changeSwiperIndex"
             >
               <SwiperSlide
-                class="swiper-slide-desktop"
                 v-for="(image, index) in imageArray.src"
                 :key="index"
+                class="swiper-slide-desktop"
                 ><v-card
                   style="height: 100%; cursor: pointer; "
                   @click="
@@ -256,12 +256,12 @@ import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
 
 export default {
-  props: {
-    currentProject: { type: Object, required: true }
-  },
   components: {
     Swiper,
     SwiperSlide
+  },
+  props: {
+    currentProject: { type: Object, required: true }
   },
   data() {
     return {
@@ -345,9 +345,6 @@ export default {
         default:
           break;
       }
-    },
-    printProject(the) {
-      console.log(the);
     },
     getYoutubeID(url) {
       return this.$youtube.getIdFromUrl(url);

@@ -154,6 +154,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import 'vue-slick-carousel/src/slick-theme.css';
 
+// eslint-disable-next-line no-undef
 const projectData = require('../../assets/project/projects.json');
 
 const relativePath = '../../assets/project/';
@@ -228,10 +229,8 @@ export default {
     };
   },
   created() {
-    console.log(projectData);
     this.currentProject = projectData[0];
     this.parseThumbnails();
-    console.log(initialThumbnails);
     this.initialThumbnails = this.thumbnails;
   },
   updated() {
@@ -280,23 +279,12 @@ export default {
         this.thumbnails = this.initialThumbnails;
         this.settings.rows = 1;
       }
-
-      // projectData.title;
-      console.log(this.thumbnails);
     },
     parseThumbnails() {
-      /* this.thumbnails = projectData.map(project => {
-        return project.thumbnail;
-      });
-      */
       this.thumbnails = projectData.map(project => ({
         thumbnail: project.thumbnail,
         id: project.id
       }));
-    },
-    logFromDom(str) {
-      // console.log(str);
-      // this.$data.carouselIndex = str;
     },
     slidePressed(id) {
       this.currentProject = projectData.find(project => project.id === id);

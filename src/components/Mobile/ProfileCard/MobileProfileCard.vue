@@ -80,9 +80,6 @@ export default {
     sendMail() {
       window.open('mailto:sandtain@gmail.com');
     }
-  },
-  mounted() {
-    //console.log(this.$vuetify.theme);
   }
 };
 </script>

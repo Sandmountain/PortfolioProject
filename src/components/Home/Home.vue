@@ -24,7 +24,7 @@
         a way for me to get even more practice of doing what that I love. To see
         all my project, click the button below.
       </p>
-      <v-btn @click="updatePage()" color="primary" small tile outlined
+      <v-btn color="primary" small tile outlined @click="updatePage()"
         >Show Portfolio</v-btn
       >
     </v-col>

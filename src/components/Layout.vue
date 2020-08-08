@@ -69,15 +69,12 @@ export default {
     changeFilterPage(i, data) {
       this.currentPage = i;
       this.filterData = data;
-      //console.log(data);
     },
     changePage(i) {
       this.currentPage = i;
-      //console.log(this.currentPage);
     },
     updateNav() {
       this.currentPage = 1;
-      //console.log(this.currentPage);
     }
   }
 };

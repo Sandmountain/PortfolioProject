@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <!--
   <VueSlickCarousel v-bind="settings" style="padding: 10px">
     <v-card class="carousel-card elevation-4">
       <v-row justify="center">
@@ -52,19 +54,16 @@
       </v-row>
     </v-card>
   </VueSlickCarousel>
+  --></div>
 </template>
 
-
 <script>
-import VueSlickCarousel from 'vue-slick-carousel';
-import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+//import VueSlickCarousel from 'vue-slick-carousel';
+//import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 // optional style for arrows & dots
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+//import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
 export default {
-  components: {
-    VueSlickCarousel,
-  },
   data() {
     return {
       length: 3,
@@ -79,10 +78,10 @@ export default {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1,
-      },
+        slidesToScroll: 1
+      }
     };
-  },
+  }
 };
 </script>
 
@@ -112,14 +111,14 @@ export default {
 }
 
 .slick-arrow {
-  /*top: 25%;*/
+  top: 25%;
 }
 .slick-slide {
   padding: 0 3px;
 }
 /* the carousell div */
 .slick-list {
-  /*padding: 0 !important;*/
+  padding: 0 !important;
   /*margin: 2px !important;*/
 }
 
@@ -163,7 +162,7 @@ export default {
 
 .title-h2:after {
   background-color: white;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0.25em;
   left: 0;

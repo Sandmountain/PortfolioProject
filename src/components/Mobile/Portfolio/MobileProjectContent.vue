@@ -140,9 +140,9 @@
         @slideChange="changeSwiperIndex"
       >
         <SwiperSlide
-          class="swiper-slide-image"
           v-for="(image, index) in imageArray.src"
           :key="index"
+          class="swiper-slide-image"
           ><v-card style="overflow:hidden" class="carousel-image-card">
             <v-btn class="fullscreen-icon" icon @click="selectImage(index)">
               <v-icon small>mdi-fullscreen</v-icon>
@@ -326,7 +326,6 @@ export default {
       return list;
     },
     selectImage(idx) {
-      console.log(idx);
       this.activeIndex = idx;
     }
   }

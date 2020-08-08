@@ -263,9 +263,6 @@ export default {
         this.thumbnails = this.initialThumbnails;
         // this.settings.rows = 1;
       }
-
-      // projectData.title;
-      //console.log(this.thumbnails);
     },
     updateCarousel() {
       switch (this.$refs.carousel.currentSlide) {

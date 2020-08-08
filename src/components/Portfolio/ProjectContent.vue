@@ -66,10 +66,10 @@
               </span>
               <span v-if="currentProject.screencast !== null">
                 <v-btn
-                  @click.stop="showVideo = true"
                   style="margin-left: 12px"
                   tile
                   color="secondary"
+                  @click.stop="showVideo = true"
                   >View Screencast</v-btn
                 >
                 <v-dialog
@@ -78,8 +78,8 @@
                   :scrollable="true"
                 >
                   <youtube
-                    :video-id="getYoutubeID(currentProject.screencast)"
                     ref="youtube"
+                    :video-id="getYoutubeID(currentProject.screencast)"
                     :resize="true"
                   ></youtube>
                 </v-dialog>

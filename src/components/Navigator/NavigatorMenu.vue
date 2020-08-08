@@ -27,6 +27,7 @@
 
         <v-card-text class="search-paper">
           <v-combobox
+            v-model="query"
             outlined
             dense
             label="Search for projects, libraries or techniques"
@@ -34,7 +35,6 @@
             hide-details="auto"
             single-line
             :items="keyWords"
-            v-model="query"
             return-object
             :change="startQuery()"
             :blur="resetQuery()"
@@ -122,8 +122,6 @@ export default {
             ? testArr.push(projectData[index])
             : null;
         });
-
-        //console.log(testArr);
 
         this.changeFilterPage(3, { data: testArr, query: this.query });
       }

@@ -122,6 +122,14 @@ export default {
       snackbarMessage: ''
     };
   },
+  watch: {
+    isScroll: function(newVal, oldVal) {
+      // watch it
+      if (newVal !== oldVal) {
+        this.showNav = newVal;
+      }
+    }
+  },
   created() {
     let tempWords = [];
     projectData.forEach(project => {
@@ -203,14 +211,6 @@ export default {
           this.$vuetify.goTo('#portfolio-id');
           //this.changeFilterPage(3, { data: testArr, query: this.query });
         }
-      }
-    }
-  },
-  watch: {
-    isScroll: function(newVal, oldVal) {
-      // watch it
-      if (newVal !== oldVal) {
-        this.showNav = newVal;
       }
     }
   }

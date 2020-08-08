@@ -100,9 +100,7 @@ export default {
       right: null
     };
   },
-  mounted() {
-    //console.log(this.$vuetify.theme);
-  },
+
   methods: {
     openNewTab(url) {
       window.open(url, '_blank');
