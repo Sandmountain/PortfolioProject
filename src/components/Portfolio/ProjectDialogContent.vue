@@ -105,6 +105,17 @@
                 {{ imageArray.legend[activeIndex] }}</span
               >
             </div>
+            <v-container
+              style="display: grid;  grid-template-columns: 1fr 1fr 1fr 1fr; gap:20px"
+            >
+              <v-img
+                v-for="(image, index) in imageArray.src"
+                :key="index"
+                :src="require('../../assets/project/' + image)"
+                :alt="currentProject.title"
+                class="slideshow-image"
+              />
+            </v-container>
           </div>
           <div class="development-container">
             <p
