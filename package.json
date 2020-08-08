@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "vue-cli-service build && gh-pages -d dist"
+    "deploy": "vue-cli-service build && gh-pages -d dist --repo https://github.com/Sandmountain/sandmountain.github.io"
   },
   "dependencies": {
     "acorn": ">=6.4.1",
