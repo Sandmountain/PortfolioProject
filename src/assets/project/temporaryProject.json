@@ -1,0 +1,49 @@
+{
+  "title": "Data visualization for UX",
+  "id": "15",
+  "projectSize": "L",
+  "shortDescription": "Laborum cupidatat ullamco incididunt id reprehenderit reprehenderit do nostrud aliqua velit.",
+  "finished": "06-15-2020",
+  "description": "TBC....",
+  "development": "TBC....",
+  "keywords": [
+    "React.js",
+    "Redux",
+    "JavaScript",
+    "PHP",
+    "Laravel",
+    "Chart.js",
+    "Agile workflow",
+    "Data management"
+  ],
+  "languages": [
+    {
+      "name": "React.js",
+      "icon": "fab fa-react"
+    },
+    {
+      "name": "CSS",
+      "icon": "fab fa-css3-alt"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "fab fa-js-square"
+    },
+    {
+      "name": "Php",
+      "icon": "fab fa-php"
+    }
+  ],
+  "thumbnail": "DataVisualizationForUX/thumbnail.png",
+  "banner": "DataVisualizationForUX/banner.png",
+  "images": {
+    "src": ["DataVisualizationForUX/dashboard.png"],
+    "size": ["wide"],
+    "legend": ["The final dashboard with data from a real project "]
+  },
+  "report": null,
+  "screencast": null,
+  "demoUrl": null,
+  "courseUrl": "https://liu.se/studieinfo/kurs/tqxx33/",
+  "githubUrl": ""
+}
