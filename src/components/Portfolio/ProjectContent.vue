@@ -33,6 +33,17 @@
               {{ currentProject.description.substr(0, 220) }}
               <a @click.stop="showMoreInfo = true"> ...read more</a>
             </p>
+            <v-container
+              style="display: grid;  grid-template-columns: 1fr 1fr 1fr 1fr; gap:20px"
+            >
+              <v-img
+                v-for="(image, index) in currentProject.images.src"
+                :key="index"
+                :src="require('../../assets/project/' + image)"
+                :alt="currentProject.title"
+                class="slideshow-image"
+              />
+            </v-container>
           </div>
 
           <div style=" height: 100%; ">
