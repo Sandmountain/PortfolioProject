@@ -4,9 +4,6 @@
     <v-tab @click="updatePage(1)">
       <v-icon left>mdi-brush</v-icon>Projects
     </v-tab>
-    <v-tab @click="updatePage(2)">
-      <v-icon left>mdi-account</v-icon>About Me
-    </v-tab>
     <v-spacer></v-spacer>
     <span class="search-button">
       <v-menu

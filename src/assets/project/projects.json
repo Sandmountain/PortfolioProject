@@ -39,12 +39,14 @@
       }
     ],
     "thumbnail": "Dotabase/thumbnail.jpg",
+    "banner": "Dotabase/banner.png",
     "images": {
       "src": [
         "Dotabase/thumbnail.jpg",
         "Dotabase/items.png",
         "Dotabase/modal.jpg"
       ],
+      "size": ["wide", "wide", "wide"],
       "legend": [
         "Overview of the landing page",
         "All the items in game (At that time)",
@@ -95,6 +97,7 @@
       }
     ],
     "thumbnail": "GreatEscape/thumbnail.png",
+    "banner": "GreatEscape/banner.png",
     "images": {
       "src": [
         "GreatEscape/mandeln.jpg",
@@ -102,6 +105,7 @@
         "GreatEscape/options.jpg",
         "GreatEscape/mandeln.gif"
       ],
+      "size": ["wide", "wide", "wide", "wide"],
       "legend": [
         "An overview of some of the game",
         "The starting menu of the game",
@@ -152,12 +156,14 @@
       }
     ],
     "thumbnail": "RollerCoasterSim/thumbnail.png",
+    "banner": "RollerCoasterSim/banner.png",
     "images": {
       "src": [
         "RollerCoasterSim/Graf-matlab-sim.jpg",
         "RollerCoasterSim/Model.png",
         "RollerCoasterSim/gif.gif"
       ],
+      "size": ["wide", "wide", "wide"],
       "legend": [
         "A first prototype made in Matlab, simulating the cart's speed",
         "The first sketch of the project, as well as the model",
@@ -208,12 +214,14 @@
       }
     ],
     "thumbnail": "AnimalApproach/thumbnail.png",
+    "banner": "AnimalApproach/banner.png",
     "images": {
       "src": [
         "AnimalApproach/blender.png",
         "AnimalApproach/hook-unity.png",
         "AnimalApproach/multiplayer.png"
       ],
+      "size": ["wide", "wide", "wide"],
       "legend": [
         "Modelling and animating in blender",
         "Game mechanic development, a hook ability",
@@ -260,8 +268,10 @@
       }
     ],
     "thumbnail": "WikiCrawler/thumbnail.png",
+    "banner": "WikiCrawler/banner.png",
     "images": {
       "src": ["WikiCrawler/setup.png", "WikiCrawler/mainGame.png"],
+      "size": ["square", "wide"],
       "legend": [
         "A setup view when choosing from random articles.",
         "The view of the main game showing different article"
@@ -304,6 +314,7 @@
       }
     ],
     "thumbnail": "SunnyRun/thumbnail.png",
+    "banner": "SunnyRun/banner.png",
     "images": {
       "src": [
         "SunnyRun/menu.png",
@@ -311,6 +322,7 @@
         "SunnyRun/game.png",
         "SunnyRun/game-over.png"
       ],
+      "size": ["wide", "wide", "wide", "wide"],
       "legend": [
         "The main menu of the game",
         "Showing mission to beat while playing the game",
@@ -352,10 +364,17 @@
       }
     ],
     "thumbnail": "FoodAlyze/thumbnail.png",
+    "banner": "FoodAlyze/banner.png",
     "images": {
-      "src": ["FoodAlyze/Prototype.png", "FoodAlyze/mvp.png"],
+      "src": [
+        "FoodAlyze/Prototype.png",
+        "FoodAlyze/mvp.png",
+        "FoodAlyze/interactive-prototype.png"
+      ],
+      "size": ["wide", "wide", "wide"],
       "legend": [
         "The Adobe XD prototype",
+        "All of the screens in the interactive prototype",
         "The MVP developed in Android studio"
       ]
     },
@@ -391,6 +410,7 @@
       }
     ],
     "thumbnail": "ImageReproduction/thumbnail.png",
+    "banner": "ImageReproduction/banner.png",
     "images": {
       "src": [
         "ImageReproduction/databas.jpg",
@@ -398,6 +418,7 @@
         "ImageReproduction/Obama4.jpg",
         "ImageReproduction/obama8ML.jpg"
       ],
+      "size": ["wide", "wide", "wide", "wide"],
       "legend": [
         "The Lab-color distribution in the database used to reproduce the images",
         "A reproduction of Barrack Obama, here with an eighth of the size of the original.",
@@ -455,8 +476,10 @@
       }
     ],
     "thumbnail": "USARealEstate/thumbnail.png",
+    "banner": "USARealEstate/banner.png",
     "images": {
       "src": ["USARealEstate/mapView.png", "USARealEstate/US-economics.png"],
+      "size": ["wide", "wide"],
       "legend": [
         "An overview of the total household income of all states",
         "A zoom in on Texas, showing relations between having a high school degree vs household income"
@@ -521,6 +544,7 @@
       }
     ],
     "thumbnail": "MovieSquare/thumbnail.png",
+    "banner": "MovieSquare/banner.png",
     "images": {
       "src": [
         "MovieSquare/MovieSearch.jpg",
@@ -529,6 +553,7 @@
         "MovieSquare/AddToWatchlist.jpg",
         "MovieSquare/Watchlist.png"
       ],
+      "size": ["wide", "wide", "wide", "wide"],
       "legend": [
         "The result when searching for \"Endgame \" ",
         "The info that can be found when selecting a movie",
@@ -568,6 +593,7 @@
       }
     ],
     "thumbnail": "SelfDrivingCar/thumbnail.png",
+    "banner": "SelfDrivingCar/banner.png",
     "images": {
       "src": [
         "SelfDrivingCar/4movement.gif",
@@ -576,6 +602,7 @@
         "SelfDrivingCar/graph1.png",
         "SelfDrivingCar/graph2.png"
       ],
+      "size": ["square", "square", "square", "square", "square"],
       "legend": [
         "Progress, showing with a 4x movement",
         "Progress, showing with a 8x movement",
@@ -635,11 +662,13 @@
       }
     ],
     "thumbnail": "MovieRecomender/thumbnail.png",
+    "banner": "MovieRecomender/banner.png",
     "images": {
       "src": [
         "MovieRecomender/application.png",
         "MovieRecomender/similarToGalaxy.jpg"
       ],
+      "size": ["wide", "wide"],
       "legend": [
         "A simple React frontend with recomended movies displayed",
         "The result of getting recomended movies to Guardian of the Galaxy"
@@ -670,6 +699,7 @@
       "High score",
       "Wikipedia",
       "API",
+      "Adobe XD",
       "Material Design",
       "UX"
     ],
@@ -689,16 +719,20 @@
       }
     ],
     "thumbnail": "WikiCrawlerNative/thumbnail.png",
+    "banner": "WikiCrawlerNative/banner.png",
     "images": {
       "src": [
         "WikiCrawlerNative/login.png",
         "WikiCrawlerNative/setup.png",
-        "WikiCrawlerNative/articles.png"
+        "WikiCrawlerNative/articles.png",
+        "WikiCrawlerNative/appdesign.png"
       ],
+      "size": ["wide", "wide", "wide", "wide"],
       "legend": [
         "Local log in or using Facebook",
         "Setup for the game using random article",
-        "The main game, showing interaction of how to search for a new article"
+        "The main game, showing interaction of how to search for a new article",
+        "An Adobe XD prototype of the application"
       ]
     },
     "report": null,
@@ -742,16 +776,20 @@
       }
     ],
     "thumbnail": "Portfolio/thumbnail.png",
+    "banner": "Portfolio/banner.png",
     "images": {
       "src": [
         "Portfolio/differentdesigns.png",
         "Portfolio/mountain-version.jpg",
+        "Portfolio/Mobileversion.png",
         "Portfolio/logo.png"
       ],
+      "size": ["wide", "wide", "square", "wide"],
       "legend": [
         "The many different layouts that was chosen from",
         "The first iteration of the page with mountain theme",
-        "Logo designed for use on the page,"
+        "The different design concepts for mobile",
+        "Logo for the portfolio, only shown in the mobile version"
       ]
     },
     "report": null,
@@ -797,8 +835,10 @@
       }
     ],
     "thumbnail": "DataVisualizationForUX/thumbnail.png",
+    "banner": "DataVisualizationForUX/banner.png",
     "images": {
       "src": ["DataVisualizationForUX/dashboard.png"],
+      "size": ["wide"],
       "legend": ["The final dashboard with data from a real project "]
     },
     "report": null,

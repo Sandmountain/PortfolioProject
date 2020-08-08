@@ -42,6 +42,15 @@ export default {
 /* Custom dialogs */
 .project-image-fullscreen-dialog {
   width: 100% !important;
+  overflow: hidden;
+}
+.desktop-project-image-fullscreen-dialog-wide {
+  width: 80% !important;
+  overflow: hidden;
+}
+.desktop-project-image-fullscreen-dialog-square {
+  width: 60% !important;
+  overflow: hidden;
 }
 .mobile__video-dialog {
   background-color: black !important;
@@ -64,12 +73,17 @@ export default {
   max-height: 70% !important;
   margin: 12px !important;
 }
+.project-dialog {
+  height: 84%;
+  overflow: hidden;
+}
 
 .v-menu--custom {
   border-radius: 0px;
 }
 .parallax-image > .v-image__image {
   height: 100%;
+  opacity: 0.2;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

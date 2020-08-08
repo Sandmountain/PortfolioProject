@@ -26,8 +26,12 @@
             class="font-weight-regular project-description"
             style="text-align: left; padding-top: 10px; "
           >
-            <p>
-              {{ currentProject.description }}
+            <p class="body-2 pt-2" style="font-weight: 450">
+              {{ currentProject.shortDescription }}
+            </p>
+            <p class="caption pt-2">
+              {{ currentProject.description.substr(0, 220) }}
+              <a @click.stop="showMoreInfo = true"> ...read more</a>
             </p>
           </div>
 
@@ -40,10 +44,10 @@
                 v-model="showMoreInfo"
                 overlay-opacity="0.8"
                 max-width="100%"
+                content-class="project-dialog"
                 :scrollable="true"
               >
                 <ProjectDialog
-                  fullscreen
                   :current-project="currentProject"
                   :show-arrows="showMoreInfo"
                   :next-project="nextProject"
@@ -224,6 +228,17 @@ export default {
         default:
           break;
       }
+    },
+    createKeywords(keywords) {
+      let list = '';
+      keywords.forEach((word, idx) => {
+        if (idx < keywords.length - 1) {
+          list += word + ', ';
+        } else {
+          list += word + '.';
+        }
+      });
+      return list;
     },
     openNewTab(url) {
       window.open(url, '_blank');

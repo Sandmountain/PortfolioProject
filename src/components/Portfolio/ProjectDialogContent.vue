@@ -11,84 +11,116 @@
       <div class="thumbnail-banner">
         <v-img
           class="parallax-image"
-          style="height: 120px; background-attachment: fixed; opacity: 0.2"
-          :src="require('../../assets/project/' + currentProject.thumbnail)"
+          style="height: 120px; "
+          :src="require(`../../assets/project/${currentProject.banner}`)"
         >
+          <div class="project-short-description ">
+            <p class="overline padded-short-description-text  ">
+              {{ currentProject.shortDescription }}
+            </p>
+          </div>
+          <!--  :src="require('../../assets/project/' + currentProject.thumbnail)" -->
         </v-img>
       </div>
-      <v-row
-        style="margin: 0; padding-top: 12px; display: flex; justify-content: center"
-      >
-        <v-col cols="8" style="align-content: center; padding: 0px">
-          <div
-            class="meta-text"
-            style="display:flex; flex-direction: row; justify-content:space-between; width: 100%; padding-bottom: 12px"
-          >
-            <div style="display: flex; flex-direction: column">
-              <span class="overline">Title: {{ currentProject.title }}</span>
-              <span class="overline ">Project size: {{ projectSize() }}</span>
-            </div>
+      <v-row style="margin: 0;  display: flex; justify-content: center">
+        <v-col style="align-content: center; padding: 0px">
+          <div class="description-container ">
             <div
-              style="display: flex; flex-direction: column; text-align: right"
+              class="meta-text padded-section"
+              style="display:flex; flex-direction: row; justify-content:space-between; width: 100%; padding-bottom: 12px"
             >
-              <span class="overline">
-                status:
-              </span>
+              <div style="display: flex; flex-direction: column">
+                <span class="overline">Title: {{ currentProject.title }}</span>
+                <span class="overline ">Project size: {{ projectSize() }}</span>
+              </div>
+              <div
+                style="display: flex; flex-direction: column; text-align: right"
+              >
+                <span class="overline">
+                  status:
+                </span>
 
-              <span
-                :class="[
-                  'overline',
-                  currentProject.finished === 'Ongoing' ? 'green--text' : ''
-                ]"
-                >{{
-                  currentProject.finished !== 'Ongoing'
-                    ? 'Finished at ' + currentProject.finished
-                    : currentProject.finished
-                }}</span
+                <span
+                  :class="[
+                    'overline',
+                    currentProject.finished === 'Ongoing' ? 'green--text' : ''
+                  ]"
+                  >{{
+                    currentProject.finished !== 'Ongoing'
+                      ? 'Finished ' + currentProject.finished
+                      : currentProject.finished
+                  }}</span
+                >
+              </div>
+            </div>
+
+            <p
+              class="font-weight-bold text-uppercase primary--text mt-4"
+              style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
+            >
+              about the project
+            </p>
+
+            <p class="text--primary padded-section mb-4 ">
+              {{ currentProject.description }}
+            </p>
+          </div>
+          <div class="swiper-container">
+            <Swiper
+              ref="swiperComponent"
+              class="swiper"
+              style="height: 30vh"
+              :options="swiperOption"
+              @slideChange="changeSwiperIndex"
+            >
+              <SwiperSlide
+                class="swiper-slide-desktop"
+                v-for="(image, index) in imageArray.src"
+                :key="index"
+                ><v-card
+                  style="height: 100%; cursor: pointer; "
+                  @click="
+                    selectImage(index);
+                    showFullScreenImage = true;
+                  "
+                >
+                  <v-img
+                    :src="require('../../assets/project/' + image)"
+                    :alt="currentProject.title"
+                    class="slideshow-image"
+                  />
+                </v-card>
+              </SwiperSlide>
+              <div
+                slot="pagination"
+                class="swiper-pagination"
+                style="top: -5px"
+              ></div>
+            </Swiper>
+            <div class="text-center padded-section legend-text">
+              <span class="font-weight-bold ">
+                {{ 'Figure ' + (activeIndex + 1) + ': ' }}
+              </span>
+              <span class="font-weight-regular ">
+                {{ imageArray.legend[activeIndex] }}</span
               >
             </div>
           </div>
-          <p
-            class="font-weight-bold text-uppercase primary--text"
-            style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
-          >
-            about the project
-          </p>
-
-          <p class="text--primary ma-0">
-            {{ currentProject.description }}
-          </p>
-          <Swiper ref="swiperComponent" class="swiper" :options="swiperOption">
-            <SwiperSlide
-              v-for="(image, index) in imageArray.src"
-              :key="index"
-              style="height: 35vh"
-              ><v-card style="overflow:hidden; height: 100%; width: 100%">
-                <v-btn class="fullscreen-icon" icon @click="selectImage(index)">
-                  <v-icon small>mdi-fullscreen</v-icon>
-                </v-btn>
-                <v-img
-                  :aspect-ratio="16 / 10"
-                  :src="require('../../assets/project/' + image)"
-                  :alt="currentProject.title"
-                  class="slideshow-image"
-                /> </v-card
-            ></SwiperSlide>
-            <div slot="pagination" class="swiper-pagination"></div>
-          </Swiper>
-          <p
-            class="font-weight-bold text-uppercase primary--text"
-            style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
-          >
-            The Development
-          </p>
-          <p class="text--primary">
-            {{ currentProject.development }}
-          </p>
-          <p style="font-size: 10pt">
-            <b>Project Keywords</b>:
-            {{ createKeywords(currentProject.keywords) }}
-          </p>
+          <div class="development-container">
+            <p
+              class="font-weight-bold text-uppercase primary--text"
+              style="font-size: 10pt; letter-spacing: 2px; text-align: center; "
+            >
+              The Development
+            </p>
+            <p class="text--primar padded-section">
+              {{ currentProject.development }}
+            </p>
+            <p style="font-size: 10pt;" class="padded-section mt-5">
+              <b>Project Keywords</b>:
+              {{ createKeywords(currentProject.keywords) }}
+            </p>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -198,6 +230,23 @@
         </span>
       </v-col>
     </v-row>
+    <v-dialog
+      v-model="showFullScreenImage"
+      :content-class="
+        imageArray.size[activeIndex] === 'wide'
+          ? 'desktop-project-image-fullscreen-dialog-wide'
+          : 'desktop-project-image-fullscreen-dialog-square'
+      "
+    >
+      <v-img
+        :contain="true"
+        :src="require('../../assets/project/' + activeImage)"
+        :alt="currentProject.title"
+        class="slideshow-dialog-image"
+        style="cursor: pointer; height: 100%"
+        @click="showFullScreenImage = false"
+      />
+    </v-dialog>
   </div>
 </template>
 
@@ -219,17 +268,15 @@ export default {
       showVideo: false,
       activeIndex: 0,
       fullscreenImageDialog: false,
-      activeImage: { src: String, legend: String },
+      activeImage: { src: String },
+      showFullScreenImage: false,
       imageArray: { legend: [], src: [] },
       imageList: { legend: [], src: [] },
       swiperOption: {
-        slidesPerView: 1.2,
+        slidesPerView: 2.1,
         spaceBetween: 12,
         centeredSlides: true,
         slideToClickedSlide: true,
-        onSlideChangeEnd: () => {
-          this.onSwipe();
-        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true
@@ -250,19 +297,25 @@ export default {
       immediate: true,
       handler(newValue) {
         this.imageArray = {
-          legend: ['The project thumbnail', ...newValue.images.legend],
-          src: [newValue.thumbnail, ...newValue.images.src]
+          legend: newValue.images.legend,
+          src: newValue.images.src,
+          size: newValue.images.size
         };
         this.activeIndex = 0;
+        if (this.$refs.swiperComponent) {
+          this.$refs.swiperComponent.$swiper.slideTo(0);
+        }
       }
     }
   },
   created() {
     this.imageArray = {
-      legend: ['Project thumbnail', ...this.currentProject.images.legend],
-      src: [this.currentProject.thumbnail, ...this.currentProject.images.src]
+      legend: this.currentProject.images.legend,
+      src: this.currentProject.images.src,
+      size: this.currentProject.images.size
     };
     this.activeIndex = 0;
+    this.activeImage = this.imageArray.src[0];
   },
   methods: {
     timeToRead() {
@@ -316,7 +369,11 @@ export default {
       });
       return list;
     },
+    changeSwiperIndex() {
+      this.activeIndex = this.$refs.swiperComponent.$swiper.activeIndex;
+    },
     selectImage(idx) {
+      this.activeImage = this.imageArray.src[idx];
       this.activeIndex = idx;
     },
     stylingTitles: title => {
@@ -346,6 +403,10 @@ export default {
 </script>
 
 <style scoped>
+.padded-section {
+  max-width: 66.666667%;
+  margin: 0 auto;
+}
 .v-image__image {
   background-attachment: fixed;
 }
@@ -357,16 +418,42 @@ export default {
 .project-description {
   text-align: left;
   padding: 0;
-  height: 55vh;
+  height: 69vh;
   overflow: auto;
 }
 
 .slideshow-selected-image {
   opacity: 50%;
 }
-.slideshow-image:hover {
-  opacity: 70%;
+
+.slideshow-container {
+  height: 35vh;
+  cursor: pointer;
 }
+
+.slideshow-image {
+  opacity: 100%;
+  height: 100%;
+  transition: opacity 0.2s;
+}
+.slideshow-image:hover {
+  opacity: 90%;
+  transition: opacity 0.2s;
+}
+.slideshow-dialog-image {
+  opacity: 100%;
+  transition: opacity 0.2s;
+}
+.slideshow-dialog-image:hover {
+  opacity: 95%;
+  transition: opacity 0.2s;
+}
+.legend-text {
+  font-size: 10pt;
+  position: relative;
+  top: 12px;
+}
+
 .title-h2 {
   font-size: 2rem;
   z-index: 1 !important;
@@ -443,8 +530,9 @@ export default {
 }
 
 .top-content {
+  position: relative;
   padding: 12px 12px 8px 12px;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
 
   -webkit-box-shadow: 0px -15px 7px 16px rgba(0, 0, 0, 0.3);
@@ -454,18 +542,35 @@ export default {
 .thumbnail-banner {
   width: 100%;
 }
-.bottom-content {
-  /*display: flex;
+.swiper-container {
+  padding: 26px 0 3px 0;
+  margin: 0;
+  margin-top: -15px;
+  background: #d1d1d1;
+}
+.project-short-description {
+  position: relative;
+  z-index: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  */
+  height: 100%;
+}
+.padded-short-description-text {
+  position: fixed;
+  color: rgb(160, 160, 160);
+}
+.bottom-content {
   position: relative;
   bottom: 0;
-  overflow: hidden;
   width: 100%;
   margin: 0px;
+  z-index: 2;
   -webkit-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 15px 7px 16px rgba(0, 0, 0, 0.3);
+}
+.swiper-pagination {
+  z-index: 0;
 }
 </style>

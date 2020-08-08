@@ -30,6 +30,7 @@
             <span v-if="currentPage == 1">
               <Portfolio />
             </span>
+
             <span v-if="currentPage == 3">
               <FilteredPortfolio
                 :change-page="changePage"
@@ -50,8 +51,6 @@ import NavigatorMenu from './Navigator/NavigatorMenu';
 import Portfolio from './Portfolio/Portfolio';
 import FilteredPortfolio from './Portfolio/FilteredPortfolio';
 
-//import AppBar from './AppBar/AppBar';
-
 export default {
   components: {
     ProfileCard,
@@ -59,7 +58,6 @@ export default {
     Portfolio,
     NavigatorMenu,
     FilteredPortfolio
-    //AppBar
   },
   data() {
     return {

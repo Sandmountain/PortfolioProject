@@ -27,13 +27,32 @@
       <v-col style="height: 100%; padding-top: 12.5%">
         <div style="width: 100%;">
           <h2 class="social-media text-center">
-            <v-btn icon small color="gray">
+            <v-btn
+              icon
+              small
+              color="gray"
+              @click="
+                openNewTab(
+                  'https://www.linkedin.com/in/viktor-sandberg-215a2313a/'
+                )
+              "
+            >
               <v-icon medium>mdi-linkedin</v-icon>
             </v-btn>
-            <v-btn icon small color="gray">
+            <v-btn
+              icon
+              small
+              color="gray"
+              @click="openNewTab('https://www.facebook.com/Sandtain')"
+            >
               <v-icon medium>mdi-facebook</v-icon>
             </v-btn>
-            <v-btn icon small color="gray">
+            <v-btn
+              icon
+              small
+              color="gray"
+              @click="openNewTab('https://github.com/sandmountain')"
+            >
               <v-icon medium>mdi-github</v-icon>
             </v-btn>
           </h2>

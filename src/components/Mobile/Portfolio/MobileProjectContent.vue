@@ -139,7 +139,10 @@
         @click.native="handleSwiperDOMClick"
         @slideChange="changeSwiperIndex"
       >
-        <SwiperSlide v-for="(image, index) in imageArray.src" :key="index"
+        <SwiperSlide
+          class="swiper-slide-image"
+          v-for="(image, index) in imageArray.src"
+          :key="index"
           ><v-card style="overflow:hidden" class="carousel-image-card">
             <v-btn class="fullscreen-icon" icon @click="selectImage(index)">
               <v-icon small>mdi-fullscreen</v-icon>
@@ -425,7 +428,8 @@ export default {
 }
 .description-container {
   position: relative;
-  z-index: 1;
+  background: white;
+  z-index: 2;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
 .carousel-container {
@@ -436,7 +440,7 @@ export default {
 .development-container {
   padding-top: 12px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background: white;
   box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -461,7 +465,7 @@ export default {
 }
 
 /* Carousel Styling */
-.swiper-slide {
+.swiper-slide-image {
   height: 200px;
 }
 .swiper-container {
