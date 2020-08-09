@@ -15,7 +15,7 @@
           :src="require(`../../assets/project/${currentProject.banner}`)"
         >
           <div class="project-short-description ">
-            <p class="overline padded-short-description-text  ">
+            <p class="overline padded-section padded-short-description-text ">
               {{ currentProject.shortDescription }}
             </p>
           </div>
@@ -31,26 +31,17 @@
             >
               <div style="display: flex; flex-direction: column">
                 <span class="overline">Title: {{ currentProject.title }}</span>
-                <span class="overline ">Project size: {{ projectSize() }}</span>
+
+                <span class="overline "
+                  ><v-icon x-small>mdi-clock</v-icon
+                  >{{ ' ' + timeToRead() }} min read article</span
+                >
               </div>
               <div
                 style="display: flex; flex-direction: column; text-align: right"
               >
-                <span class="overline">
-                  status:
-                </span>
-
-                <span
-                  :class="[
-                    'overline',
-                    currentProject.finished === 'Ongoing' ? 'green--text' : ''
-                  ]"
-                  >{{
-                    currentProject.finished !== 'Ongoing'
-                      ? 'Finished ' + currentProject.finished
-                      : currentProject.finished
-                  }}</span
-                >
+                <span class="overline">Project size</span>
+                <span class="overline">{{ projectSize() }}</span>
               </div>
             </div>
 
@@ -87,7 +78,7 @@
                   <v-img
                     :src="require('../../assets/project/' + image)"
                     :alt="currentProject.title"
-                    class="slideshow-image"
+                    class="clickable-image slideshow-image"
                   />
                 </v-card>
               </SwiperSlide>
@@ -429,22 +420,9 @@ export default {
 }
 
 .slideshow-image {
-  opacity: 100%;
   height: 100%;
-  transition: opacity 0.2s;
 }
-.slideshow-image:hover {
-  opacity: 90%;
-  transition: opacity 0.2s;
-}
-.slideshow-dialog-image {
-  opacity: 100%;
-  transition: opacity 0.2s;
-}
-.slideshow-dialog-image:hover {
-  opacity: 95%;
-  transition: opacity 0.2s;
-}
+
 .legend-text {
   font-size: 10pt;
   position: relative;
@@ -552,10 +530,11 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin: 0 auto;
 }
 .padded-short-description-text {
-  position: fixed;
   color: rgb(160, 160, 160);
+  width: 66.6667%;
 }
 .bottom-content {
   position: relative;

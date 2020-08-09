@@ -18,32 +18,40 @@
               </span>
             </span>
           </h2>
-          <span class="overline "
-            ><v-icon x-small>mdi-clock</v-icon>{{ ' ' + timeToRead() }} min read
-            article</span
+          <div
+            style="display: flex; flex-direction: row; justify-content: end; width: 100%"
           >
+            <div
+              style="display:flex; flex-direction: column; text-align: left; width: 100%"
+            >
+              <span class="overline">
+                status:
+              </span>
+
+              <span
+                :class="[
+                  'overline',
+                  currentProject.finished === 'Ongoing' ? 'green--text' : ''
+                ]"
+                >{{
+                  currentProject.finished !== 'Ongoing'
+                    ? 'Finished ' + currentProject.finished
+                    : currentProject.finished
+                }}</span
+              >
+            </div>
+          </div>
           <div
             class="font-weight-regular project-description"
             style="text-align: left; padding-top: 10px; "
           >
-            <p class="body-2 pt-2" style="font-weight: 450">
+            <p class="body-1 short-description-text" style="font-weight: 500">
               {{ currentProject.shortDescription }}
             </p>
-            <p class="caption pt-2">
-              {{ currentProject.description.substr(0, 220) }}
+            <p class="caption description-text hidden-md-and-down">
+              {{ currentProject.description.substr(0, 120) }}
               <a @click.stop="showMoreInfo = true"> ...read more</a>
             </p>
-            <v-container
-              style="display: grid;  grid-template-columns: 1fr 1fr 1fr 1fr; gap:20px"
-            >
-              <v-img
-                v-for="(image, index) in currentProject.images.src"
-                :key="index"
-                :src="require('../../assets/project/' + image)"
-                :alt="currentProject.title"
-                class="slideshow-image"
-              />
-            </v-container>
           </div>
 
           <div style=" height: 100%; ">
@@ -100,6 +108,7 @@
         </v-col>
         <v-col md="6" sm="12" no-gutters>
           <v-img
+            class="clickable-image"
             style="cursor: pointer;"
             aspect-ratio="2.3"
             :src="require('../../assets/project/' + currentProject.thumbnail)"
@@ -348,7 +357,14 @@ export default {
 .tooltip-icon:hover {
   filter: opacity(0.5) drop-shadow(0 0 0 #a0a0a0);
 }
-
+.short-description-text {
+  font-weight: 550;
+  margin: 0;
+  padding: 2em 2em 0;
+}
+.description-text {
+  padding: 0 2rem;
+}
 /* Responsive layout */
 @media screen and (max-width: 1904px) {
   .project-title-h2 {

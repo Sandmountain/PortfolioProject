@@ -70,20 +70,16 @@
               :key="i"
               class="carousel-box"
             >
-              <div>
-                <v-img
-                  :key="project.id"
-                  aspect-ratio="1.5"
-                  :eager="true"
-                  :src="require('../../assets/project/' + project.thumbnail)"
-                  @click="slidePressed(project.id)"
-                />
-              </div>
-              <!--<v-img :src="`../../assets/projects/${thumbnails[0]}`" :key="thumbnail" />-->
+              <v-img
+                :key="project.id"
+                class="clickable-image"
+                aspect-ratio="1.5"
+                :eager="true"
+                :src="require('../../assets/project/' + project.thumbnail)"
+                @click="slidePressed(project.id)"
+              />
             </div>
 
-            <!-- ../../assets/project/Dotabase/thumbnail.jpg -->
-            <!-- Custom arrows-->
             <template #prevArrow>
               <div class="custom-arrow" style="top: 40%; left: -30">
                 <v-icon class="carousel-arrow">mdi-chevron-left-circle</v-icon>

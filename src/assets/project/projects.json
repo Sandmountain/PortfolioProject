@@ -6,7 +6,7 @@
     "shortDescription": "A website created with focus on the fundamentals of UX and IxD.",
     "finished": "29-11-2016",
     "description": "This project was made in the course “Communication and User Interfaces” in the second year. The purpose of the project was to create a user friendly website with focus on its user interface and interaction design. This course covered many fundamental concepts about user experience and how to communicate with the user in an intuitive way. The project’s goal was to use these concepts to create a web application with these concepts and have user evaluation to see if the application was as intuitive as predicted.",
-    "development": "The application created was a web application using Angular.js. The goal of the application was to create a simple encyclopedia for the game Dota2, where most relevant information of the game could easily be found. This was achieved by having a image carousel with each playable character in the game, that covered most of the interaction of the application. There was also a search function to find specific heroes. When a character was selected, information of  was shown displaying relevant stats and abilities.",
+    "development": "The application created was a web application using Angular.js. The goal of the application was to create a simple encyclopedia for the game Dota 2, where most of the relevant information of the game could easily be found. This was achieved by having an image carousel with each playable character in the game. This carousel covered most of the interaction that could be done on the application. There was also a search function to find specific heroes. When a character was selected, information such as stats and abilities was displayed.",
     "keywords": [
       "Angular.js",
       "Data management",
@@ -65,8 +65,8 @@
     "projectSize": "M",
     "shortDescription": "A platform game created for the browser using WebGL, Three.js and 3ds max for the models.",
     "finished": "06-01-2017",
-    "description": "This project was made in the course “3D-computer graphics” in the second year. The main topics of the course was basic concepts within 3D computer graphics such as global illumination, ray casting and creating scenes graphs. Also programming in OpenGL, WebGL and 3D-modelling and animation.",
-    "development": "The purpose of the project was to create a project relevant to the course and the topic that was chosen was to create a game in WebGL from scratch. Creating the game from scratch meant creating 3D-models and animations, but also the physics engine. The physics engine was outside of the scope of the course, but was created to get an in depth knowledge of how the physics in a game works.  The application that was created was a game in WebGL and the API Three.js. The goal of the application was to create a complete game, meaning that it would have a beginning and an end, but also all assets a game should have, such as sound, music and UI. ",
+    "description": "This project was made in the course “3D-computer graphics” in the second year of the university. The main topics of the course was basic concepts within 3D computer graphics such as global illumination, ray casting and creating scenes graphs. Also programming in OpenGL, WebGL and 3D-modelling and animation was covered.",
+    "development": "The purpose of the project was to create a project relevant to the course, and the topic that was chosen was to create a game in WebGL from scratch. Creating the game from scratch meant of course creating the 3D-models and their animations, but also the physics engine. The physics engine was outside of the scope of the course, but was created to get an in depth knowledge of how the physics in a game works. The application that was created was a game in WebGL and the API Three.js. The goal of the application was to create a complete game, meaning that it would have a beginning and an end, but also all assets a game should have, such as sound, music and UI. ",
     "keywords": [
       "WebGL",
       "Three.js",
@@ -126,7 +126,7 @@
     "shortDescription": "A project were a simulation of a Roller Coaster was made using Matlab, and visualized using Unity.",
     "finished": "03-09-2018",
     "description": "This project was made in the course “Modelling Project” as a follow up for the course “Modelling and Simulation”. Modelling and simulation was a course to give a deeper understanding of how physical system work and operate in the real world, and using tools like Matlab to estimate and approximate if the system is stable or unstable. The project course was a way to try out these knowledges in a physical based system of your own choosing with the help of programming.",
-    "development": "This project consisted of creating a simulation for a roller coaster running on an arbitrary path. The approach was to first write a model (a differential equation) for the system, then approximate it using Matlab, and finish it up by doing a more graphical pleasing representation of the system, using Unity. The differential equation was written by analyzing all the forces that the roller coaster cart is being affected by. This was then implemented in matlab, and using Euler step method, it was possible to evaluate if the model was correct. The final part of this project was to implement the system in Unity, where it was possible to change constants such as drag, air resistance and chain force.",
+    "development": "This project consisted of creating a simulation for a roller coaster running on an arbitrary path. The approach was to first write a model (a differential equation) for the system, then approximate it using Matlab, and finish up by doing a more graphical pleasing representation of the system, using Unity. The differential equation was written by analyzing all the forces that the roller coaster cart is being affected by. This was then implemented in Matlab, and by using Euler step method it was possible to evaluate if the model was correct. The final part of this project was to implement the system in Unity, where it was possible to change constants such as drag, air resistance and chain force on the live simulation. ",
     "keywords": [
       "Matlab",
       "simulation",
@@ -182,7 +182,7 @@
     "projectSize": "L",
     "shortDescription": "An Augmented Reality, capture-the-flag game with the intention of giving the user a feeling of playing a real board created with Unity3D.",
     "finished": "05-28-2018",
-    "description": "The Bachelor's thesis in Media Technology and Engineering was a project with focus on agile development. The students of the course were divided into groups based on what projects ideas they were interested in. The project that I was assigned to was to create a multiplayer game in AR. The focus of the project was to create a game that felt inclusive and mimicked the feeling of a board game. The fundamental concepts of the project was network, tracking and game development. ",
+    "description": "The Bachelor's thesis in Media Technology and Engineering was a project with focus on agile development. The students of the course were divided into groups based on what projects ideas they were interested in. The project that I was assigned to was to create a multiplayer game using AR. The focus of the project was to create a game that felt inclusive and mimicked the feeling of a board game. The fundamental concepts of the project was network, tracking and game development. ",
     "development": "The game that was created was a capture the flag game played in teams. The player could choose between different characters(heroes) to play that all had different strengths and weaknesses. These strengths and weaknesses are shown through their unique abilities i.e strength, speed, intellect. The games playing field was generated in AR with procedurally generated game assets. The players used their mobile devices as windows to the playing field and the players all see the same playing field, with the help of server/client connection between all included devices. In order to succeed with this markers was used with the AR tracking. As the game was rendered on mobile devices the polygon count had to be taken into consideration. This issue was handled through modeling the games assets in low-poly graphics. The game was developed entirely in Unity coding in C#. All of the game assets were modeled by the project team in Blender.",
     "keywords": [
       "Unity",
@@ -374,8 +374,8 @@
       "size": ["wide", "wide", "wide"],
       "legend": [
         "The Adobe XD prototype",
-        "All of the screens in the interactive prototype",
-        "The MVP developed in Android studio"
+        "The MVP developed in Android studio",
+        "All of the screens in the interactive prototype"
       ]
     },
     "report": "https://drive.google.com/file/d/1ojGUKj3QA63osnHuzYMGOIfDb4Up7e7W/view?usp=sharing",
@@ -687,7 +687,7 @@
     "shortDescription": "A mobile game with the goal of crawling through Wikipedia articles to find a chosen article. ",
     "finished": "Ongoing",
     "description": "WikiCrawler Native is a port from my first project “WikiCrawler”. The base concept is the same, i.e players start on the same randomly selected article, and must navigate to another pre-selected target article, solely by clicking on words within each article. One of the biggest difference in this project, was that I wanted it to include authentication so that each user could save their prior high scores and compare to their friends as well as having a profile etc.  This game was developed for smartphones using React Native. ",
-    "development": "One of the most important parts of this project was to get the interaction intuitive with how to search for new articles. In the original game, it’s easy because you have a mouse as a tool to use for navigation and marking words. On phone however, the only interaction you can use is touch. (Fill out for portfolio)",
+    "development": "One of the most important parts of this project was to get the interaction intuitive with how to search for new articles. In the original game, it’s easy because you have a mouse as a tool to use for navigation and marking words. On phone however, the only interaction you can use is touch. An extensive research was done to find some library that would make it possible to interact with the articles and to be able to crawl through to the end. A library that uses the context menu (Hold on a word to copy) was at the end decided to use, and through some small user tests the interaction was approved and felt natural. After the game mechanics and high score system were implemented, a login and profile page was created. This was done so that users could see and compare their scores between each other, but also of course to create a more intriguing game. There are a few thing that needs to be cleaned up in the project, but it has been put on hold for the time being.",
     "keywords": [
       "React Native",
       "React Navigation",
@@ -745,10 +745,10 @@
     "title": "Portfolio Page",
     "id": "14",
     "projectSize": "M",
-    "shortDescription": "A single page web application to display the my proudest passion projects as well as projects from my education.",
+    "shortDescription": "A single page web application to show my proudest passion projects as well as projects from my education.",
     "finished": "Ongoing",
     "description": "This homepage that you are visiting right now, is a page I created to be able to show people what I've done and created on my spare time as well as on my time at the university. A portfolio is a great way for me to share my projects, as well as a great opportunity to start another passion project.",
-    "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challenge myself to create a page with great aesthetics and a responsive UI for most browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements. This project's first iteration was creating a SVG-based layout where 'Mountains' were the theme, however, after finishing the page with code and interaction I felt that the page was not very cleverly designed and the layout was not working well on mobile devices. That's why I decided to go for the page you are looking at right now. I am very pleased with the result, and I'm glad that I took the time to redo the entire design, even though I thought that the first design was great!",
+    "development": "The development of this portfolio has covered a few new topics that I haven't worked with before. Since it's a single page application with no need to implement a back-end, I wanted to challenge myself to create a page with great aesthetics and a responsive UI for most browsers. I have worked with creating a graphic profile for the page, creating logo and graphics in Adobe Illustrator as well as using Veutify for Material Design front-end elements. This project's first iteration was creating a SVG-based layout where 'Mountains' were the theme, however, after finishing the page with code and interaction I felt that the page was not very cleverly designed and the layout was not working well on mobile devices. That's why I decided to go for the page you are looking at right now. I am very pleased with the result, and I'm glad that I took the time to redo the entire design, even though I thought that the first design was great. This project will be ongoing for probably a long time, the project has been deployed, there are still many tweaks that could be done to improve the result.",
     "keywords": [
       "Vue.js",
       "JavaScript",
@@ -756,6 +756,8 @@
       "Projects",
       "Portfolio",
       "CSS",
+      "Deployment",
+      "Custom Domain",
       "Responsive Design",
       "Material Design",
       "Adobe Illustrator",
@@ -784,7 +786,7 @@
         "Portfolio/Mobileversion.png",
         "Portfolio/logo.png"
       ],
-      "size": ["wide", "wide", "square", "wide"],
+      "size": ["wide", "wide", "wide", "square"],
       "legend": [
         "The many different layouts that was chosen from",
         "The first iteration of the page with mountain theme",

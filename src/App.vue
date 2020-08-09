@@ -89,6 +89,17 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.clickable-image > .v-image__image {
+  transform: scale(1);
+  transition-delay: 0.8s;
+  transition: 0.3s ease-in-out;
+}
+
+.clickable-image:hover > .v-image__image {
+  transform: scale(1.02);
+  transition-delay: 2s;
+  transition: 0.3s ease-in-out;
+}
 
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

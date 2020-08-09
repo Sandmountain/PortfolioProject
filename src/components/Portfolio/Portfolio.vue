@@ -42,6 +42,7 @@
                   <v-card>
                     <v-img
                       :key="project.id"
+                      class="clickable-image"
                       aspect-ratio="1.8"
                       style="cursor: pointer;"
                       :src="
