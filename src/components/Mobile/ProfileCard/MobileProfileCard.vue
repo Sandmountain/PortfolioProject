@@ -27,7 +27,7 @@
       </p>
       <p style="text-align: center">
         <v-icon small>mdi-map-marker</v-icon>
-        <span class="caption font-weight-regular">Norrköping, Sweden</span>
+        <span class="caption font-weight-regular">Stockholm, Sweden</span>
       </p>
     </v-container>
     <!---

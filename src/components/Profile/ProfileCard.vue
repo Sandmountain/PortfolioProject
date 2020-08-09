@@ -22,7 +22,7 @@
       </p>
       <v-icon small>mdi-map-marker</v-icon>
       <span class="caption font-weight-regular text-left"
-        >Norrköping, Sweden</span
+        >Stockholm, Sweden</span
       >
       <v-col style="height: 100%; padding-top: 12.5%">
         <div style="width: 100%;">
