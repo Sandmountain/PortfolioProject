@@ -18,7 +18,7 @@
       <span class="font-weight-regular headline">Sandberg</span>
 
       <p class="font-weight-bold subtitle-2 primary--text">
-        Full-Stack Web Developer
+        Full Stack Web Developer
       </p>
       <v-icon small>mdi-map-marker</v-icon>
       <span class="caption font-weight-regular text-left"

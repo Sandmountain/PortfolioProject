@@ -15,14 +15,13 @@
       </p>
 
       <p style="font-size: 10pt; text-align: left; margin-top: 2vw;">
-        My name is Viktor Sandberg, a student in Media Technology & Engineering
-        studying at the university of Linköping. I am
+        My name is Viktor Sandberg, a creative full stack developer who is
         <i>very</i>
-        intrested in web development and UX, and therefore I'm proud to present
-        to you my very own portfolio homepage. The purpose of this page is of
-        course a way for me to show you my previous work and projects, but also
-        a way for me to get even more practice of doing what that I love. To see
-        all my project, click the button below.
+        intrested in web development and UX. Here, I'm proud to present to you
+        my very own portfolio homepage. The purpose of this page is of course a
+        way for me to show you my previous work and projects, but also a way for
+        me to get even more practice of doing what that I love. To see all my
+        project, click the button below.
       </p>
       <v-btn color="primary" small tile outlined @click="updatePage()"
         >Show Portfolio</v-btn

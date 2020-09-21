@@ -163,7 +163,7 @@
         "RollerCoasterSim/Model.png",
         "RollerCoasterSim/gif.gif"
       ],
-      "size": ["wide", "wide", "wide"],
+      "size": ["square", "wide", "wide"],
       "legend": [
         "A first prototype made in Matlab, simulating the cart's speed",
         "The first sketch of the project, as well as the model",
@@ -418,7 +418,7 @@
         "ImageReproduction/Obama4.jpg",
         "ImageReproduction/obama8ML.jpg"
       ],
-      "size": ["wide", "wide", "wide", "wide"],
+      "size": ["wide", "square", "square", "square"],
       "legend": [
         "The Lab-color distribution in the database used to reproduce the images",
         "A reproduction of Barrack Obama, here with an eighth of the size of the original.",

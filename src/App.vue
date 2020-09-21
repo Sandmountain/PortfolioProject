@@ -46,10 +46,14 @@ export default {
 }
 .desktop-project-image-fullscreen-dialog-wide {
   width: 80% !important;
+  background-color: rgba(255, 255, 255, 0) !important;
   overflow: hidden;
 }
 .desktop-project-image-fullscreen-dialog-square {
   width: 60% !important;
+  height: 100% !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  box-shadow: none !important;
   overflow: hidden;
 }
 .mobile__video-dialog {
