@@ -77,8 +77,9 @@ export default {
   max-height: 70% !important;
   margin: 12px !important;
 }
+
 .project-dialog {
-  height: 84%;
+  height: fit-content;
   overflow: hidden;
 }
 
