@@ -96,7 +96,7 @@ export default {
   height: 100%;
 }
 .profile-card {
-  height: 648px;
+  height: 100%;
   width: 100%;
 }
 .main-content {
@@ -106,15 +106,17 @@ export default {
   overflow: hidden;
 }
 @media screen and (max-width: 959px) {
-  .profile-card {
-    height: auto;
-  }
   .nav-menu {
     display: none;
   }
   .main-content {
     margin-top: 0;
     height: 100%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .main-content {
+    height: 60vh;
   }
 }
 </style>
