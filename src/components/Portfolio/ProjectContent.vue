@@ -49,8 +49,18 @@
               {{ currentProject.shortDescription }}
             </p>
             <p class="caption description-text hidden-md-and-down">
-              {{ currentProject.description.substr(0, 120) }}
-              <a @click.stop="showMoreInfo = true"> ...read more</a>
+              {{
+                $vuetify.breakpoint.lgAndDown
+                  ? currentProject.description.substr(0, 80)
+                  : currentProject.description
+              }}
+
+              <a
+                :hidden="!$vuetify.breakpoint.lgAndDown"
+                @click.stop="showMoreInfo = true"
+              >
+                ...read more</a
+              >
             </p>
           </div>
 
